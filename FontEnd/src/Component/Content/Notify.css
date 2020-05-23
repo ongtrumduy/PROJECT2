@@ -1,0 +1,99 @@
+.notify {
+    margin: 5px 10px 0 10px;
+    font-size: 28px;
+}
+
+.notify .notify-title h3 {
+    text-align: left;
+}
+
+.notify .notify-list-table {
+    height: 470px;
+    overflow: auto;
+    border-style: groove;
+}
+
+.notify .notify-list-table table td {
+    text-align: left;
+}
+
+.notify .notify-list-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.notify .notify-list-table table tr {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.notify .notify-list-table table .notify-infor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin: 10px 10px 5px 10px;
+}
+
+.notify .notify-list-table table .notify-infor .notify-infor-bonus {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.notify .notify-list-table .notify-infor .notify-add-friend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.notify .notify-list-table .notify-infor .notify-sent-message {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.notify .notify-list-table .notify-infor .notify-like-friend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.notify .notify-list-table .notify-infor .notify-user-name {
+    color: blue;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.notify .notify-list-table .notify-infor div {
+    font-size: 28px;
+}
+
+.notify .notify-list-table .notify-infor div .notify-infor-time{
+    font-size: 24px;
+
+}
+
+.notify .notify-list-table .notify-infor .notify-infor-content .notify-infor-bonus {
+    float: left;
+}
+
+.notify .notify-list-table .notify-infor .notify-infor-content .notify-infor-bonus .notify-infor-icon {
+    margin: 0 10px 0 0;
+}
+
+.notify .notify-list-table td:hover {
+    cursor: pointer;
+    background-color: gray;
+}
+
+.notify .notify-list-table .notify-infor .notify-user-avatar img {
+    width: 70px;
+    height: 70px;
+    margin: 0 10px 0 0;
+}

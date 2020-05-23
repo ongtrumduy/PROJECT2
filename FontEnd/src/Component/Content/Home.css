@@ -1,0 +1,59 @@
+.unknow-friend {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-grow: 0;
+    align-content: stretch;
+}
+
+.unknow-friend .unknow-friend-profile {
+    border: 1px solid white;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    margin: 5px 0 0 5px;
+    width: 40%;
+}
+
+.unknow-friend .unknow-friend-profile .unknow-friend-infor-title {
+    background-color: rgba(43, 181, 223, 0.993);
+    color: rgb(255, 255, 255);
+    border-style: groove;
+    text-align: center;
+    font-size: 24px;
+}
+
+.unknow-friend .unknow-friend-profile .unknow-friend-infor-render {
+    margin: 0 0 0 10px;
+    font-size: 22px;
+}
+
+.unknow-friend .unknow-friend-control {
+    width: 60%;
+    border-style: groove;
+    margin: 5px 5px 0 5px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-self: self-start;
+    align-items: stretch;
+}
+
+.unknow-friend .unknow-friend-control .unknow-friend-avatar {
+    border: 1px solid white;
+    height: 420px;
+}
+
+.unknow-friend .unknow-friend-control .unknow-friend-button {
+    height: 160px;
+    border: 1px solid white;
+}
+
+.unknow-friend .unknow-friend-control .unknow-friend-button button {
+    margin: 50px 0 0 0;
+    width: 80px;
+    height: 80px;
+}

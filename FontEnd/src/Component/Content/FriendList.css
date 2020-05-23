@@ -1,0 +1,106 @@
+.friend-list {
+    border: 1px solid white;
+    height: 580px;
+    margin: 5px 10px 0 10px;
+}
+
+.friend-list .friend-list-title {
+    height: 50px;
+    line-height: 40px;
+    margin: -20px 0 0 0;
+    font-size: 28px;
+}
+
+.friend-list .friend-list-head {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+    background-color: greenyellow;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.friend-list .friend-list-head div {
+    height: 50px;
+    line-height: 50px;
+    flex-grow: 1;
+    border-right: groove;
+}
+
+.friend-list .friend-list-head div:first-child {
+    border-left: groove;
+}
+
+.friend-list .friend-list-head div:nth-child(2) {
+    vertical-align: middle;
+    flex-grow: 2.5;
+    background-color: greenyellow;
+}
+
+.friend-list-body {
+    margin: 10px 0 0 0;
+    height: 460px;
+    overflow: auto;
+}
+
+.friend-list .friend-list-body table {
+    border: 1px solid white;
+    border-collapse: collapse;
+    width: 100%;
+    height: 300px;
+    cursor: auto;
+    font-size: 25px;
+    display: table;
+}
+
+.friend-list .friend-list-body table tr {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.friend-list-body table tbody tr td:first-child {
+    width: 25%;
+}
+
+.friend-list-body table tbody tr td:nth-child(2) {
+    width: 37%;
+}
+
+.friend-list-body table tbody tr td:nth-child(3) {
+    width: 25.5%;
+}
+
+.friend-list-body table tbody tr td:last-child {
+    width: 12.5%;
+}
+
+.friend-list-body table tbody tr td:last-child img {
+    width: 25px;
+    height: 25px;
+}
+
+.friend-list-body table td div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.friend-list-body table tr:hover {
+    cursor: default;
+    background-color: #ddd;
+}
+
+.friend-list-body table tbody tr img {
+    width: 70px;
+    height: 70px;
+    margin: 10px 0 5px 0;
+}
+
+.friend-list-body button {
+    width: 70px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

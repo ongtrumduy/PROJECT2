@@ -1,0 +1,29 @@
+.friend-online table {
+    border: 1px solid rgb(255, 255, 255);
+    overflow: auto;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 24px;
+}
+
+.friend-online tbody {
+    overflow: auto;
+}
+
+.friend-online td {
+    padding: 10px;
+}
+
+.friend-online td:first-child {
+    text-align: left;
+    width: 420px;
+}
+
+.friend-online td:last-child {
+    width: 20px;
+}
+
+.friend-online tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}

@@ -1,0 +1,68 @@
+.user-profile {
+    height: 570px;
+    border-style: groove;
+    margin: 5px 10px 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.user-profile .user-profile-avartar-infor {
+    width: 30%;
+    border-style: groove;
+}
+
+.user-profile .user-profile-avartar-infor .user-profile-icon button {
+    width: 70px;
+    height: 70px;
+    margin: 0 5px 0 5px;
+}
+
+.user-profile .user-profile-avartar-infor .user-profile-fullname{
+    font-weight: bold;
+    color: blue;
+}
+
+.user-profile .user-profile-avartar-content {
+    width: 70%;
+    border-style: groove;
+}
+
+.user-profile .user-profile-avartar-content .user-profile-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.user-profile .user-profile-avartar-content .user-profile-menu button {
+    width: 120px;
+    height: 70px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.user-profile .user-profile-avartar-content .user-profile-content{
+    border-style:  groove;
+    margin: 10px 10px 0 10px;
+    height: 460px;
+}
+
+.user-profile .user-profile-avartar-content .user-profile-content .user-profile-image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.user-profile .user-profile-avartar-content .user-profile-content .user-profile-infor{
+    text-align: left;
+    margin: 0 0 0 20px;
+}
+
+.user-profile .user-profile-avartar-content .user-profile-content .user-profile-image button{
+    height: 220px;
+    width: 180px;
+}
