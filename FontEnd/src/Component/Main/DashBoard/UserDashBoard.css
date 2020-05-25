@@ -2,8 +2,8 @@
     border: groove;
     color: #000;
     /* overflow: auto; */
-    /* width: 1400px; 
-    height: 900px;  */
+    /* width: 1400px; */
+    /*height: 900px;  */
     min-width: 1024px;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .user-container .user-content .user-menu .user-menu-logo .user-menu-logo-heart-1 {
-    margin: 0 0 0 40px;
+    margin: 0 0 0 120px;
 }
 
 .user-container .user-content .user-menu .user-menu-logo .user-menu-logo-heart-2 {
@@ -58,7 +58,7 @@
 }
 
 .user-container .user-content .user-menu .user-menu-search {
-    /* margin: 0 100px 0 10px; */
+    margin: 0 100px 0 55px;
     flex: 1;
 }
 
@@ -93,7 +93,7 @@
     align-items: stretch;
     justify-content: flex-end;
     border: 1px solid white;
-    height: 650px;
+    height: 600px;
 }
 
 .user-container .user-body .user-body-render {

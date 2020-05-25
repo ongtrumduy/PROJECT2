@@ -1,0 +1,46 @@
+.change-password {
+  margin: 5px 10px 0 10px;
+  font-size: 28px;
+  border: 1px solid white;
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+
+.change-password .change-password-body {
+  border-style: groove;
+  width: 400px;
+  margin: 30px;
+  height: 500px;
+  text-align: left;
+  background-color: rgb(217, 247, 84);
+}
+
+.change-password .change-password-body p {
+  margin: 40px 0 0 30px;
+  color: #000;
+  text-align: left;
+  font-style: italic;
+}
+
+.change-password .change-password-body input {
+  margin: 10px 0 0 20px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(255, 0, 0);
+  border-radius: 10px;
+  width: 350px;
+  outline: none;
+}
+
+.change-password .change-password-body .submit-button input {
+  width: 100px;
+  margin: 30px 0 0 150px;
+  color: #000;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}

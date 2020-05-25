@@ -20,7 +20,7 @@ export default class Friend extends React.Component {
 
                         <tbody>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -35,7 +35,22 @@ export default class Friend extends React.Component {
                                 </button></td>
                             </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
+                                <td>Phạm Duy</td>
+                                <td>Nam</td>
+                                <td><button>
+                                    <div>
+                                        <div>
+                                            <img src={require("../Image-Icon/Stop.png")} />
+                                        </div>
+                                        <div>
+                                            <p>Hủy</p>
+                                        </div>
+                                    </div>
+                                </button></td>
+                            </tr>
+                            <tr>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -49,7 +64,7 @@ export default class Friend extends React.Component {
                                     </div>
                                 </button></td>                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -61,9 +76,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -75,9 +91,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -89,9 +106,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -103,9 +121,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -117,9 +136,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -131,9 +151,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -145,9 +166,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -159,9 +181,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -173,9 +196,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -187,9 +211,10 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                             <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
+                                <td><img src={require("../Image-Icon/default-avatar.png")} /> </td>
                                 <td>Phạm Duy</td>
                                 <td>Nam</td>
                                 <td><button>
@@ -201,21 +226,8 @@ export default class Friend extends React.Component {
                                             <p>Hủy</p>
                                         </div>
                                     </div>
-                                </button></td>                            </tr>
-                            <tr>
-                                <td><img src={require("../Image-Icon/anh2.jpeg")} /> </td>
-                                <td>Phạm Duy</td>
-                                <td>Nam</td>
-                                <td><button>
-                                    <div>
-                                        <div>
-                                            <img src={require("../Image-Icon/Stop.png")} />
-                                        </div>
-                                        <div>
-                                            <p>Hủy</p>
-                                        </div>
-                                    </div>
-                                </button></td>                            </tr>
+                                </button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
