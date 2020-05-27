@@ -17,7 +17,7 @@ export default class Friend extends React.Component {
                     <div>&nbsp;đã gửi lời kết bạn cho bạn</div>
                 </div>
                 <div className="notify-infor-bonus">
-                    <div className="notify-infor-icon"><img src={require("../Image-Icon/User.png")} /></div>
+                    <div className="notify-infor-icon"><img src={require("../../Image-Icon/User.png")} /></div>
                     <div className="notify-infor-time">4 giờ</div>
                 </div>
             </div>
@@ -33,7 +33,7 @@ export default class Friend extends React.Component {
                     <div>&nbsp;đã thích bạn</div>
                 </div>
                 <div className="notify-infor-bonus">
-                    <div className="notify-infor-icon"><img src={require("../Image-Icon/Star On.png")} /></div>
+                    <div className="notify-infor-icon"><img src={require("../../Image-Icon/Star On.png")} /></div>
                     <div className="notify-infor-time">4 giờ</div>
                 </div>
             </div>
@@ -49,7 +49,7 @@ export default class Friend extends React.Component {
                     <div>&nbsp;đã gửi tin nhắn cho bạn</div>
                 </div>
                 <div className="notify-infor-bonus">
-                    <div className="notify-infor-icon"><img src={require("../Image-Icon/Comment.png")} /></div>
+                    <div className="notify-infor-icon"><img src={require("../../Image-Icon/Comment.png")} /></div>
                     <div className="notify-infor-time">4 giờ</div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.addFriendNotify()}</div>
@@ -83,7 +83,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.likeFriendNotify()}</div>
@@ -95,7 +95,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.likeFriendNotify()}</div>
@@ -107,7 +107,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.sentMessageNotify()}</div>
@@ -119,7 +119,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.addFriendNotify()}</div>
@@ -131,7 +131,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.likeFriendNotify()}</div>
@@ -143,7 +143,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.sentMessageNotify()}</div>
@@ -155,7 +155,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.addFriendNotify()}</div>
@@ -167,7 +167,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.sentMessageNotify()}</div>
@@ -179,7 +179,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.likeFriendNotify()}</div>
@@ -191,7 +191,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.addFriendNotify()}</div>
@@ -203,7 +203,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.likeFriendNotify()}</div>
@@ -215,7 +215,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.sentMessageNotify()}</div>
@@ -227,7 +227,7 @@ export default class Friend extends React.Component {
                                 <td>
                                     <div className="notify-infor">
                                         <div className="notify-user-avatar">
-                                            <img src={require("../Image-Icon/default-avatar.png")} />
+                                            <img src={require("../../Image-Icon/default-avatar.png")} />
                                         </div>
                                         <div className="notify-infor-content">
                                             <div>{this.addFriendNotify()}</div>

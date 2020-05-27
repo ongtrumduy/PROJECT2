@@ -1,11 +1,13 @@
 import React from "react"
+import ChangeInfor from "../ChangeInfor/ChangeInfor"
 import "./Profile.css"
 
 export default class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            content_state: false
+            content_state: false,
+            changeinfor: false
         }
     }
 
@@ -50,7 +52,7 @@ export default class Profile extends React.Component {
     userAvartar = () => {
         return (
             <div className="user-profile-avartar">
-                <img src={require("../../Image-Icon/anh2.jpeg")} />
+                <img src={require("../../Image-Icon/default-avatar.png")} />
             </div>
         )
     }
@@ -72,9 +74,22 @@ export default class Profile extends React.Component {
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
+                <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
+                <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
             </div>
         )
     }
+
+    changeInfor = () => {
+        // if (this.state.changeinfor) {
+        return (
+            <div>
+                <ChangeInfor />
+            </div>
+        )
+    }
+
+
 
     userProfileInfor = () => {
         return (
@@ -86,7 +101,7 @@ export default class Profile extends React.Component {
                     <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: Chơi game, đọc sách,...</p>
                 </div>
                 <div className="user-profile-change-infor">
-                    <button>Thay đổi thông tin</button>
+                    <input type="button" value="Thay đổi thông tin" onClick={() => this.changeInfor()} />
                 </div>
             </div>
         )
@@ -114,9 +129,11 @@ export default class Profile extends React.Component {
                     <div>{this.userFullName()}</div>
                     <div>{this.userProfileIcon()}</div>
                 </div>
+
                 <div className="user-profile-avartar-content">
                     <div>{this.userProfileDashBoard()}</div>
                 </div>
+                {/* <ChangeInfor /> */}
             </div>
         )
     }

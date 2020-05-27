@@ -1,0 +1,9 @@
+.change-information {
+  z-index: 1;
+  border-style: groove;
+  background-color: rgb(24, 24, 160);
+  color: rgb(134, 11, 11);
+  width: 400px;
+  display: grid;
+  margin: -100px auto;
+}

@@ -19,55 +19,55 @@ export default class FriendOnline extends React.Component {
                         <tbody>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                             <tr>
                                 <td>Phạm Duy</td>
-                                <td><img src={require("../Image-Icon/Light Bulb On.png")} /></td>
+                                <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                         </tbody>
                     </table>

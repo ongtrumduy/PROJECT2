@@ -1,7 +1,8 @@
-import React from "react";
-import AdminDashBoard from "./DashBoard/AdminDashBoard";
-import UserDashBoard from "./DashBoard/UserDashBoard";
-import LogPage from "./Log/LogPage";
+import React from "react"
+import AdminDashBoard from "./DashBoard/AdminDashBoard"
+import UserDashBoard from "./DashBoard/UserDashBoard"
+import LogPage from "./Log/LogPage"
+import ChangeInfor from "../Content/ChangeInfor/ChangeInfor"
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -49,8 +50,10 @@ export default class Main extends React.Component {
 
     render() {
         return (
+            // <div style={{display: "inline"}, {float: "left"}}>
             <div>
                 {this.updateMain()}
+                {/* <ChangeInfor /> */}
             </div>
         )
     }

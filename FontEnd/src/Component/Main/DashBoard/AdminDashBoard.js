@@ -1,10 +1,10 @@
 import React from "react"
 import "./AdminDashBoard.css"
 import request from "request"
-import Home from "../../Content/Home"
-import Friend from "../../Content/FriendList"
-import Message from "../../Content/Message"
-import Notify from "../../Content/Notify"
+import Home from "../../Content/Home/Home"
+import Friend from "../../Content/FriendList/FriendList"
+import Message from "../../Content/Message/Message"
+import Notify from "../../Content/Notify/Notify"
 import Profile from "../../Content/Profile/Profile"
 
 

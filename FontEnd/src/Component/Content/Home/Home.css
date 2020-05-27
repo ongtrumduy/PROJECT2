@@ -8,12 +8,13 @@
 }
 
 .unknow-friend .unknow-friend-profile {
-    border: 1px solid white;
+    /* border: 1px solid white; */
+    border-style: groove;
     text-align: left;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-items: stretch;
-    justify-content: center;
+    justify-content: center; */
     margin: 5px 0 0 5px;
     width: 40%;
 }
@@ -24,10 +25,11 @@
     border-style: groove;
     text-align: center;
     font-size: 24px;
+    margin: 0 5px 0 5px;
 }
 
 .unknow-friend .unknow-friend-profile .unknow-friend-infor-render {
-    margin: 0 0 0 10px;
+    margin: 0 0 0 20px;
     font-size: 22px;
 }
 
@@ -45,6 +47,13 @@
 .unknow-friend .unknow-friend-control .unknow-friend-avatar {
     border: 1px solid white;
     height: 420px;
+}
+
+
+.unknow-friend .unknow-friend-control .unknow-friend-avatar img{
+    width: 300px;
+    height: 400px;
+    margin: 15px;
 }
 
 .unknow-friend .unknow-friend-control .unknow-friend-button {

@@ -1,25 +1,25 @@
 import React from "react"
 import "./UserDashBoard.css"
 import request from "request"
-import Home from "../../Content/Home"
-import Friend from "../../Content/FriendList"
-import Message from "../../Content/Message"
-import Notify from "../../Content/Notify"
-import ChangePass from "../../Content/ChangePass"
+import Home from "../../Content/Home/Home"
+import Friend from "../../Content/FriendList/FriendList"
+import Message from "../../Content/Message/Message"
+import Notify from "../../Content/Notify/Notify"
+import ChangePass from "../../Content/ChangePass/ChangePass"
 import Profile from "../../Content/Profile/Profile"
-import FriendOnline from "../../Content/FriendOnline"
+import FriendOnline from "../../Content/FriendOnline/FriendOnline"
 
 export default class UserDashBoard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       content_state: 0
-    };
+    }
   }
 
   updateContentState = state => {
     this.setState({ content_state: state })
-  };
+  }
 
   renderContent = () => {
     switch (this.state.content_state) {
@@ -30,7 +30,7 @@ export default class UserDashBoard extends React.Component {
       case 5: return (<div><ChangePass /></div>)
       default: return (<div><Home /></div>)
     }
-  };
+  }
 
   userDashBoard = () => {
     return (
@@ -127,7 +127,7 @@ export default class UserDashBoard extends React.Component {
 
         </div>
       </div >
-    );
+    )
   }
 
   render() {

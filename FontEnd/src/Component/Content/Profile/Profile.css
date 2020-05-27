@@ -13,13 +13,19 @@
     border-style: groove;
 }
 
+.user-profile .user-profile-avartar-infor .user-profile-avartar img {
+    width: 240px;
+    height: 320px;
+    margin: 10px;
+}
+
 .user-profile .user-profile-avartar-infor .user-profile-icon button {
     width: 70px;
     height: 70px;
     margin: 0 5px 0 5px;
 }
 
-.user-profile .user-profile-avartar-infor .user-profile-fullname{
+.user-profile .user-profile-avartar-infor .user-profile-fullname {
     font-weight: bold;
     color: blue;
 }
@@ -43,13 +49,13 @@
     font-size: 15px;
 }
 
-.user-profile .user-profile-avartar-content .user-profile-content{
-    border-style:  groove;
+.user-profile .user-profile-avartar-content .user-profile-content {
+    border-style: groove;
     margin: 10px 10px 0 10px;
     height: 460px;
 }
 
-.user-profile .user-profile-avartar-content .user-profile-content .user-profile-image{
+.user-profile .user-profile-avartar-content .user-profile-content .user-profile-image {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -57,12 +63,20 @@
     flex-wrap: wrap;
 }
 
-.user-profile .user-profile-avartar-content .user-profile-content .user-profile-infor{
+.user-profile .user-profile-avartar-content .user-profile-content .user-profile-infor {
     text-align: left;
     margin: 0 0 0 20px;
 }
 
-.user-profile .user-profile-avartar-content .user-profile-content .user-profile-image button{
+.user-profile .user-profile-avartar-content .user-profile-content .user-profile-change-infor input {
+    border-radius: 5px;
+    height: 50px;
+    margin: 30px 0 0 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.user-profile .user-profile-avartar-content .user-profile-content .user-profile-image button {
     height: 220px;
     width: 180px;
 }

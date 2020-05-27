@@ -16,10 +16,10 @@ export default class Home extends React.Component {
                     <p>THÔNG TIN CÁ NHÂN</p>
                 </div>
                 <div className="unknow-friend-infor-render">
-                    <p> <img src={require("../Image-Icon/Checkbox Full.png")} /> Họ và tên: Phạm Duy</p>
-                    <p> <img src={require("../Image-Icon/Checkbox Full.png")} /> Ngày sinh: 31/03/1999</p>
-                    <p> <img src={require("../Image-Icon/Checkbox Full.png")} /> Giới tính: Nam</p>
-                    <p> <img src={require("../Image-Icon/Checkbox Full.png")} /> Sở thích: Chơi game, đọc sách,...</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: Phạm Duy</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: 31/03/1999</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: Nam</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: Chơi game, đọc sách,...</p>
                 </div>
             </div>
         )
@@ -28,7 +28,7 @@ export default class Home extends React.Component {
     unknowFriendAvatar = () => {
         return (
             <div>
-                <img src={require("../Image-Icon/anh2.jpeg")} />
+                <img src={require("../../Image-Icon/default-avatar.png")} />
             </div>
         )
     }
@@ -36,11 +36,11 @@ export default class Home extends React.Component {
     unknowFriendControl = () => {
         return (
             <div>
-                <button><img src={require("../Image-Icon/Arrow Left.png")} /></button>
-                <button><img src={require("../Image-Icon/Glyph Add.png")} /></button>
-                <button><img src={require("../Image-Icon/Comment Add.png")} /></button>
-                <button><img src={require("../Image-Icon/Star Off.png")} /></button>
-                <button><img src={require("../Image-Icon/Arrow Right.png")} /></button>
+                <button><img src={require("../../Image-Icon/Arrow Left.png")} /></button>
+                <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button>
+                <button><img src={require("../../Image-Icon/Comment Add.png")} /></button>
+                <button><img src={require("../../Image-Icon/Star Off.png")} /></button>
+                <button><img src={require("../../Image-Icon/Arrow Right.png")} /></button>
             </div>
         )
     }

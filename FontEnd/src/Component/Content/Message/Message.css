@@ -1,0 +1,22 @@
+.chat-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-style: groove;
+  height: 580px;
+  margin: 5px 10px 0 10px;
+  font-size: 28px;
+}
+
+.chat-message .chat-users {
+  border-style: groove;
+  height: 580px;
+  width: 40%;
+}
+
+.chat-message .chat-body {
+  border-style: groove;
+  height: 580px;
+  width: 60%;
+}
