@@ -4,12 +4,19 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
+            username: "",
             firstname: "",
             lastname: "",
-            usernumber: "",
+            phonenumber: "",
             password: "",
             birth: "",
             sex: ""
+        })
+    }
+
+    handleUsernameChange = (event) => {
+        this.setState({
+            username: event.target.value
         })
     }
 
@@ -53,6 +60,8 @@ export default class Login extends React.Component {
         return (
             <div>
                 <div className="register" >
+                    <p>Tên đăng nhập (*)</p>
+                    <input type="text" onChange={this.handleUsernameChange} value={this.state.username} />
                     <p>Họ và tên (*)</p>
                     <div className="register-fullname">
                         <div className="register-firstname">

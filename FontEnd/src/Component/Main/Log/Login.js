@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
 export default class Login extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = ({
             usernumber: "",
             password: ""
@@ -33,7 +33,7 @@ export default class Login extends React.Component {
         return (
             <div>
                 <div className="login" >
-                    <p>Số điện thoại (*)</p>
+                    <p>Tên đăng nhập (*)</p>
                     <input type="text" onChange={this.handleUsernumberChange} value={this.state.usernumber} />
                     <p>Mật khẩu (*)</p>
                     <input type="password" onChange={this.handlePasswordChange} value={this.state.password} />

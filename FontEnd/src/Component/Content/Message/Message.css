@@ -12,11 +12,160 @@
 .chat-message .chat-users {
   border-style: groove;
   height: 580px;
-  width: 40%;
+  width: 35%;
 }
 
 .chat-message .chat-body {
   border-style: groove;
   height: 580px;
-  width: 60%;
+  width: 65%;
+}
+
+.messenger {
+  margin: 5px 10px 0 10px;
+  font-size: 28px;
+}
+
+.messenger .messenger-title h3 {
+  text-align: left;
+}
+
+.messenger .messenger-list-table {
+  height: 470px;
+  overflow: auto;
+  border-style: groove;
+}
+
+.messenger .messenger-list-table table td {
+  text-align: left;
+}
+
+.messenger .messenger-list-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.messenger .messenger-list-table table tr {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.messenger .messenger-list-table table .messenger-infor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  margin: 10px 10px 5px 10px;
+}
+
+.messenger .messenger-list-table table .messenger-infor .messenger-infor-bonus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.messenger .messenger-list-table .messenger-infor .messenger-add-friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.messenger .messenger-list-table .messenger-infor .messenger-sent-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.messenger .messenger-list-table .messenger-infor .messenger-like-friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.messenger .messenger-list-table .messenger-infor .messenger-user-name {
+  color: blue;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.messenger .messenger-list-table .messenger-infor div {
+  font-size: 28px;
+}
+
+.messenger .messenger-list-table .messenger-infor div .messenger-infor-time {
+  font-size: 24px;
+}
+
+.messenger .messenger-list-table .messenger-infor .messenger-infor-content .messenger-infor-bonus {
+  float: left;
+}
+
+.messenger .messenger-list-table .messenger-infor .messenger-infor-content .messenger-infor-bonus .messenger-infor-icon {
+  margin: 0 10px 0 0;
+}
+
+.messenger .messenger-list-table td:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.messenger .messenger-list-table .messenger-infor .messenger-user-avatar img {
+  width: 70px;
+  height: 70px;
+  margin: 0 10px 0 0;
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch;
+}
+
+.chat-body .chat-message-body-title {
+  height: 50px;
+  border-style: groove;
+}
+
+.chat-body .chat-message-body-username {
+  height: 50px;
+  border-style: groove;
+}
+
+.chat-body .chat-message-body-bodychat {
+  height: 400px;
+  border-style: groove;
+}
+
+.chat-body .chat-message-body-send .input-text {
+  height: 50px;
+  border-style: groove;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  flex-grow: 0;
+}
+
+.chat-body .chat-message-body-send .input-text-type {
+  flex: 1;
+  width: 100%;
+}
+
+.chat-body .chat-message-body-send .input-text-type input {
+  height: 40px;
+  font-size: large;
+  width: 100%;
+  /* flex: 1; */
+}
+
+.chat-body .chat-message-body-send .input-text-send input {
+  height: 46px;
+  width: 100px;
+  background-color: beige;
 }

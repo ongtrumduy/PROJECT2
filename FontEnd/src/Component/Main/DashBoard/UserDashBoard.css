@@ -98,12 +98,12 @@
 
 .user-container .user-body .user-body-render {
     border: 1px solid white;
-    width: 75%;
+    width: 80%;
 }
 
 .user-container .user-body .user-body-online {
     border: 1px solid white;
-    width: 25%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: stretch;

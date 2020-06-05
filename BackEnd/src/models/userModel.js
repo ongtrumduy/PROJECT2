@@ -4,10 +4,12 @@ let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
   username: { type: String, default: "Phạm Duy" },
-  sex: { type: String, default: "male" },
-  phone: { type: String, default: null },
+  firstname: { type: String, default: "Duy" },
+  lastname: { type: String, default: "Phạm" },
+  phonenumber: { type: String, default: null },
   password: { type: String, default: null },
-  birthday: { type: Date, default: null },
+  birth: { type: Date, default: null },
+  gender: { type: String, default: "male" },
   avatar: { type: String, default: "avartar-default.jpg" }
 });
 
