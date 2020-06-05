@@ -11,8 +11,8 @@ export default class Input extends React.Component {
 
 
   pressEnterChange = (event) => {
-    if (event.keyCode == 13) {
-      alert("Lô ae được cmnr nè")
+    if (event.key === "Enter") {
+      alert(`Lô ae được cmnr nè ${this.state.text}`)
     }
   }
 
@@ -23,7 +23,7 @@ export default class Input extends React.Component {
   }
 
   sendTextMessage = () => {
-    alert("Ngon gửi được rồi ")
+    alert(`Ngon gửi được rồi ${this.state.text}`)
   }
 
   render() {

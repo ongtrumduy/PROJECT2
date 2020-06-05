@@ -34,7 +34,7 @@ export default class Message extends React.Component {
         return (
             <div>
                 <div className="chat-messenger-list-title" style={{ borderStyle: "groove", background: "lightblue" }}>
-                    <p>Danh sách cuộc trò chuyện</p>
+                    <p>Danh sách</p>
                 </div>
                 <div className="chat-messenger-list-body">
                     <div className="messenger">
