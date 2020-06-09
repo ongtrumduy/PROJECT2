@@ -1,12 +1,41 @@
 import React from "react"
+import request from "request"
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = ({
-            usernumber: "",
+            username: "",
             password: ""
         })
+    }
+
+    sentLoginData = (callback, callbackError, _username, _password) => {
+        var options = {
+            method: "POST",
+            url: "http://localhost:8081/login",
+            headers: {
+                "cache-control": "no-cache",
+                Connection: "keep-alive",
+                Host: "localhost:8081",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: _username,
+                password: _password
+            })
+        }
+
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error)
+            // console.log(body)
+            if (body === "0") callbackError()
+            else callback(body);
+        })
+    }
+
+    checkWrongPassword = () => {
+        alert("Tài khoản hoặc mật khẩu của bạn không đúng!!!");
     }
 
     positionLogin = (position) => {
@@ -17,9 +46,9 @@ export default class Login extends React.Component {
         }
     }
 
-    handleUsernumberChange = (event) => {
+    handleUsernameChange = (event) => {
         this.setState({
-            usernumber: event.target.value
+            username: event.target.value
         })
     }
 
@@ -29,16 +58,36 @@ export default class Login extends React.Component {
         })
     }
 
+    pressEnterUsername = (event) => {
+        if (event.key === "Enter") {
+            return (
+                <div>
+                    {this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)}
+                </div>
+                )
+        }
+    }
+
+    pressEnterPassword = (event) => {
+        if (event.key === "Enter") {
+            return (
+                <div>
+                    {this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)}
+                </div>
+                )
+        }
+    }
+
     loginForm = () => {
         return (
             <div>
                 <div className="login" >
                     <p>Tên đăng nhập (*)</p>
-                    <input type="text" onChange={this.handleUsernumberChange} value={this.state.usernumber} />
+                    <input type="text" onChange={this.handleUsernameChange} value={this.state.username} onKeyPress={this.pressEnterUsername} />
                     <p>Mật khẩu (*)</p>
-                    <input type="password" onChange={this.handlePasswordChange} value={this.state.password} />
+                    <input type="password" onChange={this.handlePasswordChange} value={this.state.password} onKeyPress={this.pressEnterPassword} />
                     <div className="login-button">
-                        <input type="button" value="Đăng nhập" onClick={() => this.positionLogin("user")} />
+                        <input type="button" value="Đăng nhập" onClick={() => this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)} />
                     </div>
                     <div className="forest-button">
                         <div className="forgotpass-button">

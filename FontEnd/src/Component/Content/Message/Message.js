@@ -14,11 +14,8 @@ export default class Message extends React.Component {
     chatMessageBody = () => {
         return (
             <div>
-                <div className="chat-message-body-title">
-
-                </div>
                 <div className="chat-message-body-username">
-
+                    <p>Phạm Duy</p>
                 </div>
                 <div className="chat-message-body-bodychat">
 
@@ -51,6 +48,20 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div className="messenger-infor">
+                                                <div className="messenger-user-avatar">
+                                                    <img src={require("../../Image-Icon/default-avatar.png")} />
+                                                </div>
+                                                <div className="messenger-infor-content">
+                                                    {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -64,6 +75,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -77,6 +89,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -90,6 +103,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -103,6 +117,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -116,6 +131,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -129,6 +145,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -142,6 +159,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -155,6 +173,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -168,6 +187,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -181,6 +201,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -194,6 +215,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>
@@ -207,19 +229,7 @@ export default class Message extends React.Component {
                                                 </div>
                                                 <div className="messenger-infor-content">
                                                     {/* <div>{this.addFriendmessenger()}</div> */}
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div className="messenger-infor">
-                                                <div className="messenger-user-avatar">
-                                                    <img src={require("../../Image-Icon/default-avatar.png")} />
-                                                </div>
-                                                <div className="messenger-infor-content">
-                                                    {/* <div>{this.addFriendmessenger()}</div> */}
+                                                    <p>Phạm Duy</p>
 
                                                 </div>
                                             </div>

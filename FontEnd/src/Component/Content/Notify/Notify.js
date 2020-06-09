@@ -62,7 +62,7 @@ export default class Friend extends React.Component {
         return (
             <div>
                 <div className="notify-list-table">
-                    <table>
+                    {/* <table>
                         <thead>
                         </thead>
                         <tbody>
@@ -236,7 +236,7 @@ export default class Friend extends React.Component {
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> */}
                 </div>
             </div >
         )

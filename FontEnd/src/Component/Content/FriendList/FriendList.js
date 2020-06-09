@@ -13,7 +13,7 @@ export default class Friend extends React.Component {
         return (
             <div>
                 <div className="friend-list-table">
-                    <table>
+                    {/* <table>
                         <thead>
 
                         </thead>
@@ -229,7 +229,7 @@ export default class Friend extends React.Component {
                                 </button></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> */}
                 </div>
             </div >
         )

@@ -13,7 +13,7 @@ export default class FriendOnline extends React.Component {
         return (
             <div>
                 <div className="friend-online">
-                    <table>
+                    {/* <table>
                         <thead>
                         </thead>
                         <tbody>
@@ -70,7 +70,7 @@ export default class FriendOnline extends React.Component {
                                 <td><img src={require("../../Image-Icon/Light Bulb On.png")} /></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> */}
                 </div>
             </div>
         )

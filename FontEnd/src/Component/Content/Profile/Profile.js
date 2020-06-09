@@ -1,4 +1,6 @@
 import React from "react"
+import request from "request"
+import moment from "moment"
 import ChangeInfor from "../ChangeInfor/ChangeInfor"
 import "./Profile.css"
 
@@ -7,24 +9,71 @@ export default class Profile extends React.Component {
         super(props)
         this.state = {
             content_state: false,
-            changeinfor: false
+            changeinfor: false,
+            firstname: "",
+            lastname: "",
+            birth: "",
+            gender: "",
+            enjoy: ""
         }
     }
 
-    updateUserImageContentState = () => {
-        this.setState({
-            content_state: false
+
+    receiveInforProfile = (callback) => {
+        var options = {
+            method: "POST",
+            url: "http://localhost:8081/profile",
+            headers: {
+                "cache-control": "no-cache",
+                Connection: "keep-alive",
+                "Content-Length": "0",
+                "Accept-Encoding": "gzip, deflate",
+                Host: "localhost:8081",
+                "Cache-Control": "no-cache",
+                Accept: "*/*",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                checkLogout: "1"
+            }),
+        }
+
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error)
+            // console.log(body)
+            let receiveinfor = JSON.parse(body)
+            callback(receiveinfor.firstname, receiveinfor.lastname, receiveinfor.birth, receiveinfor.gender, receiveinfor.enjoy)
         })
     }
 
-    updateUserInforContentState = () => {
+    UNSAFE_componentWillMount = () => {
+        this.receiveInforProfile(this.callbackinforprofile);
+    }
+
+    callbackinforprofile = (_firstname, _lastname, _birth, _gender, _enjoy) => {
+        this.setState({
+            firstname: _firstname,
+            lastname: _lastname,
+            birth: moment(_birth).format("DD-MM-YYYY"),
+            gender: _gender,
+            enjoy: _enjoy
+        })
+    }
+
+    updateUserImageContentState = () => {
         this.setState({
             content_state: true
         })
     }
 
+    updateUserInforContentState = () => {
+        this.setState({
+            content_state: false
+        })
+    }
+
     renderUserContent = () => {
-        if (this.state.content_state) {
+        if (this.state.content_state === false) {
             return (
                 <div>
                     {this.userProfileInfor()}
@@ -39,16 +88,6 @@ export default class Profile extends React.Component {
         }
     }
 
-    userProfileIcon = () => {
-        return (
-            <div className="user-profile-icon">
-                <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button>
-                <button><img src={require("../../Image-Icon/Comment Add.png")} /></button>
-                <button><img src={require("../../Image-Icon/Star Off.png")} /></button>
-            </div>
-        )
-    }
-
     userAvartar = () => {
         return (
             <div className="user-profile-avartar">
@@ -60,7 +99,7 @@ export default class Profile extends React.Component {
     userFullName = () => {
         return (
             <div className="user-profile-fullname">
-                <p>Phạm Duy</p>
+                <p>{this.state.lastname}&nbsp;{this.state.firstname}</p>
             </div>
         )
     }
@@ -68,14 +107,14 @@ export default class Profile extends React.Component {
     userImage = () => {
         return (
             <div className="user-profile-image">
+                {/* <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
                 <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
-                <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
-                <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div>
+                <div> <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button></div> */}
             </div>
         )
     }
@@ -95,10 +134,10 @@ export default class Profile extends React.Component {
         return (
             <div>
                 <div className="user-profile-infor">
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: Phạm Duy</p>
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: 31/03/1999</p>
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: Nam</p>
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: Chơi game, đọc sách,...</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname}&nbsp;{this.state.firstname}</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: {this.state.birth}</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: {this.state.gender}</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>
                 </div>
                 <div className="user-profile-change-infor">
                     <input type="button" value="Thay đổi thông tin" onClick={() => this.changeInfor()} />
@@ -127,7 +166,6 @@ export default class Profile extends React.Component {
                 <div className="user-profile-avartar-infor">
                     <div>{this.userAvartar()}</div>
                     <div>{this.userFullName()}</div>
-                    <div>{this.userProfileIcon()}</div>
                 </div>
 
                 <div className="user-profile-avartar-content">

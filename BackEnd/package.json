@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node src/server.js",
+    "start": "babel-node server.js",
+    "startnode": "node src/server.js",
     "build": "babel A -d B",
     "callback": "babel-node callback.js",
     "promise": "babel-node promise.js",
@@ -19,13 +20,17 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.5.0",
+    "fs": "0.0.1-security",
+    "moment": "^2.26.0",
     "mongoose": "^5.9.16",
-    "nodemon": "^2.0.2",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
     "babel-cli": "^6.26.0",
-    "install": "^0.13.0"
+    "babel-preset-env": "^1.7.0",
+    "install": "^0.13.0",
+    "json-loader": "^0.5.7"
   }
 }

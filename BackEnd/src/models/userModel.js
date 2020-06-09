@@ -20,3 +20,13 @@ UserSchema.statics = {
 }
 
 module.exports = mongoose.model("user", UserSchema);
+
+
+// let User = mongoose.model("user", UserSchema);
+
+// let CreateUser = (username, firstname, lastname, phonenumber, password, birth, gender, avatar) => {
+//   User.findOne({ "username": username }, async (err, userlist) => {
+//     if (err) console.log(err);
+//     if (userlist != null) 
+//   })
+// }

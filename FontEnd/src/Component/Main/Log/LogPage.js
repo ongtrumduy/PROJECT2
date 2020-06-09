@@ -18,7 +18,7 @@ export default class LogPage extends React.Component {
             case "register": return (
                 <Register
                 update_login={this.updateLogin}
-                update_userDB={this.updateUserDashBoard}
+                // update_userDB={this.updateUserDashBoard}
                 />)
             case "forgot": return (
                 <ForgotPass

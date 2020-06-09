@@ -31,7 +31,7 @@
 }
 
 .messenger .messenger-list-table {
-  height: 470px;
+  height: 450px;
   overflow: auto;
   border-style: groove;
 }
@@ -127,18 +127,15 @@
   align-items: stretch;
 }
 
-.chat-body .chat-message-body-title {
-  height: 50px;
-  border-style: groove;
-}
-
 .chat-body .chat-message-body-username {
   height: 50px;
   border-style: groove;
+  line-height: 0px;
+  background-color: rgb(101, 252, 194);
 }
 
 .chat-body .chat-message-body-bodychat {
-  height: 400px;
+  height: 460px;
   border-style: groove;
 }
 
@@ -161,7 +158,6 @@
   height: 40px;
   font-size: large;
   width: 100%;
-  /* flex: 1; */
 }
 
 .chat-body .chat-message-body-send .input-text-send input {

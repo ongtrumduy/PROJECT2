@@ -68,7 +68,7 @@
     height: 45px;
     border-radius: 10px;
     font-size: 17px;
-    background-image: url("../../Image-Icon/Search.png");
+    /* background-image: url("../../Image-Icon/Search.png"); */
     background-repeat: no-repeat;
     background-position: right;
 }
