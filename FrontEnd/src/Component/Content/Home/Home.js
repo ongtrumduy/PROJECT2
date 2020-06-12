@@ -63,10 +63,10 @@ export default class Home extends React.Component {
                     <p>THÔNG TIN NGƯỜI LẠ</p>
                 </div>
                 <div className="unknow-friend-infor-render">
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname}&nbsp;{this.state.firstname}</p>
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: {this.state.birth}</p>
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: {this.state.gender}</p>
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>
+                    <p> <img alt="option" src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname} {this.state.firstname}</p>
+                    <p> <img alt="option" src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: {this.state.birth}</p>
+                    <p> <img alt="option" src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: {this.state.gender}</p>
+                    <p> <img alt="option" src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>
                 </div>
             </div>
         )
@@ -75,7 +75,7 @@ export default class Home extends React.Component {
     unknowFriendAvatar = () => {
         return (
             <div>
-                <img src={require("../../Image-Icon/default-avatar.png")} />
+                <img alt="default-avatar" src={require("../../Image-Icon/default-avatar.png")} />
             </div>
         )
     }
@@ -83,13 +83,13 @@ export default class Home extends React.Component {
     unknowFriendControl = () => {
         return (
             <div>
-                <button><img src={require("../../Image-Icon/Arrow Left.png")} /></button>
-                <button><img src={require("../../Image-Icon/Glyph Add.png")} /></button>
-                <button><img src={require("../../Image-Icon/Star Off.png")} /></button>
-                <button><img src={require("../../Image-Icon/Arrow Right.png")} /></button>
+                <button><img alt="prex" src={require("../../Image-Icon/Arrow Left.png")} /></button>
+                <button><img alt="add" src={require("../../Image-Icon/Glyph Add.png")} /></button>
+                <button><img alt="next" src={require("../../Image-Icon/Arrow Right.png")} /></button>
             </div>
         )
     }
+    
     render() {
         return (
             <div className="unknow-friend">
@@ -99,6 +99,9 @@ export default class Home extends React.Component {
                 <div className="unknow-friend-control">
                     <div className="unknow-friend-avatar">
                         {this.unknowFriendAvatar()}
+                    </div>
+                    <div className="unknow-friend-fullname">
+                        {this.state.lastname} {this.state.firstname}
                     </div>
                     <div className="unknow-friend-button">
                         {this.unknowFriendControl()}

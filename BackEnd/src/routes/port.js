@@ -1,15 +1,10 @@
-var express = require("express");
 
-let PortRoutes = function (app) {
-  let server = app.listen(8081, () => {
+let PortRoutes = function (server, port) {
+  server.listen(port, () => {
     let host = server.address().address;
     let port = server.address().port;
 
-    console.log(
-      "Ung dung Node.js dang lang nghe tai dia chi: http://%s:%s",
-      host,
-      port
-    );
+    console.log(`Ung dung Node.js dang lang nghe tai dia chi: http://${host}:${port}`);
   });
 }
 

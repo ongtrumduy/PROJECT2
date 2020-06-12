@@ -1,6 +1,7 @@
 import React from "react"
-import "./UserDashBoard.css"
 import request from "request"
+import ioclient from "socket.io-client"
+
 import Home from "../../Content/Home/Home"
 import Friend from "../../Content/FriendList/FriendList"
 import Message from "../../Content/Message/Message"
@@ -11,6 +12,8 @@ import FriendOnline from "../../Content/FriendOnline/FriendOnline"
 import UnknowProfile from "../../Content/UnknowProfile/UnknowProfile"
 import SearchUser from "../../Content/SearchUser/SearchUser"
 
+import "./UserDashBoard.css"
+
 
 export default class UserDashBoard extends React.Component {
   constructor(props) {
@@ -18,6 +21,7 @@ export default class UserDashBoard extends React.Component {
     this.state = {
       content_state: 0,
       userid: "",
+      friendid: "",
       firstname: "",
       searchuser: ""
     }
@@ -50,15 +54,29 @@ export default class UserDashBoard extends React.Component {
     })
   }
 
-  UNSAFE_componentWillMount = () => {
-    this.receiveFisrtName(this.callbackname);
+  // componentWillMount = () => {
+  //   this.socket = ioclient("http://localhost:8081")
+  // }
+
+  componentWillMount = () => {
+    this.receiveFisrtName(this.callbackname)
   }
+
+  // componentDidMount = () => {
+  //   this.sendUserId(this.state.firstname)
+  // }
+
+  // sendUserId = (userid) => {
+
+  // }
 
   callbackname = (_userid, _firstname) => {
     this.setState({
       userid: _userid,
       firstname: _firstname,
     })
+    this.socket = ioclient("http://localhost:8081")
+    this.socket.emit("sent-user-id", _userid)
   }
 
 
@@ -68,20 +86,32 @@ export default class UserDashBoard extends React.Component {
 
   renderContent = () => {
     switch (this.state.content_state) {
-      case 1: return (<div><Profile /></div>)
-      case 2: return (<div><Friend /></div>)
-      case 3: return (<div><Message /></div>)
-      case 4: return (<div><Notify /></div>)
-      case 5: return (<div><ChangePass /></div>)
-      case 6: return (<div><UnknowProfile userid={this.state.userid} /></div>)
-      default: return (<div><Home /></div>)
+      case 1: return (<Profile />)
+      case 2: return (<Friend />)
+      case 3: return (<Message />)
+      case 4: return (<Notify />)
+      case 5: return (<ChangePass />)
+      case 6: return (<UnknowProfile userid={this.state.userid} friendid={this.state.friendid} />)
+      default: return (<Home />)
     }
   }
 
-  searchSuccessUser = () => {
-    this.setState({
-      content_state: 6
-    })
+  searchSuccessUser = (_friendid) => {
+    if (this.state.userid === _friendid) {
+      this.setState({
+        content_state: 1,
+      })
+    } else {
+      this.setState({
+        content_state: 6,
+        friendid: _friendid
+      })
+    }
+  }
+
+  logoutUser = () => {
+    this.socket.emit("disconnect-logout", this.state.firstname + " đã đăng xuất")
+    this.props.update_login()
   }
 
   userDashBoard = () => {
@@ -139,7 +169,7 @@ export default class UserDashBoard extends React.Component {
               </div>
 
               <div className="user-menu-logout" >
-                <button onClick={() => { this.props.update_login(); }} >
+                <button onClick={() => this.logoutUser()} >
                   <img alt="love" title="Đăng xuất" src={require("../../Image-Icon/Cog.png")} />
                 </button>
               </div>

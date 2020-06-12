@@ -37,41 +37,11 @@ class Friend {
     return index;
   }
 
-  // positionLogin(user) {
-  //   let username = user.username;
-  //   let password = user.password;
-  //   let index = this.UserProfile.findIndex(item => {
-  //     return (username === item.username && password === item.password);
-  //   })
-  //   if (index >= 0) {
-  //     nowIndex = index;
-  //   }
-  //   return index;
-  // }
-
-  // nowInforUnknow() {
-  //   let randomuser = this.UserProfile[Math.floor(Math.random() * this.UserProfile.length)];
-  //   return randomuser;
-  // }
-
-  // nowInforProfile() {
-  //   return this.UserProfile[nowIndex];
-  // }
-
-  // searchUserProfile(user) {
-  //   let username = user.username;
-  //   let index = this.UserProfile.findIndex(item => {
-  //     return (username === item.username);
-  //   })
-  //   if (index >= 0) {
-  //     nowSearchIndex = index;
-  //   }
-  //   return index;
-  // }
-
-  // nowSearchProfile() {
-  //   return this.UserProfile[nowSearchIndex];
-  // }
+  cancelAddRequest(userid, unknowuserid) {
+    let index = this.checkAddRequest(userid, unknowuserid);
+    this.UserFriend.splice(index, 1);
+    this.saveDataJSON();
+  }
 
 }
 

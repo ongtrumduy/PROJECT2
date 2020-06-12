@@ -46,8 +46,18 @@ class User {
     return nowIndex + 1;
   }
 
+  returnUserProfile(index) {
+    return this.UserProfile[index - 1];
+  }
+
   nowInforUnknow() {
     let randomuser = this.UserProfile[Math.floor(Math.random() * this.UserProfile.length)];
+
+    if (randomuser.id === (nowIndex + 1)) {
+      while (randomuser.id === (nowIndex + 1)) {
+        randomuser = this.UserProfile[Math.floor(Math.random() * this.UserProfile.length)];
+      }
+    }
     return randomuser;
   }
 

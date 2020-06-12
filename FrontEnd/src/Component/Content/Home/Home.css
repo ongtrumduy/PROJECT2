@@ -36,6 +36,7 @@
 .unknow-friend .unknow-friend-control {
     width: 60%;
     border-style: groove;
+    height: 580px;
     margin: 5px 5px 0 5px;
     flex-grow: 0;
     display: flex;
@@ -44,13 +45,17 @@
     align-items: stretch;
 }
 
+.unknow-friend .unknow-friend-control {
+    font-weight: bold;
+    color: blue;
+}
+
 .unknow-friend .unknow-friend-control .unknow-friend-avatar {
     border: 1px solid white;
     height: 420px;
 }
 
-
-.unknow-friend .unknow-friend-control .unknow-friend-avatar img{
+.unknow-friend .unknow-friend-control .unknow-friend-avatar img {
     width: 300px;
     height: 400px;
     margin: 15px;
@@ -62,7 +67,7 @@
 }
 
 .unknow-friend .unknow-friend-control .unknow-friend-button button {
-    margin: 50px 0 0 0;
-    width: 80px;
-    height: 80px;
+    margin: 35px 0 0 0;
+    width: 70px;
+    height: 70px;
 }

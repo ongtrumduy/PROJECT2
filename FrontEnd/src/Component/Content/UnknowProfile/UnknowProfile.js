@@ -38,7 +38,6 @@ export default class Profile extends React.Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        checkLogout: "1"
       }),
     }
 
@@ -51,13 +50,60 @@ export default class Profile extends React.Component {
     })
   }
 
-  UNSAFE_componentWillMount = () => {
-    this.receiveInforProfile(this.callbackinforprofile);
+
+  componentWillMount = () => {
+    // this.state.friendid = this.props.friendid
+
+    this.receiveInforProfile(this.callbackinforprofile)
+
+    // alert(`Chưa Thay doi ${this.state.friendid}`)
+    // alert(`Chưa nextProps Thay doi ${nextProps.friendid}`)
   }
 
-  UNSAFE_componentWillUpdate = () => {
-    this.receiveInforProfile(this.callbackinforprofile);
+  // componentWillUnmount = () => {
+  //   alert(`Thay doi ${this.state.friendid}`)
+  //   // alert(`nextProps Thay doi ${nextProps.friendid}`)
+  //   // this.setState({
+  //   // })
+  // }
+
+  componentWillReceiveProps = (nextProps) => {
+    this.setState({
+      friendid: nextProps.friendid
+    })
+    this.receiveInforProfile(this.callbackinforprofile)
   }
+
+  // shouldComponentUpdate = nextProps => {
+  //   // alert(`Nên Thay doi ${this.state.friendid}`)
+  //   // alert(`Nên nextProps Thay doi ${nextProps.friendid}`)
+  //   if (this.state.friendid !== nextProps.friendid) {
+  //     return true
+  //   } else {
+  //     return false
+  //   }
+
+
+  // }
+
+  // UNSAFE_componentWillUpdate = () => {
+  //   // alert(`Đã Thay doi ${this.state.friendid}`)
+  //   // alert(`Đã nextProps Thay doi ${nextProps.friendid}`)
+  //   this.receiveInforProfile(this.callbackinforprofile)
+  // }
+
+  // componentDidUpdate = () => {
+  //   alert(`Đã Thay doi ${this.state.friendid}`)
+  //   this.setState({
+  //     friendid: this.props.friendid
+  //   })
+  // }
+
+  // componentDidMount = () => {
+  //   this.setState({
+  //     friendid: this.props.friendid
+  //   })
+  // }
 
   callbackinforprofile = (_checkrequest, _id, _firstname, _lastname, _birth, _gender, _enjoy) => {
     this.setState({
@@ -106,7 +152,6 @@ export default class Profile extends React.Component {
     return (
       <div className="user-profile-icon">
         <AddFriend firstname={this.state.firstname} userid={this.props.userid} friendid={this.state.friendid} checkrequest={this.state.checkrequest} />
-        <button><img src={require("../../Image-Icon/Star Off.png")} /></button>
       </div >
     )
   }
@@ -148,7 +193,7 @@ export default class Profile extends React.Component {
     return (
       <div>
         <div className="user-profile-infor">
-          <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname}&nbsp;{this.state.firstname}</p>
+          <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname} {this.state.firstname}</p>
           <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: {this.state.birth}</p>
           <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: {this.state.gender}</p>
           <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>

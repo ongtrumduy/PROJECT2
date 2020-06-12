@@ -1,25 +1,31 @@
 import express from "express";
-import fs from "fs";
 import cors from "cors";
 import bodyParser from "body-parser";
+import http from "http";
+import socketio from "socket.io";
+
 import registerRoutes from "../BackEnd/src/routes/register";
 import loginRoutes from "../BackEnd/src/routes/login";
 import firstnameRoutes from "../BackEnd/src/routes/userdashboard";
 import homeRoutes from "../BackEnd/src/routes/home";
 import profileRoutes from "../BackEnd/src/routes/profile";
-import searchRoutes from "./src/routes/searchuser";
-import unknowRoutes from "./src/routes/unknowuser";
-import addfriendRoutes from "./src/routes/addfriend";
+import searchRoutes from "../BackEnd/src/routes/searchuser";
+import unknowRoutes from "../BackEnd/src/routes/unknowuser";
+import addfriendRoutes from "../BackEnd/src/routes/addfriend";
 import portRoutes from "../BackEnd/src/routes/port";
+
+import addfriendSocket from "../BackEnd/src/io-sockets/addfriend";
 
 
 
 let app = express();
-
+let server = http.Server(app);
+let port = 8081;
+let io = socketio(server);
 
 app.use(cors());
 
-var corsOptions = {
+let corsOptions = {
   body: "*",
   origin: "*",
   optionsSuccessStatus: 200
@@ -28,11 +34,7 @@ var corsOptions = {
 
 app.use(bodyParser.json());
 
-var Student = [];
-var profile = fs.readFileSync("../BackEnd/src/databases/userProfile.json");
-if (profile) {
-  Student = JSON.parse(profile);
-}
+//========================Routes=========================================
 
 // -----------------------Register---------------------------------------
 registerRoutes(app, corsOptions);
@@ -65,7 +67,13 @@ unknowRoutes(app, corsOptions);
 // --------------------------AddFriend---------------------------------------
 addfriendRoutes(app, corsOptions);
 //-----------------------------------------------------------------------
+//=========================================================================
+
+//============================Socket======================================
+// --------------------------AddFriend---------------------------------------
+addfriendSocket(io);
+//--------------------------------------------------------------------------
 
 // -------------------------Port------------------------------------------
-portRoutes(app);
+portRoutes(server, port);
 //-------------------------------------------------------------------------

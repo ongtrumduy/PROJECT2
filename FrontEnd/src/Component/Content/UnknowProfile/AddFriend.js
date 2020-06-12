@@ -1,13 +1,16 @@
 import React from "react"
+import ioclient from "socket.io-client"
+
 import request from "request"
-import moment from "moment"
 
 export default class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       nowtime: "",
-      friendrequest: false,
+      checkrequest: 0,
+      userid: "",
+      friendid: ""
     }
   }
 
@@ -38,34 +41,58 @@ export default class Profile extends React.Component {
     })
   }
 
-  // UN
-  //   this.checkRequestFriend()
+  componentWillReceiveProps = (nextProps) => {
+    this.setState({
+      friendid: nextProps.friendid,
+      checkrequest: nextProps.checkrequest,
+      userid: nextProps.userid
+    })
+  }
+
+  // componentWillMount = () => {
+  //   alert("Ko ok")
+  //   this.setState({
+  //     checkrequest: this.props.checkrequest,
+  //     userid: this.props.userid,
+  //     friendid: this.props.friendid
+  //   })
   // }
 
-  // checkRequestFriend = () => {
-  //   console.log(this.props.checkrequest)
-  //   if (this.props.checkrequest === 1) {
-  //     this.setState({
-  //       friendrequest: true
-  //     })
+  // shouldComponentUpdate = (nextProps) => {
+  //   if (this.state.friendid === nextProps.friendid) {
+  //     alert(this.state.friendid)
+  //     alert(nextProps.friendid)
+  //     alert("Không thay đổi")
+  //     return false
   //   } else {
-  //     this.setState({
-  //       friendrequest: false
-  //     })
+  //     alert(this.state.friendid)
+  //     alert(nextProps.friendid)
+  //     alert("Có thay đổi")
+  //     return true
   //   }
   // }
 
+  // componentWillUpdate = () => {
+  //   alert("OK")
+
+  //   this.setState({
+  //     checkrequest: this.props.checkrequest,
+  //     userid: this.props.userid,
+  //     friendid: this.props.friendid
+  //   })
+  // }
+
   statusFriendRequest = () => {
-    if (this.props.checkrequest === 0) {
+    if (this.state.checkrequest === 0) {
       return (
         <div>
-          <button onClick={() => this.sendFriendRequest()} ><img src={require("../../Image-Icon/Glyph Add.png")} /></button>
+          <button onClick={() => this.sendFriendRequest()} ><img alt="add friend" src={require("../../Image-Icon/Glyph Add.png")} /></button>
         </div>
       )
     } else {
       return (
         <div>
-          <button onClick={() => this.sendDeleteRequest()} ><img src={require("../../Image-Icon/Stop.png")} /></button>
+          <button onClick={() => this.sendDeleteRequest()} ><img alt="stop friend" src={require("../../Image-Icon/Stop.png")} /></button>
         </div>
       )
     }
@@ -76,13 +103,18 @@ export default class Profile extends React.Component {
     if (confirmAdd) {
       alert(`Đã gửi lời mời kết bạn cho ${this.props.firstname}`)
       this.setState({
-        friendrequest: true
+        checkrequest: 1
       })
-      return (
-        <div>
-          {this.sendFriendDataRequest(1, this.props.userid, this.props.friendid)}
-        </div>
-      )
+
+      this.sendFriendDataRequest(1, this.props.userid, this.props.friendid)
+      let data = {
+        userid: this.props.userid,
+        friendid: this.props.friendid
+      }
+      this.socket = ioclient("http://localhost:8081")
+
+      this.socket.emit("sent-add-friend", data)
+
     } else {
       alert("Đã hủy")
     }
@@ -93,18 +125,15 @@ export default class Profile extends React.Component {
     if (deleteAdd) {
       alert(`Đã hủy lời mời kết bạn đến ${this.props.firstname}`)
       this.setState({
-        friendrequest: false
+        checkrequest: 0
       })
-      return (
-        <div>
-          {this.sendFriendDataRequest(0, this.props.userid, this.props.friendid)}
-        </div>
-      )
+
+      this.sendFriendDataRequest(0, this.props.userid, this.props.friendid)
+
     } else {
       alert("Đã hủy")
     }
   }
-
 
   render() {
     return (

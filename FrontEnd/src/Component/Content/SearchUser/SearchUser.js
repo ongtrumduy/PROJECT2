@@ -6,7 +6,8 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      unknowuser: ""
+      unknowuser: "",
+      friendid: ""
     }
   }
 
@@ -29,19 +30,26 @@ export default class Profile extends React.Component {
       }),
     }
 
+
     request(options, (error, response, body) => {
       if (error) throw new Error(error)
       // console.log(body)
       if (body === "0") callbackerror()
-      if (body === "1") callback()
+      else {
+        let receiveinfor = JSON.parse(body)
+        callback(receiveinfor.friendid)
+      }
     })
   }
 
-  successInforSearch = () => {
+  successInforSearch = (_friendid) => {
     alert("Đã tìm thấy thông tin tài khoản !!!!!")
+    this.setState({
+      friendid: _friendid
+    })
     return (
       <div>
-        {this.props.searchuser()}
+        {this.props.searchuser(_friendid)}
       </div>
     )
   }

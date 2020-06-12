@@ -99,7 +99,7 @@ export default class Profile extends React.Component {
     userFullName = () => {
         return (
             <div className="user-profile-fullname">
-                <p>{this.state.lastname}&nbsp;{this.state.firstname}</p>
+                <p>{this.state.lastname} {this.state.firstname}</p>
             </div>
         )
     }
@@ -134,13 +134,13 @@ export default class Profile extends React.Component {
         return (
             <div>
                 <div className="user-profile-infor">
-                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname}&nbsp;{this.state.firstname}</p>
+                    <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname} {this.state.firstname}</p>
                     <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: {this.state.birth}</p>
                     <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: {this.state.gender}</p>
                     <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>
                 </div>
-                <div className="user-profile-change-infor">
-                    <input type="button" value="Thay đổi thông tin" onClick={() => this.changeInfor()} />
+                <div className="user-profile-change-infor" style={{ margin: "100px 0 0 0" }}>
+                    <input style={{ fontWeight: "bold" }} type="button" value="Thay đổi thông tin" onClick={() => this.changeInfor()} />
                 </div>
             </div>
         )
