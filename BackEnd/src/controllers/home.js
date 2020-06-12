@@ -1,9 +1,8 @@
 import user from "../APIs/user";
-import fs from "fs";
 
 
 let ReceiveInfor = (req, res, next) => {
-  res.send(user.nowInforUnknow());
+  res.send(user.nowInforUnknow(req.body.userid));
 }
 
 module.exports = ReceiveInfor;

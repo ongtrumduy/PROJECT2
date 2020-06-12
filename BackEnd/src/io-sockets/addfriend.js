@@ -43,7 +43,7 @@ let AddNewFriend = (io) => {
       console.log(adduserid);
       if (usersocket[sentAddUserId]) {
         usersocket[sentAddUserId].forEach(socketId => {
-          socket.to(socketId).emit("add-friend-notify", adduserid);
+          io.socket.to(socketId).emit("add-friend-notify", adduserid);
         });
       }
     })

@@ -15,7 +15,7 @@ export default class Home extends React.Component {
         }
     }
 
-    receiveInforUnknow = (callback) => {
+    receiveInforUnknow = (callback, _userid) => {
         var options = {
             method: "POST",
             url: "http://localhost:8081/home",
@@ -30,7 +30,7 @@ export default class Home extends React.Component {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                checkLogout: "1"
+                userid: _userid
             }),
         }
 
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
     }
 
     UNSAFE_componentWillMount = () => {
-        this.receiveInforUnknow(this.callbackinfor);
+        this.receiveInforUnknow(this.callbackinfor, this.props.userid);
     }
 
     callbackinfor = (_firstname, _lastname, _birth, _gender, _enjoy) => {
@@ -89,7 +89,7 @@ export default class Home extends React.Component {
             </div>
         )
     }
-    
+
     render() {
         return (
             <div className="unknow-friend">

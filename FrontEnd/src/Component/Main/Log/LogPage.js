@@ -17,23 +17,30 @@ export default class LogPage extends React.Component {
         switch (this.state.check_sign) {
             case "register": return (
                 <Register
-                update_login={this.updateLogin}
+                    update_login={this.updateLogin}
                 // update_userDB={this.updateUserDashBoard}
                 />)
             case "forgot": return (
                 <ForgotPass
-                update_login={this.updateLogin}
+                    update_login={this.updateLogin}
                 />)
             default: return (
                 <Login
-                update_login={this.updateLogin}
-                update_adminDB={this.updateAdminDashBoard}
-                update_userDB={this.updateUserDashBoard}
-                update_register={this.updateRegister}
-                update_forgotpass={this.updateForgotPass}
+                    update_login={this.updateLogin}
+                    update_adminDB={this.updateAdminDashBoard}
+                    update_userDB={this.updateUserDashBoard}
+                    update_register={this.updateRegister}
+                    update_forgotpass={this.updateForgotPass}
+                    // set_userID={this.setUserId}
                 />)
         }
     }
+
+    // setUserId = (_userid) => {
+    //     this.props.set_userID(_userid)
+    //     console.log(_userid)
+    // }
+
     updateLogin = () => {
         this.setState({
             check_sign: "login"

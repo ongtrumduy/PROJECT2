@@ -2,6 +2,7 @@ import user from "../APIs/user";
 
 
 let ReceiveFistname = (req, res, next) => {
-  res.send(user.nowInforProfile());
+  console.log(req.body);
+  res.send(user.returnImediateUserInfor());
 }
 module.exports = ReceiveFistname;

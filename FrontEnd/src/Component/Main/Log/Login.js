@@ -28,21 +28,26 @@ export default class Login extends React.Component {
 
         request(options, (error, response, body) => {
             if (error) throw new Error(error)
-            // console.log(body)
+            console.log(body)
             if (body === "0") callbackError()
-            else callback(body);
+            else {
+                let receiveinfor = JSON.parse(body)
+                callback(receiveinfor.position, receiveinfor.userid)
+            }
         })
     }
 
     checkWrongPassword = () => {
-        alert("Tài khoản hoặc mật khẩu của bạn không đúng!!!");
+        alert("Tài khoản hoặc mật khẩu của bạn không đúng!!!")
     }
 
-    positionLogin = (position) => {
+    positionLogin = (position, _userid) => {
         if (position === "admin") {
-            return (<div>{this.props.update_adminDB()}</div>)
+            this.props.update_adminDB()
+            // this.props.set_userID(_userid)
         } else if (position === "user") {
-            return (<div>{this.props.update_userDB()}</div>)
+            this.props.update_userDB()
+            // this.props.set_userID(_userid)
         }
     }
 
@@ -60,21 +65,13 @@ export default class Login extends React.Component {
 
     pressEnterUsername = (event) => {
         if (event.key === "Enter") {
-            return (
-                <div>
-                    {this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)}
-                </div>
-                )
+            this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)
         }
     }
 
     pressEnterPassword = (event) => {
         if (event.key === "Enter") {
-            return (
-                <div>
-                    {this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)}
-                </div>
-                )
+            this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)
         }
     }
 

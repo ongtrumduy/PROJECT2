@@ -1,14 +1,17 @@
 import user from "../APIs/user";
-import fs from "fs";
 
 
 let ReceiveInfor = (req, res, next) => {
   let index = user.searchUserProfile(req.body);
   if (index >= 0) {
-    let seacrhinfor = {
-      friendid: user.searchUserProfileId()
+    if (req.body.username === "admin") {
+      res.send("0");
+    } else {
+      let seacrhinfor = {
+        friendid: index
+      }
+      res.send(seacrhinfor);
     }
-    res.send(seacrhinfor);
     // console.log(seacrhinfor);
   } else {
     res.send("0");

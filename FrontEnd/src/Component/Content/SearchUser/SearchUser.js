@@ -11,7 +11,7 @@ export default class Profile extends React.Component {
     }
   }
 
-  receiveSearchUnknowProfile = (callback, callbackerror, _unknowuser) => {
+  receiveSearchUnknowProfile = (callback, callbackerror, _unknowuser, _userid) => {
     var options = {
       method: "POST",
       url: "http://localhost:8081/searchuser",
@@ -26,7 +26,8 @@ export default class Profile extends React.Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: _unknowuser
+        username: _unknowuser,
+        userid: _userid
       }),
     }
 
@@ -47,11 +48,7 @@ export default class Profile extends React.Component {
     this.setState({
       friendid: _friendid
     })
-    return (
-      <div>
-        {this.props.searchuser(_friendid)}
-      </div>
-    )
+    this.props.searchuser(_friendid)
   }
 
 
@@ -68,11 +65,7 @@ export default class Profile extends React.Component {
 
   pressEnterSeacrh = (event) => {
     if (event.key === "Enter") {
-      return (
-        <div>
-          {this.receiveSearchUnknowProfile(this.successInforSearch, this.noInforSearch, this.state.unknowuser)}
-        </div>
-      )
+      this.receiveSearchUnknowProfile(this.successInforSearch, this.noInforSearch, this.state.unknowuser)
     }
   }
 

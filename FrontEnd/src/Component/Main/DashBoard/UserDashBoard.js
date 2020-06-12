@@ -27,7 +27,7 @@ export default class UserDashBoard extends React.Component {
     }
   }
 
-  receiveFisrtName = (callback) => {
+  receiveFisrtName = (callback, _userid) => {
     var options = {
       method: "POST",
       url: "http://localhost:8081/userdashboard",
@@ -42,33 +42,24 @@ export default class UserDashBoard extends React.Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        check: "1"
+        check: "1",
+        userid: _userid
       }),
     }
 
     request(options, (error, response, body) => {
       if (error) throw new Error(error)
-      // console.log(body)
+      console.log(body)
       let receiveinfor = JSON.parse(body)
       callback(receiveinfor.id, receiveinfor.firstname)
     })
   }
 
-  // componentWillMount = () => {
-  //   this.socket = ioclient("http://localhost:8081")
-  // }
-
   componentWillMount = () => {
-    this.receiveFisrtName(this.callbackname)
+    console.log(this.props.userid)
+    this.receiveFisrtName(this.callbackname, this.props.userid)
   }
 
-  // componentDidMount = () => {
-  //   this.sendUserId(this.state.firstname)
-  // }
-
-  // sendUserId = (userid) => {
-
-  // }
 
   callbackname = (_userid, _firstname) => {
     this.setState({
@@ -86,13 +77,13 @@ export default class UserDashBoard extends React.Component {
 
   renderContent = () => {
     switch (this.state.content_state) {
-      case 1: return (<Profile />)
-      case 2: return (<Friend />)
-      case 3: return (<Message />)
-      case 4: return (<Notify />)
-      case 5: return (<ChangePass />)
+      case 1: return (<Profile userid={this.state.userid} />)
+      case 2: return (<Friend userid={this.state.userid} />)
+      case 3: return (<Message userid={this.state.userid} />)
+      case 4: return (<Notify userid={this.state.userid} />)
+      case 5: return (<ChangePass userid={this.state.userid} />)
       case 6: return (<UnknowProfile userid={this.state.userid} friendid={this.state.friendid} />)
-      default: return (<Home />)
+      default: return (<Home userid={this.state.userid} />)
     }
   }
 
@@ -133,7 +124,7 @@ export default class UserDashBoard extends React.Component {
               </div>
 
               <div className="user-menu-search">
-                <SearchUser searchuser={this.searchSuccessUser} />
+                <SearchUser searchuser={this.searchSuccessUser} userid={this.state.userid} />
               </div>
 
               <div className="user-menu-firstname">

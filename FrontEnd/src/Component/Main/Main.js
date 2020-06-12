@@ -1,14 +1,16 @@
 import React from "react"
+import request from "request"
 import AdminDashBoard from "./DashBoard/AdminDashBoard"
 import UserDashBoard from "./DashBoard/UserDashBoard"
 import LogPage from "./Log/LogPage"
-import ChangeInfor from "../Content/ChangeInfor/ChangeInfor"
+// import ChangeInfor from "../Content/ChangeInfor/ChangeInfor"
 
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            update_login: "Log"
+            update_login: "Log",
+            userid: ""
         }
     }
 
@@ -21,14 +23,23 @@ export default class Main extends React.Component {
             case "User": return (
                 <UserDashBoard
                     update_login={this.updateLog}
+                    userid={this.state.userid}
                 />)
             default: return (
                 <LogPage
                     update_userDB={this.updateUser}
                     update_adminDB={this.updateAdmin}
+                    // set_userID={this.setUserId}
                 />)
         }
     }
+
+    // callbackname = (_userid, _firstname) => {
+    //     this.setState({
+    //         userid: _userid,
+    //         firstname: _firstname,
+    //     })
+    // }
 
     updateLog = () => {
         this.setState({

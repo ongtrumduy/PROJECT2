@@ -3,7 +3,26 @@ import fs from "fs";
 
 
 let GetRegister = (req, res, next) => {
-  let UserProfile = [];
+  let Admin = {
+    "check": "1",
+    "username": "admin",
+    "firstname": "admin",
+    "lastname": "admin",
+    "phonenumber": "0964980517",
+    "password": "admin",
+    "birth": "1999-03-31",
+    "gender": "Nam",
+    "id": 0,
+    "avatar": null
+  };
+
+  let checkadmin = user.checkAdmin();
+  if (checkadmin < 0) {
+    user.createNewUser(Admin);
+  }
+
+  let UserProfile = []
+
   let checkRegister = false;
 
   let profile = fs.readFileSync("../BackEnd/src/databases/userProfile.json");

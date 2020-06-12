@@ -1,8 +1,6 @@
 import fs from "fs";
 
-let nowIndex = "";
-let nowSearchIndex = "";
-
+let immediateUserId = "";
 
 class User {
   constructor() {
@@ -11,6 +9,7 @@ class User {
       this.UserProfile = JSON.parse(profile);
     } else {
       this.UserProfile = [];
+      // this.UserProfile = [];
     }
   }
 
@@ -23,11 +22,17 @@ class User {
 
   createNewUser(user) {
     let count = this.UserProfile.length;
-    count = count + 1;
     user.id = count;
     user.avatar = null;
     this.UserProfile.push(user);
     this.saveDataJSON();
+  }
+
+  checkAdmin() {
+    let index = this.UserProfile.findIndex(item => {
+      return (item.username === "admin");
+    })
+    return index;
   }
 
   positionLogin(user) {
@@ -37,32 +42,28 @@ class User {
       return (username === item.username && password === item.password);
     })
     if (index >= 0) {
-      nowIndex = index;
+      immediateUserId = index;
     }
     return index;
   }
 
-  positionUserProfileId() {
-    return nowIndex + 1;
+  returnUserProfile(userid) {
+    return this.UserProfile[userid];
   }
 
-  returnUserProfile(index) {
-    return this.UserProfile[index - 1];
+  returnImediateUserInfor() {
+    return this.UserProfile[immediateUserId];
   }
 
-  nowInforUnknow() {
+  nowInforUnknow(userid) {
     let randomuser = this.UserProfile[Math.floor(Math.random() * this.UserProfile.length)];
 
-    if (randomuser.id === (nowIndex + 1)) {
-      while (randomuser.id === (nowIndex + 1)) {
+    if (randomuser.id === userid || randomuser.id === 0) {
+      while (randomuser.id === userid || randomuser.id === 0) {
         randomuser = this.UserProfile[Math.floor(Math.random() * this.UserProfile.length)];
       }
     }
     return randomuser;
-  }
-
-  nowInforProfile() {
-    return this.UserProfile[nowIndex];
   }
 
   searchUserProfile(user) {
@@ -70,18 +71,7 @@ class User {
     let index = this.UserProfile.findIndex(item => {
       return (username === item.username);
     })
-    if (index >= 0) {
-      nowSearchIndex = index;
-    }
     return index;
-  }
-
-  searchUserProfileId() {
-    return nowSearchIndex + 1;
-  }
-
-  nowSearchProfile() {
-    return this.UserProfile[nowSearchIndex];
   }
 
 }

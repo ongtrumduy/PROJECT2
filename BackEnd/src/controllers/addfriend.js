@@ -1,20 +1,9 @@
-import user from "../APIs/user";
 import friend from "../APIs/friend";
-import fs from "fs";
 
 
 let ReceiveFistname = (req, res, next) => {
   // console.log(req.body);
-  let UserFriend = [];
-
-  let friendlist = fs.readFileSync("../BackEnd/src/databases/userFriend.json");
-  if (friendlist) {
-    UserFriend = JSON.parse(friendlist);
-  }
-
-  let userid = user.positionUserProfileId();
-  let searchfriendid = user.searchUserProfileId();
-  let index = friend.checkAddRequest(userid, searchfriendid);
+  let index = friend.checkAddRequest(req.body.userid, req.body.friendid);
 
   if (req.body.status === 1 && index < 0) {
     friend.createNewFriend(req.body);

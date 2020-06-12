@@ -23,7 +23,7 @@ export default class Profile extends React.Component {
   }
 
 
-  receiveInforProfile = (callback) => {
+  receiveInforProfile = (callback, _userid, _friendid) => {
     var options = {
       method: "POST",
       url: "http://localhost:8081/unknowprofile",
@@ -38,6 +38,8 @@ export default class Profile extends React.Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        userid: _userid,
+        friendid: _friendid
       }),
     }
 
@@ -54,7 +56,7 @@ export default class Profile extends React.Component {
   componentWillMount = () => {
     // this.state.friendid = this.props.friendid
 
-    this.receiveInforProfile(this.callbackinforprofile)
+    this.receiveInforProfile(this.callbackinforprofile, this.props.userid, this.props.friendid)
 
     // alert(`Chưa Thay doi ${this.state.friendid}`)
     // alert(`Chưa nextProps Thay doi ${nextProps.friendid}`)
@@ -159,7 +161,7 @@ export default class Profile extends React.Component {
   userAvartar = () => {
     return (
       <div className="user-profile-avartar">
-        <img src={require("../../Image-Icon/default-avatar.png")} />
+        <img alt="avartar" src={require("../../Image-Icon/default-avatar.png")} />
       </div>
     )
   }
@@ -193,10 +195,10 @@ export default class Profile extends React.Component {
     return (
       <div>
         <div className="user-profile-infor">
-          <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname} {this.state.firstname}</p>
-          <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: {this.state.birth}</p>
-          <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: {this.state.gender}</p>
-          <p> <img src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>
+          <p> <img alt="check" src={require("../../Image-Icon/Checkbox Full.png")} /> Họ và tên: {this.state.lastname} {this.state.firstname}</p>
+          <p> <img alt="check" src={require("../../Image-Icon/Checkbox Full.png")} /> Ngày sinh: {this.state.birth}</p>
+          <p> <img alt="check" src={require("../../Image-Icon/Checkbox Full.png")} /> Giới tính: {this.state.gender}</p>
+          <p> <img alt="check" src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>
         </div>
       </div>
     )
