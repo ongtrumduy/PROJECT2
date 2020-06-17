@@ -1,5 +1,5 @@
-import user from "../APIs/user";
-import fs from "fs";
+import { user, friend, message, room, notify } from "../APIs/allAPIs";
+
 
 
 let ReceiveInfor = (req, res, next) => {

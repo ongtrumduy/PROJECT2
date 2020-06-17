@@ -28,9 +28,31 @@ class User {
     this.saveDataJSON();
   }
 
-  checkAdmin() {
+  creatUserAdmin() {
+    let Admin = {
+      "check": "1",
+      "username": "admin",
+      "firstname": "admin",
+      "lastname": "admin",
+      "phonenumber": "0964980517",
+      "password": "admin",
+      "birth": "1999-03-31",
+      "gender": "Nam",
+      "id": 0,
+      "avatar": null
+    };
     let index = this.UserProfile.findIndex(item => {
       return (item.username === "admin");
+    })
+    if (index < 0) {
+      this.UserProfile.push(Admin);
+    }
+    this.saveDataJSON()
+  }
+
+  checkRegisterUsername(username) {
+    let index = this.UserProfile.findIndex(item => {
+      return (username === item.username);
     })
     return index;
   }
@@ -56,14 +78,30 @@ class User {
   }
 
   nowInforUnknow(userid) {
-    let randomuser = this.UserProfile[Math.floor(Math.random() * this.UserProfile.length)];
-
-    if (randomuser.id === userid || randomuser.id === 0) {
-      while (randomuser.id === userid || randomuser.id === 0) {
-        randomuser = this.UserProfile[Math.floor(Math.random() * this.UserProfile.length)];
-      }
+    // console.log("độ dài ");
+    // console.log(this.UserProfile.length);
+    if (this.UserProfile.length < 2) {
+      return -1;
     }
-    return randomuser;
+    else if (this.UserProfile.length === 2) {
+      let index = this.UserProfile.findIndex(item => {
+        return (userid !== item.userid && item.userid !== 0);
+      })
+      return index;
+    }
+    else {
+      let randomuserid = Math.floor(Math.random() * this.UserProfile.length);
+      // console.log("Giá trị random:");
+      // console.log(randomuserid);
+      if (randomuserid === userid || randomuserid === 0) {
+        while (randomuserid === userid || randomuserid === 0) {
+          randomuserid = Math.floor(Math.random() * this.UserProfile.length);
+          // console.log("Giá trị random:");
+          // console.log(randomuserid);
+        }
+      }
+      return randomuserid;
+    }
   }
 
   searchUserProfile(user) {

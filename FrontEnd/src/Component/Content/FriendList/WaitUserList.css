@@ -1,0 +1,108 @@
+.wait-friend-list {
+  margin: 5px 10px 0 10px;
+  font-size: 28px;
+}
+
+.wait-friend-list .wait-friend-list-table {
+  height: 450px;
+  overflow: auto;
+  border-style: groove;
+}
+
+.wait-friend-list .wait-friend-list-table table td {
+  text-align: left;
+}
+
+.wait-friend-list .wait-friend-list-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wait-friend-list .wait-friend-list-table table tr {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.wait-friend-list .wait-friend-list-table table .wait-friend-infor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  margin: 10px 10px 5px 10px;
+}
+
+.wait-friend-list .wait-friend-list-table table .wait-friend-infor .wait-friend-infor-bonus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor .wait-friend-wait-friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor .wait-friend-sent-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor .wait-friend-user-name {
+  color: blue;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor div {
+  font-size: 28px;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor div .wait-friend-infor-time {
+  font-size: 24px;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor .wait-friend-select {
+  float: right;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor .wait-friend-infor-content .wait-friend-infor-bonus .wait-friend-infor-icon {
+  margin: 0 10px 0 0;
+}
+
+.wait-friend-list .wait-friend-list-table tr:hover {
+  cursor: default;
+  background-color: gray;
+}
+
+.wait-friend-list .wait-friend-list-table .wait-friend-infor .wait-friend-user-avatar img {
+  width: 70px;
+  height: 70px;
+  margin: 0 10px 0 0;
+}
+
+.wait-friend-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* margin: 0 15px 0 0; */
+  align-items: center;
+}
+
+.wait-friend-select button {
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}

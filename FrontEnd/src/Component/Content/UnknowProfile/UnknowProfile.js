@@ -1,7 +1,6 @@
 import React from "react"
 import request from "request"
 import moment from "moment"
-import ChangeInfor from "../ChangeInfor/ChangeInfor"
 import AddFriend from "./AddFriend"
 import "./UnknowProfile.css"
 
@@ -45,9 +44,9 @@ export default class Profile extends React.Component {
 
     request(options, (error, response, body) => {
       if (error) throw new Error(error)
-      console.log(body)
+      // console.log(body)
       let receiveinfor = JSON.parse(body)
-      console.log(receiveinfor.checkrequest)
+      // console.log(receiveinfor.checkrequest)
       callback(receiveinfor.checkrequest, receiveinfor.user.id, receiveinfor.user.firstname, receiveinfor.user.lastname, receiveinfor.user.birth, receiveinfor.user.gender, receiveinfor.user.enjoy)
     })
   }
@@ -55,11 +54,8 @@ export default class Profile extends React.Component {
 
   componentWillMount = () => {
     // this.state.friendid = this.props.friendid
-
     this.receiveInforProfile(this.callbackinforprofile, this.props.userid, this.props.friendid)
-
     // alert(`Chưa Thay doi ${this.state.friendid}`)
-    // alert(`Chưa nextProps Thay doi ${nextProps.friendid}`)
   }
 
   // componentWillUnmount = () => {
@@ -70,10 +66,12 @@ export default class Profile extends React.Component {
   // }
 
   componentWillReceiveProps = (nextProps) => {
+    // alert(nextProps.friendid)
     this.setState({
       friendid: nextProps.friendid
     })
-    this.receiveInforProfile(this.callbackinforprofile)
+    // alert(this.state.friendid)
+    this.receiveInforProfile(this.callbackinforprofile, this.props.userid, nextProps.friendid)
   }
 
   // shouldComponentUpdate = nextProps => {
@@ -153,7 +151,13 @@ export default class Profile extends React.Component {
   userProfileIcon = () => {
     return (
       <div className="user-profile-icon">
-        <AddFriend firstname={this.state.firstname} userid={this.props.userid} friendid={this.state.friendid} checkrequest={this.state.checkrequest} />
+        <AddFriend
+          firstname={this.state.firstname}
+          userid={this.props.userid}
+          friendid={this.state.friendid}
+          checkrequest={this.state.checkrequest}
+          socket={this.props.socket}
+        />
       </div >
     )
   }
@@ -169,7 +173,7 @@ export default class Profile extends React.Component {
   userFullName = () => {
     return (
       <div className="user-profile-fullname">
-        <p>{this.state.lastname}&nbsp;{this.state.firstname}</p>
+        <p>{this.state.lastname} {this.state.firstname}</p>
       </div>
     )
   }

@@ -11,11 +11,12 @@ export default class Home extends React.Component {
             lastname: "",
             birth: "",
             gender: "",
-            enjoy: ""
+            enjoy: "",
+            statusunknowuser: ""
         }
     }
 
-    receiveInforUnknow = (callback, _userid) => {
+    receiveInforUnknow = (callbackerror, callback, _userid) => {
         var options = {
             method: "POST",
             url: "http://localhost:8081/home",
@@ -36,18 +37,35 @@ export default class Home extends React.Component {
 
         request(options, (error, response, body) => {
             if (error) throw new Error(error)
-            // console.log(body)
-            let receiveinfor = JSON.parse(body)
-            callback(receiveinfor.firstname, receiveinfor.lastname, receiveinfor.birth, receiveinfor.gender, receiveinfor.enjoy)
+            console.log(body)
+            if (body === "0") {
+                callbackerror()
+            } else {
+                let receiveinfor = JSON.parse(body)
+                callback(receiveinfor.firstname, receiveinfor.lastname, receiveinfor.birth, receiveinfor.gender, receiveinfor.enjoy)
+            }
         })
     }
 
     UNSAFE_componentWillMount = () => {
-        this.receiveInforUnknow(this.callbackinfor, this.props.userid);
+        // alert(this.props.userid)
+        this.receiveInforUnknow(this.callbackerror, this.callbackinfor, this.props.userid);
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        // alert(nextProps.userid)
+        this.receiveInforUnknow(this.callbackerror, this.callbackinfor, nextProps.userid)
+    }
+
+    callbackerror = () => {
+        this.setState({
+            statusunknowuser: 0
+        })
     }
 
     callbackinfor = (_firstname, _lastname, _birth, _gender, _enjoy) => {
         this.setState({
+            statusunknowuser: 1,
             firstname: _firstname,
             lastname: _lastname,
             birth: moment(_birth).format("DD-MM-YYYY"),
@@ -90,23 +108,39 @@ export default class Home extends React.Component {
         )
     }
 
+    renderUnknowUser = () => {
+        if (this.state.statusunknowuser === 0) {
+            return (
+                <div>
+                    HIỆN TẠI TRONG ỨNG DỤNG CHỈ CÓ BẠN VÀ ADMIN :))))
+                </div>
+            )
+        } else {
+            return (
+                <div className="unknow-friend">
+                    <div className="unknow-friend-profile">
+                        {this.unknowFriendProfile()}
+                    </div>
+                    <div className="unknow-friend-control">
+                        <div className="unknow-friend-avatar">
+                            {this.unknowFriendAvatar()}
+                        </div>
+                        <div className="unknow-friend-fullname">
+                            {this.state.lastname} {this.state.firstname}
+                        </div>
+                        <div className="unknow-friend-button">
+                            {this.unknowFriendControl()}
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
-            <div className="unknow-friend">
-                <div className="unknow-friend-profile">
-                    {this.unknowFriendProfile()}
-                </div>
-                <div className="unknow-friend-control">
-                    <div className="unknow-friend-avatar">
-                        {this.unknowFriendAvatar()}
-                    </div>
-                    <div className="unknow-friend-fullname">
-                        {this.state.lastname} {this.state.firstname}
-                    </div>
-                    <div className="unknow-friend-button">
-                        {this.unknowFriendControl()}
-                    </div>
-                </div>
+            <div>
+                {this.renderUnknowUser()}
             </div>
         )
     }

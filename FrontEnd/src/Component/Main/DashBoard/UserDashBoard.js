@@ -27,7 +27,7 @@ export default class UserDashBoard extends React.Component {
     }
   }
 
-  receiveFisrtName = (callback, _userid) => {
+  receiveFisrtName = (callback) => {
     var options = {
       method: "POST",
       url: "http://localhost:8081/userdashboard",
@@ -43,7 +43,6 @@ export default class UserDashBoard extends React.Component {
       },
       body: JSON.stringify({
         check: "1",
-        userid: _userid
       }),
     }
 
@@ -56,17 +55,20 @@ export default class UserDashBoard extends React.Component {
   }
 
   componentWillMount = () => {
-    console.log(this.props.userid)
-    this.receiveFisrtName(this.callbackname, this.props.userid)
+    this.receiveFisrtName(this.callbackname)
+    this.socket = ioclient("http://localhost:8081")
+    this.socket.on("add-friend-notify", (data) => {
+      let friendrequest = data.lastname + " " + data.firstname
+      alert(`${friendrequest} đã gửi lời mời kết bạn cho bạn !!!!`)
+    })
   }
 
 
   callbackname = (_userid, _firstname) => {
     this.setState({
       userid: _userid,
-      firstname: _firstname,
+      firstname: _firstname
     })
-    this.socket = ioclient("http://localhost:8081")
     this.socket.emit("sent-user-id", _userid)
   }
 
@@ -77,13 +79,13 @@ export default class UserDashBoard extends React.Component {
 
   renderContent = () => {
     switch (this.state.content_state) {
-      case 1: return (<Profile userid={this.state.userid} />)
-      case 2: return (<Friend userid={this.state.userid} />)
-      case 3: return (<Message userid={this.state.userid} />)
-      case 4: return (<Notify userid={this.state.userid} />)
-      case 5: return (<ChangePass userid={this.state.userid} />)
-      case 6: return (<UnknowProfile userid={this.state.userid} friendid={this.state.friendid} />)
-      default: return (<Home userid={this.state.userid} />)
+      case 1: return (<Profile userid={this.state.userid} socket={this.socket} />)
+      case 2: return (<Friend userid={this.state.userid} socket={this.socket} />)
+      case 3: return (<Message userid={this.state.userid} socket={this.socket} />)
+      case 4: return (<Notify userid={this.state.userid} socket={this.socket} />)
+      case 5: return (<ChangePass userid={this.state.userid} socket={this.socket} />)
+      case 6: return (<UnknowProfile userid={this.state.userid} friendid={this.state.friendid} socket={this.socket} />)
+      default: return (<Home userid={this.state.userid} socket={this.socket} />)
     }
   }
 
@@ -101,7 +103,11 @@ export default class UserDashBoard extends React.Component {
   }
 
   logoutUser = () => {
-    this.socket.emit("disconnect-logout", this.state.firstname + " đã đăng xuất")
+    let data = {
+      notify: this.state.firstname + " đã đăng xuất",
+      userid: this.state.userid
+    }
+    this.socket.emit("disconnect-logout", data)
     this.props.update_login()
   }
 
@@ -161,7 +167,7 @@ export default class UserDashBoard extends React.Component {
 
               <div className="user-menu-logout" >
                 <button onClick={() => this.logoutUser()} >
-                  <img alt="love" title="Đăng xuất" src={require("../../Image-Icon/Cog.png")} />
+                  <img alt="love" title="Đăng xuất" src={require("../../Image-Icon/Button White Load.png")} />
                 </button>
               </div>
 
@@ -186,7 +192,7 @@ export default class UserDashBoard extends React.Component {
               </div>
 
               <div className="user-body-online-render">
-                <FriendOnline />
+                <FriendOnline userid={this.state.userid} />
               </div>
 
             </div>

@@ -2,7 +2,7 @@ import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/begin-socke
 import { user, friend, message, room, notify } from "../APIs/allAPIs";
 
 
-let AddNewFriend = io => {
+let ChatMineFriend = io => {
 
   //======================================Begin=======================================================
   //====================================================================================================
@@ -29,16 +29,13 @@ let AddNewFriend = io => {
 
     //====================================================================================================
     //====================================================================================================
-    socket.on("sent-add-friend", (data) => {
-      console.log("ID của cái add friend");
-      console.log(socket.id);
-      // console.log(data);
-      let friendroomid = data.friendid;
-      // let userroomid = data.userid;
-      // let roomname = user.createNewRoom(userroomid, friendroomid);
-      let adduserid = user.returnUserProfile(data.userid);
+    socket.on("mine-and-friend-chat", (data) => {
+      console.log(data);
+      let roommine = room.returnRoom(data.userid, data.friendid).roomname;
+      socket.join(roommine);
+      let chatcontent = message.returnMessageContent(data.userid, data.friendid).content;
 
-      EmitSocket(usersocket, friendroomid, io, "add-friend-notify", adduserid);
+      EmitSocket(usersocket, roommine, io, "mine-and-friend-conversation", chatcontent);
     })
     //====================================================================================================
     //====================================================================================================
@@ -47,4 +44,4 @@ let AddNewFriend = io => {
   })
 }
 
-module.exports = AddNewFriend;
+module.exports = ChatMineFriend;

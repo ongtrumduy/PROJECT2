@@ -1,8 +1,7 @@
 import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/begin-sockets";
 import { user, friend, message, room, notify } from "../APIs/allAPIs";
 
-
-let AddNewFriend = io => {
+let ChatFriendList = io => {
 
   //======================================Begin=======================================================
   //====================================================================================================
@@ -30,8 +29,8 @@ let AddNewFriend = io => {
     //====================================================================================================
     //====================================================================================================
     socket.on("sent-add-friend", (data) => {
-      console.log("ID của cái add friend");
-      console.log(socket.id);
+      // console.log("ID của cái add friend");
+      // console.log(socket.id);
       // console.log(data);
       let friendroomid = data.friendid;
       // let userroomid = data.userid;
@@ -47,4 +46,4 @@ let AddNewFriend = io => {
   })
 }
 
-module.exports = AddNewFriend;
+module.exports = ChatFriendList;

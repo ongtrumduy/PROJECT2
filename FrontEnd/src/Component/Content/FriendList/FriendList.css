@@ -1,16 +1,77 @@
-.friend-list {
-    border: 1px solid white;
+.user-friend-list {
+    /* border: 1px solid white; */
+    border-style: groove;
     height: 580px;
     margin: 5px 10px 0 10px;
 }
 
-.friend-list .friend-list-title {
-    height: 50px;
-    line-height: 40px;
-    margin: -20px 0 0 0;
-    font-size: 28px;
+.user-friend-list .user-friend-list-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
+.user-friend-list .user-friend-list-menu button {
+    width: 200px;
+    height: 70px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.user-friend-list .user-friend-list-menu button span {
+    color: rgb(255, 0, 0);
+    font-style: italic;
+}
+
+.user-friend-list .user-friend-list-content {
+    border-style: groove;
+    margin: 10px 10px 0 10px;
+    height: 485px;
+}
+
+
+
+
+
+
+.notify .notify-list-table {
+    height: 470px;
+    overflow: auto;
+    border-style: groove;
+}
+
+.notify .notify-list-table table td {
+    text-align: left;
+}
+
+.notify .notify-list-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.notify .notify-list-table table tr {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.notify .notify-list-table table .notify-infor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin: 10px 10px 5px 10px;
+}
+
+.notify .notify-list-table table .notify-infor .notify-infor-bonus {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
 .friend-list .friend-list-head {
     display: flex;
     flex-direction: row;
@@ -103,4 +164,11 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+} */
+
+.user-profile .user-profile-avartar-content .user-friend-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
 }

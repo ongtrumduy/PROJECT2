@@ -1,0 +1,108 @@
+.add-friend-list {
+  margin: 5px 10px 0 10px;
+  font-size: 28px;
+}
+
+.add-friend-list .add-friend-list-table {
+  height: 450px;
+  overflow: auto;
+  border-style: groove;
+}
+
+.add-friend-list .add-friend-list-table table td {
+  text-align: left;
+}
+
+.add-friend-list .add-friend-list-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.add-friend-list .add-friend-list-table table tr {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.add-friend-list .add-friend-list-table table .add-friend-infor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  margin: 10px 10px 5px 10px;
+}
+
+.add-friend-list .add-friend-list-table table .add-friend-infor .add-friend-infor-bonus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor .add-friend-add-friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor .add-friend-sent-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor .add-friend-user-name {
+  color: blue;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor div {
+  font-size: 28px;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor div .add-friend-infor-time {
+  font-size: 24px;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor .add-friend-select {
+  float: right;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor .add-friend-infor-content .add-friend-infor-bonus .add-friend-infor-icon {
+  margin: 0 10px 0 0;
+}
+
+.add-friend-list .add-friend-list-table tr:hover {
+  cursor: default;
+  background-color: gray;
+}
+
+.add-friend-list .add-friend-list-table .add-friend-infor .add-friend-user-avatar img {
+  width: 70px;
+  height: 70px;
+  margin: 0 10px 0 0;
+}
+
+.add-friend-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0 15px 0 0;
+  align-items: center;
+}
+
+.add-friend-select button {
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}

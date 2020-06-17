@@ -2,7 +2,7 @@ import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/begin-socke
 import { user, friend, message, room, notify } from "../APIs/allAPIs";
 
 
-let AddNewFriend = io => {
+let AddUserList = io => {
 
   //======================================Begin=======================================================
   //====================================================================================================
@@ -29,16 +29,27 @@ let AddNewFriend = io => {
 
     //====================================================================================================
     //====================================================================================================
-    socket.on("sent-add-friend", (data) => {
-      console.log("ID của cái add friend");
-      console.log(socket.id);
-      // console.log(data);
-      let friendroomid = data.friendid;
-      // let userroomid = data.userid;
-      // let roomname = user.createNewRoom(userroomid, friendroomid);
-      let adduserid = user.returnUserProfile(data.userid);
+    socket.on("add-user-list", (data) => {
+      console.log(data)
+      let adduserlist = friend.getAddUserList(data);
+      // console.log(adduserlist);
+      EmitSocket(usersocket, data, io, "receive-add-user-list", adduserlist);
+    })
+    //====================================================================================================
 
-      EmitSocket(usersocket, friendroomid, io, "add-friend-notify", adduserid);
+    //====================================================================================================
+    socket.on("add-user-agree-list", (data) => {
+      console.log(data)
+      friend.createNewFriend(data);
+      notify.createBecameFriendNotify(data.userid, data.friendid);
+      message.createNewRoom(data.userid, data.friendid);
+    })
+    //====================================================================================================
+
+    //====================================================================================================
+    socket.on("add-user-deny-list", (data) => {
+      // console.log(data)
+      friend.cancelAddRequest(data.userid, data.friendid);
     })
     //====================================================================================================
     //====================================================================================================
@@ -47,4 +58,4 @@ let AddNewFriend = io => {
   })
 }
 
-module.exports = AddNewFriend;
+module.exports = AddUserList;

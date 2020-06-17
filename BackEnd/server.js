@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import http from "http";
 import socketio from "socket.io";
 
+
 import registerRoutes from "../BackEnd/src/routes/register";
 import loginRoutes from "../BackEnd/src/routes/login";
 import firstnameRoutes from "../BackEnd/src/routes/userdashboard";
@@ -12,9 +13,17 @@ import profileRoutes from "../BackEnd/src/routes/profile";
 import searchRoutes from "../BackEnd/src/routes/searchuser";
 import unknowRoutes from "../BackEnd/src/routes/unknowuser";
 import addfriendRoutes from "../BackEnd/src/routes/addfriend";
-import portRoutes from "../BackEnd/src/routes/port";
+import notifyRoutes from "../BackEnd/src/routes/notify";
+import adduserRoutes from "../BackEnd/src/routes/adduser";
+import chatfriendRoutes from "../BackEnd/src/routes/chatfriend";
+
 
 import addfriendSocket from "../BackEnd/src/io-sockets/addfriend";
+import adduserSocket from "../BackEnd/src/io-sockets/adduserlist";
+import chatlistSocket from "../BackEnd/src/io-sockets/chatfriendlist";
+import chatmineSocket from "../BackEnd/src/io-sockets/chatminefriend";
+
+import portRoutes from "../BackEnd/src/routes/port";
 
 
 
@@ -33,6 +42,7 @@ let corsOptions = {
 
 
 app.use(bodyParser.json());
+
 
 //========================Routes=========================================
 
@@ -67,13 +77,47 @@ unknowRoutes(app, corsOptions);
 // --------------------------AddFriend---------------------------------------
 addfriendRoutes(app, corsOptions);
 //-----------------------------------------------------------------------
+
+// --------------------------Notify---------------------------------------
+notifyRoutes(app, corsOptions);
+//-----------------------------------------------------------------------
+
+// --------------------------AddUserList---------------------------------------
+// adduserRoutes(app, corsOptions);
+//-----------------------------------------------------------------------
+
+// --------------------------ChatFriendList---------------------------------------
+chatfriendRoutes(app, corsOptions);
+//-----------------------------------------------------------------------
+
 //=========================================================================
 
+
+
+
 //============================Socket======================================
-// --------------------------AddFriend---------------------------------------
+
+// --------------------------AddFriend--------------------------------------
 addfriendSocket(io);
 //--------------------------------------------------------------------------
 
-// -------------------------Port------------------------------------------
+// --------------------------AddUserList--------------------------------------
+adduserSocket(io);
+//--------------------------------------------------------------------------
+
+// --------------------------ChatListFriend--------------------------------------
+// chatlistSocket(io);
+//--------------------------------------------------------------------------
+
+// --------------------------ChatMineFriend--------------------------------------
+chatmineSocket(io);
+//--------------------------------------------------------------------------
+
+//=========================================================================
+
+
+
+
+//============================Port======================================
 portRoutes(server, port);
-//-------------------------------------------------------------------------
+//=========================================================================

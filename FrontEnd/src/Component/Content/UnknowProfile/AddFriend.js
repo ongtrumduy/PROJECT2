@@ -1,9 +1,7 @@
 import React from "react"
-import ioclient from "socket.io-client"
-
 import request from "request"
 
-export default class Profile extends React.Component {
+export default class AddFriend extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -111,9 +109,8 @@ export default class Profile extends React.Component {
         userid: this.props.userid,
         friendid: this.props.friendid
       }
-      this.socket = ioclient("http://localhost:8081")
 
-      this.socket.emit("sent-add-friend", data)
+      this.props.socket.emit("sent-add-friend", data)
 
     } else {
       alert("Đã hủy")

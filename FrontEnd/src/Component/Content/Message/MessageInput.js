@@ -8,11 +8,10 @@ export default class Input extends React.Component {
     })
   }
 
-
-
   pressEnterChange = (event) => {
     if (event.key === "Enter") {
-      alert(`Lô ae được cmnr nè ${this.state.text}`)
+      // alert(`Lô ae được cmnr nè ${this.state.text}`)
+      this.sendTextMessage()
     }
   }
 
