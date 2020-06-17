@@ -1,5 +1,5 @@
 import fs from "fs";
-import { user, friend, message, room } from "../APIs/allAPIs";
+import user from "../APIs/user";
 
 class Notify {
   constructor() {
@@ -67,17 +67,13 @@ class Notify {
   }
 
   createBecameFriendNotify(userid, friendid) {
-    let check = friend.checkAddToRoom(userid, friendid);
     let senderfirstname = user.returnUserProfile(userid).firstname;
     let senderlastname = user.returnUserProfile(userid).lastname;
     let userfirstname = user.returnUserProfile(friendid).firstname;
     let userlastname = user.returnUserProfile(friendid).lastname;
-    if (check === true) {
-      room.createNewRoom(userid, friendid);
-      this.addNewNotify(friendid, userid, senderfirstname, senderlastname, "agreeaddfriend");
-      this.addNewNotify(friendid, userid, senderfirstname, senderlastname, "becamefriend");
-      this.addNewNotify(userid, friendid, userfirstname, userlastname, "becamefriend");
-    }
+    this.addNewNotify(friendid, userid, senderfirstname, senderlastname, "agreeaddfriend");
+    this.addNewNotify(friendid, userid, senderfirstname, senderlastname, "becamefriend");
+    this.addNewNotify(userid, friendid, userfirstname, userlastname, "becamefriend");
   }
 
 }

@@ -12,6 +12,7 @@ export let GetSocketId = (usersocket, userid, socketid) => {
   return usersocket;
 }
 
+
 export let EmitSocket = (usersocket, userid, io, event, data) => {
   if (usersocket[userid]) {
     usersocket[userid].forEach(socketId => {
@@ -21,6 +22,11 @@ export let EmitSocket = (usersocket, userid, io, event, data) => {
       return io.sockets.in(socketId).emit(event, data);
     });
   }
+}
+
+
+export let EmitRoomSocket = (roomname, io, event, data) => {
+  return io.sockets.in(roomname).emit(event, data);
 }
 
 

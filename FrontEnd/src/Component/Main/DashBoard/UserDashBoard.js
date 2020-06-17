@@ -61,6 +61,10 @@ export default class UserDashBoard extends React.Component {
       let friendrequest = data.lastname + " " + data.firstname
       alert(`${friendrequest} đã gửi lời mời kết bạn cho bạn !!!!`)
     })
+    this.socket.on("agree-friend-notify", (data) => {
+      let friendagree = data.lastname + " " + data.firstname
+      alert(`${friendagree} đã đồng ý kết bạn với bạn !!!!`)
+    })
   }
 
 

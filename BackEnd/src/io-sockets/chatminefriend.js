@@ -1,4 +1,4 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/begin-sockets";
+import { GetSocketId, EmitSocket, RemoveSocket } from "./beginsockets";
 import { user, friend, message, room, notify } from "../APIs/allAPIs";
 
 
@@ -33,9 +33,13 @@ let ChatMineFriend = io => {
       console.log(data);
       let roommine = room.returnRoom(data.userid, data.friendid).roomname;
       socket.join(roommine);
+      console.log(roommine);
       let chatcontent = message.returnMessageContent(data.userid, data.friendid).content;
+      // console.log(chatcontent);
 
-      EmitSocket(usersocket, roommine, io, "mine-and-friend-conversation", chatcontent);
+      // EmitSocket(usersocket, data.userid, io, "receive-data-conversation", chatcontent);
+      // EmitSocket(usersocket, data.friendid, io, "receive-data-conversation", chatcontent);
+      EmitRoomSocket = (roommine, io, "receive-data-conversation", chatcontent)
     })
     //====================================================================================================
     //====================================================================================================

@@ -1,4 +1,4 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/begin-sockets";
+import { GetSocketId, EmitSocket, RemoveSocket } from "./beginsockets";
 import { user, friend, message, room, notify } from "../APIs/allAPIs";
 
 
@@ -41,8 +41,19 @@ let AddUserList = io => {
     socket.on("add-user-agree-list", (data) => {
       console.log(data)
       friend.createNewFriend(data);
-      notify.createBecameFriendNotify(data.userid, data.friendid);
-      message.createNewRoom(data.userid, data.friendid);
+      let check = friend.checkAddToRoom(data.userid, data.friendid);
+      if (check === true) {
+        room.createNewRoom(data.userid, data.friendid);
+        notify.createBecameFriendNotify(data.userid, data.friendid);
+        message.createNewRoom(data.userid, data.friendid);
+      }
+
+      let useragree = {
+        firstname: user.returnUserProfile(data.userid).firstname,
+        lastname: user.returnUserProfile(data.userid).lastname
+      }
+
+      EmitSocket(usersocket, data.friendid, io, "agree-friend-notify", useragree);
     })
     //====================================================================================================
 

@@ -1,7 +1,8 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/beginsockets";
+import { GetSocketId, EmitSocket, RemoveSocket } from "./beginsockets";
 import { user, friend, message, room, notify } from "../APIs/allAPIs";
 
-let ChatFriendList = io => {
+
+let AddUserList = io => {
 
   //======================================Begin=======================================================
   //====================================================================================================
@@ -28,16 +29,28 @@ let ChatFriendList = io => {
 
     //====================================================================================================
     //====================================================================================================
-    socket.on("sent-add-friend", (data) => {
-      // console.log("ID của cái add friend");
-      // console.log(socket.id);
-      // console.log(data);
-      let friendroomid = data.friendid;
-      // let userroomid = data.userid;
-      // let roomname = user.createNewRoom(userroomid, friendroomid);
-      let adduserid = user.returnUserProfile(data.userid);
+    socket.on("add-user-list", (data) => {
+      // console.log(data)
+      let adduserlist = friend.getAddUserList(data);
+      // console.log(adduserlist);
+      EmitSocket(usersocket, data, io, "receive-add-user-list", adduserlist);
+    })
+    //====================================================================================================
 
-      EmitSocket(usersocket, friendroomid, io, "add-friend-notify", adduserid);
+    //====================================================================================================
+    socket.on("send-message-text", (data) => {
+      // console.log(data);
+      // console.log(data.friendid);
+      console.log(data.data);
+      // console.log(data.data.text);
+      let roommine = room.returnRoom(data.data.userid, data.friendid).roomname;
+      socket.join(roommine);
+
+      message.addMessageToRoom(data.data.userid, data.friendid, data.data);
+      let chatcontent = message.returnMessageContent(data.data.userid, data.friendid).content;
+
+      EmitSocket(usersocket, data.data.userid, io, "receive-message-text", chatcontent);
+      EmitSocket(usersocket, data.friendid, io, "receive-message-text", chatcontent);
     })
     //====================================================================================================
     //====================================================================================================
@@ -46,4 +59,4 @@ let ChatFriendList = io => {
   })
 }
 
-module.exports = ChatFriendList;
+module.exports = AddUserList;

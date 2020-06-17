@@ -1,6 +1,6 @@
 import React from "react"
 import "./AdminDashBoard.css"
-import request from "request"
+// import request from "request"
 import Home from "../../Content/Home/Home"
 import Friend from "../../Content/FriendList/FriendList"
 import Message from "../../Content/Message/Message"

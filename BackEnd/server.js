@@ -5,6 +5,7 @@ import http from "http";
 import socketio from "socket.io";
 
 
+
 import registerRoutes from "../BackEnd/src/routes/register";
 import loginRoutes from "../BackEnd/src/routes/login";
 import firstnameRoutes from "../BackEnd/src/routes/userdashboard";
@@ -16,12 +17,17 @@ import addfriendRoutes from "../BackEnd/src/routes/addfriend";
 import notifyRoutes from "../BackEnd/src/routes/notify";
 import adduserRoutes from "../BackEnd/src/routes/adduser";
 import chatfriendRoutes from "../BackEnd/src/routes/chatfriend";
+import messageRoutes from "../BackEnd/src/routes/message";
+
 
 
 import addfriendSocket from "../BackEnd/src/io-sockets/addfriend";
 import adduserSocket from "../BackEnd/src/io-sockets/adduserlist";
 import chatlistSocket from "../BackEnd/src/io-sockets/chatfriendlist";
 import chatmineSocket from "../BackEnd/src/io-sockets/chatminefriend";
+import chattextSocket from "../BackEnd/src/io-sockets/chatconversation";
+
+
 
 import portRoutes from "../BackEnd/src/routes/port";
 
@@ -90,6 +96,10 @@ notifyRoutes(app, corsOptions);
 chatfriendRoutes(app, corsOptions);
 //-----------------------------------------------------------------------
 
+// --------------------------Message---------------------------------------
+messageRoutes(app, corsOptions);
+//-----------------------------------------------------------------------
+
 //=========================================================================
 
 
@@ -110,7 +120,11 @@ adduserSocket(io);
 //--------------------------------------------------------------------------
 
 // --------------------------ChatMineFriend--------------------------------------
-chatmineSocket(io);
+// chatmineSocket(io);
+//--------------------------------------------------------------------------
+
+// --------------------------ChatMineFriend--------------------------------------
+chattextSocket(io);
 //--------------------------------------------------------------------------
 
 //=========================================================================

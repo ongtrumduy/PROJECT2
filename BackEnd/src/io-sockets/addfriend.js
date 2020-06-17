@@ -1,4 +1,4 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/begin-sockets";
+import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/beginsockets";
 import { user, friend, message, room, notify } from "../APIs/allAPIs";
 
 

@@ -1,5 +1,4 @@
 import React from "react"
-import request from "request"
 import AdminDashBoard from "./DashBoard/AdminDashBoard"
 import UserDashBoard from "./DashBoard/UserDashBoard"
 import LogPage from "./Log/LogPage"
