@@ -1,7 +1,6 @@
 import React from 'react'
 import request from "request"
 
-// import './message-list.scss'
 export default class App extends React.Component {
   constructor(props) {
     super(props)

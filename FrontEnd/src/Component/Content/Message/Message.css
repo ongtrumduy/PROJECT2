@@ -170,10 +170,6 @@
   overflow: auto;
 }
 
-/* .message-chat-body li {
-  width: 50%;
-} */
-
 .message-right-user {
   display: flex;
   flex-direction: row;
