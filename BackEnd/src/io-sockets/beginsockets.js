@@ -1,3 +1,5 @@
+import { user, friend, message, room, notify } from "../APIs/allAPIs";
+
 export let GetSocketId = (usersocket, userid, socketid) => {
   // console.log("Id của cái userdashboard");
   // console.log(socket.id);
@@ -25,8 +27,23 @@ export let EmitSocket = (usersocket, userid, io, event, data) => {
 }
 
 
-export let EmitRoomSocket = (roomname, io, event, data) => {
-  return io.sockets.in(roomname).emit(event, data);
+export let AppearUseridSocket = (usersocket, userid) => {
+  let chatfriendlist = friend.getChatFriendList(userid);
+  console.log(chatfriendlist);
+  let appearlist = [];
+
+  chatfriendlist.forEach(item => {
+    if (usersocket[item.friendid]) {
+      let friendinfor = {
+        friendid: item.friendid,
+        friendlastname: item.friendlastname,
+        friendfirstname: item.friendfirstname
+      }
+      appearlist.push(friendinfor);
+    }
+  })
+
+  return appearlist;
 }
 
 

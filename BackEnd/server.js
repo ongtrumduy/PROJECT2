@@ -26,6 +26,7 @@ import adduserSocket from "../BackEnd/src/io-sockets/adduserlist";
 import chatlistSocket from "../BackEnd/src/io-sockets/chatfriendlist";
 import chatmineSocket from "../BackEnd/src/io-sockets/chatminefriend";
 import chattextSocket from "../BackEnd/src/io-sockets/chatconversation";
+import friendonlineSocket from "../BackEnd/src/io-sockets/friendonline";
 
 
 
@@ -125,6 +126,10 @@ adduserSocket(io);
 
 // --------------------------ChatMineFriend--------------------------------------
 chattextSocket(io);
+//--------------------------------------------------------------------------
+
+// --------------------------FriendOnline--------------------------------------
+friendonlineSocket(io);
 //--------------------------------------------------------------------------
 
 //=========================================================================

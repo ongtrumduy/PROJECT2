@@ -39,7 +39,8 @@ let ChatMineFriend = io => {
 
       // EmitSocket(usersocket, data.userid, io, "receive-data-conversation", chatcontent);
       // EmitSocket(usersocket, data.friendid, io, "receive-data-conversation", chatcontent);
-      EmitRoomSocket = (roommine, io, "receive-data-conversation", chatcontent)
+      // io.sockets.in(roommine).emit("receive-data-conversation", chatcontent);
+      // EmitRoomSocket(roommine, io, "receive-data-conversation", chatcontent)
     })
     //====================================================================================================
     //====================================================================================================

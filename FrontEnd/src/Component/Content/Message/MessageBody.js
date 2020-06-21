@@ -79,6 +79,14 @@ export default class Message extends React.Component {
   }
 
 
+  componentDidUpdate = () => {
+    let firstmessage = document.getElementById("first-message")
+    if (firstmessage) {
+      firstmessage.scrollTo(0, firstmessage.scrollHeight)
+    }
+  }
+
+
 
   chatMessageBody = () => {
     return (
@@ -86,7 +94,7 @@ export default class Message extends React.Component {
         <div className="chat-message-body-username">
           <p>{this.props.friendlastname} {this.props.friendfirstname}</p>
         </div>
-        <div className="chat-message-body-bodychat">
+        <div className="chat-message-body-bodychat" id="first-message">
           {this.state.datacurrentlist.map((item, index) => (
             <Item userchatid={item.userid} userid={this.props.userid} text={item.text} />
           )

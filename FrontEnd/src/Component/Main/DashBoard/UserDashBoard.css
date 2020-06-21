@@ -40,6 +40,16 @@
     outline: none;
 }
 
+.user-container .user-content .user-menu span {
+    font-style: italic;
+    font-weight: bold;
+    color: blue;
+    font-size: 20px;
+    position: relative;
+    bottom: 25px;
+    right: 1px;
+}
+
 .user-container .user-content .user-menu .user-menu-logo {
     height: 70px;
     width: 60px;

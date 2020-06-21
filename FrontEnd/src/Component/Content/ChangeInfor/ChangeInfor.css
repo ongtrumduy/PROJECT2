@@ -1,9 +1,86 @@
+.change-infor-backgroundColor {
+  width: 99.81%;
+  height: 150%;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgb(0, 0, 0);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -200px;
+  /* opacity: 0.9; */
+}
+
 .change-information {
-  z-index: 1;
+  z-index: 100;
   border-style: groove;
-  background-color: rgb(24, 24, 160);
+  border-radius: 10px;
+  background-color: rgb(230, 187, 0);
   color: rgb(134, 11, 11);
-  width: 400px;
-  display: grid;
-  margin: -100px auto;
+  font-style: italic;
+  width: 350px;
+  height: 500px;
+  bottom: 300px;
+  position: absolute;
+  left: 495px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation-name: changeinfor;
+}
+
+@keyframes changeinfor {
+  from {
+    bottom: 40px;
+    background-color: purple;
+    /* animation-timing-function: ease-out; */
+  }
+  to {
+    bottom: 50px;
+    background-color: purple;
+  }
+}
+
+.change-information form {
+  margin: -80px 0 0 0;
+  opacity: 1;
+}
+
+.change-information input {
+  border-radius: 10px;
+  width: 200px;
+  height: 36px;
+  outline: none;
+  margin: -10px 0 -20px 0;
+}
+
+.change-information img {
+  position: relative;
+  left: 165px;
+  width: 40px;
+  top: 30px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.change-information .change-infor-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.change-information .change-infor-content input {
+  width: 100px;
+  border-radius: 10px;
+  height: 36px;
+  outline: none;
+}
+
+.change-information .sex-option-choose select {
+  font-size: 14px;
+  width: 200px;
+  height: 36px;
+  margin: 0 0 10px 0;
+  border-radius: 10px;
+  outline: none;
 }

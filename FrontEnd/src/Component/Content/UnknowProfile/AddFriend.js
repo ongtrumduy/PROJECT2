@@ -118,9 +118,9 @@ export default class AddFriend extends React.Component {
   }
 
   sendDeleteRequest = () => {
-    let deleteAdd = window.confirm(`Xác nhận hủy lời mời kết bạn cho ${this.props.firstname}???`)
+    let deleteAdd = window.confirm(`Xác nhận hủy kết bạn với ${this.props.firstname}???`)
     if (deleteAdd) {
-      alert(`Đã hủy lời mời kết bạn đến ${this.props.firstname}`)
+      alert(`Đã hủy kết bạn với ${this.props.firstname}`)
       this.setState({
         checkrequest: 0
       })

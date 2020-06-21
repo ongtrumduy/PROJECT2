@@ -5,9 +5,7 @@ import Main from "./Component/Main/Main";
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header"> */}
         <Main />
-      {/* </header> */}
     </div>
   );
 }

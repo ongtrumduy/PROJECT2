@@ -1,7 +1,6 @@
 import React from "react"
 import request from "request"
 import moment from "moment"
-import ChangeInfor from "../ChangeInfor/ChangeInfor"
 import "./Profile.css"
 
 export default class Profile extends React.Component {
@@ -9,12 +8,11 @@ export default class Profile extends React.Component {
         super(props)
         this.state = {
             content_state: false,
-            changeinfor: false,
             firstname: "",
             lastname: "",
             birth: "",
             gender: "",
-            enjoy: ""
+            enjoy: "",
         }
     }
 
@@ -119,13 +117,11 @@ export default class Profile extends React.Component {
         )
     }
 
-    changeInfor = () => {
-        // if (this.state.changeinfor) {
-        return (
-            <div>
-                <ChangeInfor />
-            </div>
-        )
+
+    statusChangeInfor = () => {
+        this.props.status(true)
+        let data = this.props.userid
+        this.props.socket.emit("id-change-infor", data)
     }
 
 
@@ -140,7 +136,7 @@ export default class Profile extends React.Component {
                     <p> <img alt="check" src={require("../../Image-Icon/Checkbox Full.png")} /> Sở thích: {this.state.enjoy}</p>
                 </div>
                 <div className="user-profile-change-infor" style={{ margin: "100px 0 0 0" }}>
-                    <input style={{ fontWeight: "bold" }} type="button" value="Thay đổi thông tin" onClick={() => this.changeInfor()} />
+                    <input style={{ fontWeight: "bold" }} type="button" value="Thay đổi thông tin" onClick={() => this.statusChangeInfor()} />
                 </div>
             </div>
         )
@@ -171,7 +167,6 @@ export default class Profile extends React.Component {
                 <div className="user-profile-avartar-content">
                     <div>{this.userProfileDashBoard()}</div>
                 </div>
-                {/* <ChangeInfor /> */}
             </div>
         )
     }

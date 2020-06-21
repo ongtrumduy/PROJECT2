@@ -13,7 +13,7 @@ export default class MessageItem extends React.Component {
     return (
       <div className={
         (this.props.userid === this.props.userchatid) ? "message-right-user" : "message-left-friend"
-      }>
+      } >
         {/* <div className="message-chat-avatar">
           <img alt="user" src={require("../../Image-Icon/default-avatar.png")} />
         </div> */}

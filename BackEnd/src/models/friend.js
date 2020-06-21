@@ -1,5 +1,5 @@
 import fs from "fs";
-import user from "../APIs/user";
+import user from "./user";
 
 
 class Friend {
@@ -110,6 +110,22 @@ class Friend {
       }
     })
     return chatfriendlist;
+  }
+
+  getFriendIdList(userid){
+    let getfriendIdList = [];
+    this.UserFriend.forEach(item => {
+      if (item.userid === userid) {
+        let check = this.checkAddToRoom(userid, item.friendid);
+        if (check === true) {
+          let chatfriend = {
+            friendid: item.friendid,
+          }
+          getfriendIdList.push(chatfriend);
+        }
+      }
+    })
+    return getfriendIdList;
   }
 
 }

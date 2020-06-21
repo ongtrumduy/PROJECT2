@@ -2,14 +2,15 @@ import React from "react"
 import AdminDashBoard from "./DashBoard/AdminDashBoard"
 import UserDashBoard from "./DashBoard/UserDashBoard"
 import LogPage from "./Log/LogPage"
-// import ChangeInfor from "../Content/ChangeInfor/ChangeInfor"
+import ChangeInfor from "../Content/ChangeInfor/ChangeInfor"
 
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             update_login: "Log",
-            userid: ""
+            userid: "",
+            changeinfor: ""
         }
     }
 
@@ -23,12 +24,13 @@ export default class Main extends React.Component {
                 <UserDashBoard
                     update_login={this.updateLog}
                     userid={this.state.userid}
+                    status={this.statusChangeInfor}
                 />)
             default: return (
                 <LogPage
                     update_userDB={this.updateUser}
                     update_adminDB={this.updateAdmin}
-                    // set_userID={this.setUserId}
+                // set_userID={this.setUserId}
                 />)
         }
     }
@@ -39,6 +41,12 @@ export default class Main extends React.Component {
     //         firstname: _firstname,
     //     })
     // }
+
+    statusChangeInfor = (_status) => {
+        this.setState({
+            changeinfor: _status
+        })
+    }
 
     updateLog = () => {
         this.setState({
@@ -63,7 +71,7 @@ export default class Main extends React.Component {
             // <div style={{display: "inline"}, {float: "left"}}>
             <div>
                 {this.updateMain()}
-                {/* <ChangeInfor /> */}
+                <ChangeInfor status={this.state.changeinfor} />
             </div>
         )
     }

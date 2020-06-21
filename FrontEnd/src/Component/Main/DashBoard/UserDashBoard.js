@@ -23,7 +23,8 @@ export default class UserDashBoard extends React.Component {
       userid: "",
       friendid: "",
       firstname: "",
-      searchuser: ""
+      searchuser: "",
+      friendonlinelist: []
     }
   }
 
@@ -65,6 +66,12 @@ export default class UserDashBoard extends React.Component {
       let friendagree = data.lastname + " " + data.firstname
       alert(`${friendagree} đã đồng ý kết bạn với bạn !!!!`)
     })
+    this.socket.on("receive-friend-online", data => {
+      let datareceive = data
+      this.setState({
+        friendonlinelist: datareceive
+      })
+    })
   }
 
 
@@ -83,7 +90,7 @@ export default class UserDashBoard extends React.Component {
 
   renderContent = () => {
     switch (this.state.content_state) {
-      case 1: return (<Profile userid={this.state.userid} socket={this.socket} />)
+      case 1: return (<Profile userid={this.state.userid} socket={this.socket} status={this.props.status} />)
       case 2: return (<Friend userid={this.state.userid} socket={this.socket} />)
       case 3: return (<Message userid={this.state.userid} socket={this.socket} />)
       case 4: return (<Notify userid={this.state.userid} socket={this.socket} />)
@@ -148,18 +155,21 @@ export default class UserDashBoard extends React.Component {
               <div className="user-menu-friend">
                 <button onClick={() => { this.updateContentState(2) }}>
                   <img alt="users" title="Bạn bè" src={require("../../Image-Icon/Users.png")} />
+                  {/* <span>0</span> */}
                 </button>
               </div>
 
               <div className="user-menu-message">
                 <button onClick={() => { this.updateContentState(3) }}>
                   <img alt="message" title="Tin nhắn" src={require("../../Image-Icon/IM.png")} />
+                  {/* <span>0</span> */}
                 </button>
               </div>
 
               <div className="user-menu-notify">
                 <button onClick={() => { this.updateContentState(4) }}>
                   <img alt="notify" title="Thông báo" src={require("../../Image-Icon/Globe Active.png")} />
+                  {/* <span>0</span> */}
                 </button>
               </div>
 
@@ -196,14 +206,14 @@ export default class UserDashBoard extends React.Component {
               </div>
 
               <div className="user-body-online-render">
-                <FriendOnline userid={this.state.userid} />
+                <FriendOnline userid={this.state.userid} socket={this.socket} friendonlinelist={this.state.friendonlinelist} />
               </div>
 
             </div>
           </div>
 
           <div className="user-footer">
-            <p>App kết nối trò chuyện và hẹn hò Sinh viên ver 1.0</p>
+            <p>App giao lưu kết bạn và trò chuyện ver 2.0</p>
             <p>Design by Project 2 - <a href="https://www.facebook.com/thoiloanhhung">Phạm Duy</a> - Đại học Bách khoa Hà Nội</p>
             <p>Hanoi University of Science and Technology - No. 1, Dai Co Viet Str., Hanoi, Vietnam</p>
           </div>

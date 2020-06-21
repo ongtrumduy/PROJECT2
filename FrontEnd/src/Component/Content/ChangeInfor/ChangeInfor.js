@@ -1,4 +1,5 @@
 import React from "react"
+import request from "request"
 import "./ChangeInfor.css"
 
 export default class ChangePass extends React.Component {
@@ -7,48 +8,95 @@ export default class ChangePass extends React.Component {
         this.state = {
             firstname: "",
             lastname: "",
+            phonenumber: "",
             birth: "",
-            sex: "",
-            hobby: ""
+            gender: "",
+            hobby: "",
+            status: false
         }
     }
 
-    submitChangeInfor = () => {
-        alert("hello ae");
+    setChangeInfor = (checkempty, checksame, callback, _userid, _firstname, _lastname, _phonenumber, _birth, _gender) => {
+        var options = {
+            method: "POST",
+            url: "http://localhost:8081/changeinfor",
+            headers: {
+                "cache-control": "no-cache",
+                Connection: "keep-alive",
+                "Content-Length": "0",
+                "Accept-Encoding": "gzip, deflate",
+                Host: "localhost:8081",
+                "Cache-Control": "no-cache",
+                Accept: "*/*",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                check: "1",
+                userid: _userid,
+                firstname: _firstname,
+                lastname: _lastname,
+                phonenumber: _phonenumber,
+                birth: _birth,
+                gender: _gender
+            })
+        }
+
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error)
+            // console.log(body)
+            let receiveinfor = JSON.parse(body)
+            callback(receiveinfor)
+        })
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        this.setState({
+            status: nextProps.status
+        })
+    }
+
+    cancelChangeInfor = () => {
+        this.setState({
+            status: false
+        })
     }
 
     changePass = () => {
         return (
-            <div className="change-information">
-                <form onSubmit={this.submitChangeInfor}>
-                    <div className="change-infor" >
-                        <p>Họ và tên (*)</p>
-                        <div className="change-infor-content">
-                            <div className="change-firstname">
-                                <input type="text" onChange={this.handleFirstnameChange} value={this.state.firstname} placeholder="Họ" />
+            <div className="change-infor-backgroundColor"
+                style={this.state.status ? { display: "flex" } : { display: "none" }}>
+
+                <div className="change-information"
+                    style={this.state.status ? { display: "flex" } : { display: "none" }}>
+
+                    <form onSubmit={this.submitChangeInfor}>
+                        <img onClick={() => this.cancelChangeInfor()} alt="cancel" src={require("../../Image-Icon/Button White Remove.png")} />
+                        <div className="change-infor" >
+                            <p>Họ và tên (*)</p>
+                            <div className="change-infor-content">
+                                <div className="change-firstname">
+                                    <input type="text" onChange={this.handleFirstnameChange} value={this.state.firstname} placeholder="Họ" />
+                                </div>
+                                <div className="change-lastname">
+                                    <input type="text" onChange={this.handleLastnameChange} value={this.state.lastname} placeholder="Tên" />
+                                </div>
                             </div>
-                            <div className="change-lastname">
-                                <input type="text" onChange={this.handleLastnameChange} value={this.state.lastname} placeholder="Tên" />
+                            <p>Số điện thoại (*)</p>
+                            <input type="text" onChange={this.handleUsernumberChange} value={this.state.usernumber} />
+                            <p>Ngày sinh (*)</p>
+                            <input type="date" onChange={this.handleBirthChange} value={this.state.birth} />
+                            <p>Giới tính (*)</p>
+                            <div className="sex-option-choose">
+                                <select sex={this.state.gender} onChange={this.handleGenderChange}>
+                                    <option value="">Chọn</option>
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                </select>
                             </div>
                         </div>
-                        <p>Số điện thoại (*)</p>
-                        <input type="text" onChange={this.handleUsernumberChange} value={this.state.usernumber} />
-                        <p>Mật khẩu (*)</p>
-                        <input type="password" onChange={this.handlePasswordChange} value={this.state.password} />
-                        <p>Ngày sinh (*)</p>
-                        <input type="date" onChange={this.handleBirthChange} value={this.state.birth} />
-                        <p>Giới tính (*)</p>
-                        <div className="sex-option-choose">
-                            <select sex={this.state.sex} onChange={this.handleSexChange}>
-                                <option value="">Chọn</option>
-                                <option value="male">Nam</option>
-                                <option value="famale">Nữ</option>
-                                <option value="other">Khác</option>
-                            </select>
-                        </div>
-                    </div>
-                    <input type="submit" value="Xác nhận" />
-                </form>
+                        <input type="submit" value="Xác nhận" style={{ fontWeight: "bold", cursor: "pointer" }} />
+                    </form>
+                </div>
             </div>
         )
     }
