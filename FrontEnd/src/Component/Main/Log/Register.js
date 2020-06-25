@@ -64,12 +64,6 @@ export default class Login extends React.Component {
         })
     }
 
-    handleUsernumberChange = (event) => {
-        this.setState({
-            usernumber: event.target.value
-        })
-    }
-
     handlePhonenumberChange = (event) => {
         this.setState({
             phonenumber: event.target.value

@@ -11,23 +11,49 @@ export default class FriendOnline extends React.Component {
 
 
     componentWillMount = () => {
-        // this.props.socket.emit("send-friend-online", this.props.userid)
-        // this.props.socket.on("receive-friend-online", data => {
-        let datareceive = this.props.friendonlinelist
-        this.setState({
-            friendonlinelist: datareceive
+        this.props.socket.emit("send-friend-online", this.props.userid)
+        this.props.socket.on("receive-current-friend-online", data => {
+            let datareceive = data
+            this.setState({
+                friendonlinelist: datareceive
+            })
+        })
+        this.props.socket.on("receive-update-friend-online", data => {
+            if (data === "update") {
+                this.props.socket.emit("send-friend-online", this.props.userid)
+
+                this.props.socket.on("receive-current-friend-online", data => {
+                    let datareceive = data
+                    this.setState({
+                        friendonlinelist: datareceive
+                    })
+                })
+            }
         })
     }
 
-    componentWillReceiveProps = (nextProps) => {
-        // componentDidUpdate = () => {
-        if (this.props.friendonlinelist !== nextProps.friendonlinelist) {
-            // this.props.socket.emit("send-friend-online", this.props.userid)
-            // this.props.socket.on("receive-friend-online", data => {
-            let datareceive = this.props.friendonlinelist
-            // console.log(datareceive)
-            this.setState({
-                friendonlinelist: datareceive
+    componentWillReceiveProps = nextProps => {
+        if (this.props.userid === nextProps.userid) {
+            this.props.socket.emit("send-friend-online", this.props.userid)
+
+            this.props.socket.on("receive-current-friend-online", data => {
+                let datareceive = data
+                this.setState({
+                    friendonlinelist: datareceive
+                })
+            })
+
+            this.props.socket.on("receive-update-friend-online", data => {
+                if (data === "update") {
+                    this.props.socket.emit("send-friend-online", this.props.userid)
+
+                    this.props.socket.on("receive-current-friend-online", data => {
+                        let datareceive = data
+                        this.setState({
+                            friendonlinelist: datareceive
+                        })
+                    })
+                }
             })
         }
     }
@@ -35,22 +61,20 @@ export default class FriendOnline extends React.Component {
 
     friendOnline = () => {
         return (
-            <div>
-                <div className="friend-online">
-                    <table>
-                        <thead>
-                        </thead>
-                        <tbody>
-                            {this.state.friendonlinelist.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.friendlastname} {item.friendfirstname}</td>
-                                    <td><img alt="online" src={require("../../Image-Icon/Light Bulb On.png")} /></td>
-                                </tr>
-                            )
-                            )}
-                        </tbody>
-                    </table>
-                </div>
+            <div className="friend-online">
+                <table>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        {this.state.friendonlinelist.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.friendlastname} {item.friendfirstname}</td>
+                                <td><img alt="online" src={require("../../Image-Icon/Light Bulb On.png")} /></td>
+                            </tr>
+                        )
+                        )}
+                    </tbody>
+                </table>
             </div>
         )
     }
@@ -59,7 +83,7 @@ export default class FriendOnline extends React.Component {
         return (
             <div>
                 {this.friendOnline()}
-            </div>
+            </div >
         )
     }
 }

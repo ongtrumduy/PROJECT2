@@ -1,5 +1,5 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "./beginsockets";
-import { user, friend, message, room, notify } from "../APIs/allAPIs";
+import { GetSocketId, EmitSocket, RemoveSocket, RemoveDisconnectSocket } from "../io-sockets/beginsockets";
+import { user, friend, message, room, notify } from "../models/allmodels";
 
 
 let AddUserList = io => {
@@ -7,12 +7,14 @@ let AddUserList = io => {
   //======================================Begin=======================================================
   //====================================================================================================
   let usersocket = {};
+  let useronlinelist = [];
   let nowuserid = 0;
   let logoutuserid = 0;
   io.on("connection", (socket) => {
     socket.on("sent-user-id", (data) => {
       nowuserid = data;
       usersocket = GetSocketId(usersocket, nowuserid, socket.id);
+      useronlinelist = Object.keys(usersocket);
     })
 
     socket.on("disconnect-logout", (data) => {
@@ -21,7 +23,7 @@ let AddUserList = io => {
     })
 
     socket.on("disconnect", (data) => {
-      usersocket = RemoveSocket(usersocket, logoutuserid, socket.id);
+      RemoveDisconnectSocket(usersocket, data, useronlinelist, socket.id);
     })
     //====================================================================================================
     //====================================================================================================
@@ -30,7 +32,7 @@ let AddUserList = io => {
     //====================================================================================================
     //====================================================================================================
     socket.on("add-user-list", (data) => {
-      console.log(data)
+      // console.log(data)
       let adduserlist = friend.getAddUserList(data);
       // console.log(adduserlist);
       EmitSocket(usersocket, data, io, "receive-add-user-list", adduserlist);
@@ -39,13 +41,16 @@ let AddUserList = io => {
 
     //====================================================================================================
     socket.on("add-user-agree-list", (data) => {
-      console.log(data)
+      // console.log(data)
       friend.createNewFriend(data);
       let check = friend.checkAddToRoom(data.userid, data.friendid);
       if (check === true) {
-        room.createNewRoom(data.userid, data.friendid);
         notify.createBecameFriendNotify(data.userid, data.friendid);
-        message.createNewRoom(data.userid, data.friendid);
+        let checkroom = room.checkRoomExist(data.userid, data.friendid);
+        if (checkroom === true) {
+          room.createNewRoom(data.userid, data.friendid);
+          message.createNewRoom(data.userid, data.friendid);
+        }
       }
 
       let useragree = {

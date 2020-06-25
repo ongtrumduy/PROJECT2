@@ -1,0 +1,98 @@
+.user-total {
+  margin: 5px 10px 0 10px;
+  font-size: 28px;
+}
+
+.user-total .user-total-title h3 {
+  text-align: left;
+}
+
+.user-total .user-total-list-table {
+  height: 470px;
+  overflow: auto;
+  border-style: groove;
+}
+
+.user-total .user-total-list-table table td {
+  text-align: left;
+}
+
+.user-total .user-total-list-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-total .user-total-list-table table tr {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.user-total .user-total-list-table table .user-total-infor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  margin: 10px 10px 5px 10px;
+}
+
+.user-total .user-total-list-table table .user-total-infor .user-total-infor-bonus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-add-friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-sent-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-like-friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-user-name {
+  color: blue;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.user-total .user-total-list-table .user-total-infor div {
+  font-size: 28px;
+}
+
+.user-total .user-total-list-table .user-total-infor div .user-total-infor-time {
+  font-size: 24px;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-infor-content .user-total-infor-bonus {
+  float: left;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-infor-content .user-total-infor-bonus .user-total-infor-icon {
+  margin: 0 10px 0 0;
+}
+
+.user-total .user-total-list-table td:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-user-avatar img {
+  width: 70px;
+  height: 70px;
+  margin: 0 10px 0 0;
+}

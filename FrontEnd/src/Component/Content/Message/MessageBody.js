@@ -86,8 +86,6 @@ export default class Message extends React.Component {
     }
   }
 
-
-
   chatMessageBody = () => {
     return (
       <div>
@@ -96,7 +94,7 @@ export default class Message extends React.Component {
         </div>
         <div className="chat-message-body-bodychat" id="first-message">
           {this.state.datacurrentlist.map((item, index) => (
-            <Item userchatid={item.userid} userid={this.props.userid} text={item.text} />
+            <Item userchatid={item.userid} userid={this.props.userid} text={item.text} date={item.date} />
           )
           )}
         </div>

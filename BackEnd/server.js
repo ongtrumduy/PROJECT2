@@ -6,28 +6,10 @@ import socketio from "socket.io";
 
 
 
-import registerRoutes from "../BackEnd/src/routes/register";
-import loginRoutes from "../BackEnd/src/routes/login";
-import firstnameRoutes from "../BackEnd/src/routes/userdashboard";
-import homeRoutes from "../BackEnd/src/routes/home";
-import profileRoutes from "../BackEnd/src/routes/profile";
-import searchRoutes from "../BackEnd/src/routes/searchuser";
-import unknowRoutes from "../BackEnd/src/routes/unknowuser";
-import addfriendRoutes from "../BackEnd/src/routes/addfriend";
-import notifyRoutes from "../BackEnd/src/routes/notify";
-import adduserRoutes from "../BackEnd/src/routes/adduser";
-import chatfriendRoutes from "../BackEnd/src/routes/chatfriend";
-import messageRoutes from "../BackEnd/src/routes/message";
+import allRoutes from "../BackEnd/src/routes/allroutes";
 
 
-
-import addfriendSocket from "../BackEnd/src/io-sockets/addfriend";
-import adduserSocket from "../BackEnd/src/io-sockets/adduserlist";
-import chatlistSocket from "../BackEnd/src/io-sockets/chatfriendlist";
-import chatmineSocket from "../BackEnd/src/io-sockets/chatminefriend";
-import chattextSocket from "../BackEnd/src/io-sockets/chatconversation";
-import friendonlineSocket from "../BackEnd/src/io-sockets/friendonline";
-
+import allSockets from "../BackEnd/src/io-sockets/allsockets";
 
 
 import portRoutes from "../BackEnd/src/routes/port";
@@ -53,87 +35,17 @@ app.use(bodyParser.json());
 
 //========================Routes=========================================
 
-// -----------------------Register---------------------------------------
-registerRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// -----------------------Login---------------------------------------
-loginRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// -----------------------UserDashBoard---------------------------------------
-firstnameRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------Home---------------------------------------
-homeRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------Profile---------------------------------------
-profileRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------SearchUser---------------------------------------
-searchRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------UnknowhUser---------------------------------------
-unknowRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------AddFriend---------------------------------------
-addfriendRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------Notify---------------------------------------
-notifyRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------AddUserList---------------------------------------
-// adduserRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------ChatFriendList---------------------------------------
-chatfriendRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
-
-// --------------------------Message---------------------------------------
-messageRoutes(app, corsOptions);
-//-----------------------------------------------------------------------
+allRoutes(app, corsOptions);
 
 //=========================================================================
-
 
 
 
 //============================Socket======================================
 
-// --------------------------AddFriend--------------------------------------
-addfriendSocket(io);
-//--------------------------------------------------------------------------
-
-// --------------------------AddUserList--------------------------------------
-adduserSocket(io);
-//--------------------------------------------------------------------------
-
-// --------------------------ChatListFriend--------------------------------------
-// chatlistSocket(io);
-//--------------------------------------------------------------------------
-
-// --------------------------ChatMineFriend--------------------------------------
-// chatmineSocket(io);
-//--------------------------------------------------------------------------
-
-// --------------------------ChatMineFriend--------------------------------------
-chattextSocket(io);
-//--------------------------------------------------------------------------
-
-// --------------------------FriendOnline--------------------------------------
-friendonlineSocket(io);
-//--------------------------------------------------------------------------
+allSockets(io);
 
 //=========================================================================
-
 
 
 

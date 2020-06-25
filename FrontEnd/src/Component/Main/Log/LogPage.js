@@ -74,7 +74,7 @@ export default class LogPage extends React.Component {
     render() {
         return (
             <div>
-                {/* <h2>APP KẾT NỐI TRÒ CHUYỆN VÀ HẸN HÒ SINH VIÊN</h2> */}
+                {/* <h2>APP GIAO LƯU KẾT BẠN VÀ TRÒ CHUYỆN</h2> */}
                 {this.updateLogPage()}
             </div>
         )

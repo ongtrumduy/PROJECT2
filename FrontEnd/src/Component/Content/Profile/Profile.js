@@ -1,6 +1,9 @@
 import React from "react"
 import request from "request"
 import moment from "moment"
+
+import UpdateImage from "./UpdateImage"
+
 import "./Profile.css"
 
 export default class Profile extends React.Component {
@@ -162,6 +165,9 @@ export default class Profile extends React.Component {
                 <div className="user-profile-avartar-infor">
                     <div>{this.userAvartar()}</div>
                     <div>{this.userFullName()}</div>
+                    {/* <div>
+                        <UpdateImage />
+                    </div> */}
                 </div>
 
                 <div className="user-profile-avartar-content">

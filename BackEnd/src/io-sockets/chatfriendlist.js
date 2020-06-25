@@ -1,17 +1,19 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "../io-sockets/beginsockets";
-import { user, friend, message, room, notify } from "../APIs/allAPIs";
+import { GetSocketId, EmitSocket, RemoveSocket, RemoveDisconnectSocket } from "../io-sockets/beginsockets";
+import { user, friend, message, room, notify } from "../models/allmodels";
 
 let ChatFriendList = io => {
 
   //======================================Begin=======================================================
   //====================================================================================================
   let usersocket = {};
+  let useronlinelist = [];
   let nowuserid = 0;
   let logoutuserid = 0;
   io.on("connection", (socket) => {
     socket.on("sent-user-id", (data) => {
       nowuserid = data;
       usersocket = GetSocketId(usersocket, nowuserid, socket.id);
+      useronlinelist = Object.keys(usersocket);
     })
 
     socket.on("disconnect-logout", (data) => {
@@ -20,7 +22,7 @@ let ChatFriendList = io => {
     })
 
     socket.on("disconnect", (data) => {
-      usersocket = RemoveSocket(usersocket, logoutuserid, socket.id);
+      RemoveDisconnectSocket(usersocket, data, useronlinelist, socket.id);
     })
     //====================================================================================================
     //====================================================================================================

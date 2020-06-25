@@ -1,5 +1,6 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "./beginsockets";
-import { user, friend, message, room, notify } from "../APIs/allAPIs";
+import { GetSocketId, EmitSocket, RemoveSocket, RemoveDisconnectSocket } from "../io-sockets/beginsockets";
+import { user, friend, message, room, notify } from "../models/allmodels";
+import moment from "moment";
 
 
 let AddUserList = io => {
@@ -7,12 +8,14 @@ let AddUserList = io => {
   //======================================Begin=======================================================
   //====================================================================================================
   let usersocket = {};
+  let useronlinelist = [];
   let nowuserid = 0;
   let logoutuserid = 0;
   io.on("connection", (socket) => {
     socket.on("sent-user-id", (data) => {
       nowuserid = data;
       usersocket = GetSocketId(usersocket, nowuserid, socket.id);
+      useronlinelist = Object.keys(usersocket);
     })
 
     socket.on("disconnect-logout", (data) => {
@@ -21,7 +24,7 @@ let AddUserList = io => {
     })
 
     socket.on("disconnect", (data) => {
-      usersocket = RemoveSocket(usersocket, logoutuserid, socket.id);
+      RemoveDisconnectSocket(usersocket, data, useronlinelist, socket.id);
     })
     //====================================================================================================
     //====================================================================================================
@@ -41,12 +44,20 @@ let AddUserList = io => {
     socket.on("send-message-text", (data) => {
       // console.log(data);
       // console.log(data.friendid);
-      console.log(data.data);
+      // console.log(data.data);
       // console.log(data.data.text);
-      let roommine = room.returnRoom(data.data.userid, data.friendid).roomname;
-      socket.join(roommine);
+      // let roommine = room.returnRoom(data.data.userid, data.friendid).roomname;
+      // socket.join(roommine);
+      let time = moment().format("HH:mm DD-MM-YYYY");
+      let datamessage = {
+        userid: data.data.userid,
+        text: data.data.text,
+        date: time
+      }
 
-      message.addMessageToRoom(data.data.userid, data.friendid, data.data);
+      // console.log(time);
+
+      message.addMessageToRoom(data.data.userid, data.friendid, datamessage);
       let chatcontent = message.returnMessageContent(data.data.userid, data.friendid).content;
 
       EmitSocket(usersocket, data.data.userid, io, "receive-message-text", chatcontent);

@@ -1,0 +1,28 @@
+.statistic {
+  margin: 5px 10px 0 10px;
+  font-size: 28px;
+}
+
+.statistic .statistic-title h3 {
+  text-align: left;
+}
+
+.statistic .statistic-body {
+  height: 470px;
+  overflow: auto;
+  border-style: groove;
+  overflow: auto;
+}
+
+.statistic .statistic-body p {
+  margin-top: 50px;
+  text-align: left;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.statistic .statistic-body span {
+  color: blue;
+  margin-left: 20px;
+  font-weight: bold;
+}

@@ -61,6 +61,36 @@ export default class ChangePass extends React.Component {
         })
     }
 
+    handleFirstnameChange = (event) => {
+        this.setState({
+            firstname: event.target.value
+        })
+    }
+
+    handleLastnameChange = (event) => {
+        this.setState({
+            lastname: event.target.value
+        })
+    }
+
+    handlePhonenumberChange = (event) => {
+        this.setState({
+            phonenumber: event.target.value
+        })
+    }
+
+    handleBirthChange = (event) => {
+        this.setState({
+            birth: event.target.value
+        })
+    }
+
+    handleGenderChange = (event) => {
+        this.setState({
+            gender: event.target.value
+        })
+    }
+
     changePass = () => {
         return (
             <div className="change-infor-backgroundColor"

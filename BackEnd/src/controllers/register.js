@@ -1,4 +1,4 @@
-import { user, friend, message, room, notify } from "../APIs/allAPIs";
+import { user, friend, message, room, notify } from "../models/allmodels";
 
 
 let GetRegister = (req, res, next) => {

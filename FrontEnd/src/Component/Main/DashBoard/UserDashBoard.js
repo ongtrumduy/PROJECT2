@@ -23,8 +23,7 @@ export default class UserDashBoard extends React.Component {
       userid: "",
       friendid: "",
       firstname: "",
-      searchuser: "",
-      friendonlinelist: []
+      searchuser: ""
     }
   }
 
@@ -66,12 +65,8 @@ export default class UserDashBoard extends React.Component {
       let friendagree = data.lastname + " " + data.firstname
       alert(`${friendagree} đã đồng ý kết bạn với bạn !!!!`)
     })
-    this.socket.on("receive-friend-online", data => {
-      let datareceive = data
-      this.setState({
-        friendonlinelist: datareceive
-      })
-    })
+
+
   }
 
 
@@ -81,6 +76,7 @@ export default class UserDashBoard extends React.Component {
       firstname: _firstname
     })
     this.socket.emit("sent-user-id", _userid)
+    this.socket.emit("send-friend-online", _userid)
   }
 
 
@@ -120,6 +116,7 @@ export default class UserDashBoard extends React.Component {
     }
     this.socket.emit("disconnect-logout", data)
     this.props.update_login()
+    this.props.status(false)
   }
 
   userDashBoard = () => {
@@ -206,7 +203,7 @@ export default class UserDashBoard extends React.Component {
               </div>
 
               <div className="user-body-online-render">
-                <FriendOnline userid={this.state.userid} socket={this.socket} friendonlinelist={this.state.friendonlinelist} />
+                <FriendOnline userid={this.state.userid} socket={this.socket} />
               </div>
 
             </div>

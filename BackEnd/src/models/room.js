@@ -43,6 +43,32 @@ class Room {
     }
   }
 
+  checkRoomExist(user1id, user2id) {
+    let index1 = this.UserRoom.findIndex(item => {
+      return (user1id === item.user1id && user2id === item.user2id)
+    })
+    let index2 = this.UserRoom.findIndex(item => {
+      return (user2id === item.user1id && user1id === item.user2id)
+    })
+    if (index1 >= 0 || index2 >= 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  // returnRoomFriendList = (userid) => {
+  //   let roomfriendlist = [];
+  //   this.UserRoom.forEach(item => {
+  //     if (item.user1id === userid) {
+  //       roomfriendlist.push(item.user1id);
+  //     } else if (item.user2id === userid) {
+  //       roomfriendlist.push(item.user2id);
+  //     }
+  //   })
+  //   return roomfriendlist;
+  // }
+
 
 }
 

@@ -1,5 +1,5 @@
 import fs from "fs";
-import user from "../APIs/user";
+import user from "./user";
 
 class Notify {
   constructor() {

@@ -1,5 +1,5 @@
 import fs from "fs";
-import room from "../APIs/room";
+import room from "./room";
 
 class Message {
   constructor() {
@@ -43,6 +43,13 @@ class Message {
     let index = room.returnRoom(user1id, user2id).roomid;
     return this.UserMessage[index];
   }
+
+  // returnLongestMessage(userid){
+  //   let roomfriendlist = room.returnRoomFriendList(userid);
+  //   roomfriendlist.forEach(item => {
+  //     let max = 
+  //   })
+  // }
 
 }
 

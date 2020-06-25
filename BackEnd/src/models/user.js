@@ -112,6 +112,18 @@ class User {
     return index;
   }
 
+  totalUser(adminid) {
+    if (adminid === 0) {
+      return this.UserProfile.length;
+    }
+  }
+
+  // totalUserList(adminid){
+  //   if(adminid === 0){
+  //     let totaluser= 
+  //   }
+  // }
+
 }
 
 let user = new User();

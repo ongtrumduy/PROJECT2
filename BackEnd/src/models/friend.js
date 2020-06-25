@@ -30,14 +30,16 @@ class Friend {
 
   checkAddRequest(userid, unknowuserid) {
     let index = this.UserFriend.findIndex(item => {
-      return (userid === item.userid && unknowuserid === item.friendid);
+      return (item.userid === userid && item.friendid === unknowuserid);
     })
     return index;
   }
 
   cancelAddRequest(userid, unknowuserid) {
-    let index = this.checkAddRequest(userid, unknowuserid);
-    this.UserFriend.splice(index, 1);
+    let index1 = this.checkAddRequest(userid, unknowuserid);
+    let index2 = this.checkAddRequest(unknowuserid, userid);
+    this.UserFriend.splice(index1, 1);
+    this.UserFriend.splice(index2, 1);
     this.saveDataJSON();
   }
 
@@ -112,7 +114,7 @@ class Friend {
     return chatfriendlist;
   }
 
-  getFriendIdList(userid){
+  getFriendIdList(userid) {
     let getfriendIdList = [];
     this.UserFriend.forEach(item => {
       if (item.userid === userid) {

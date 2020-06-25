@@ -1,0 +1,20 @@
+.admin-home {
+  border-style: groove;
+  height: 580px;
+  margin: 5px
+}
+
+.admin-home p:first-child {
+  margin-top: 100px;
+}
+
+.admin-home {
+  text-transform: uppercase;
+}
+
+.admin-home li {
+  color: blue;
+  font-style: italic;
+  text-decoration: none;
+  list-style: none;
+}

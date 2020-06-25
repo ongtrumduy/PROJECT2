@@ -1,11 +1,10 @@
-import { user, friend, message, room, notify } from "../APIs/allAPIs";
+import { user, friend, message, room, notify } from "../models/allmodels";
 
 
 let GetLogin = (req, res, next) => {
-
   let index = user.positionLogin(req.body);
   if (index >= 0) {
-    if (req.body.user === "admin" && req.body.password === "admin") {
+    if (req.body.username === "admin" && req.body.password === "admin") {
       let NowInfor = {
         position: "admin",
         userid: index

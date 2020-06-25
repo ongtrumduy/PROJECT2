@@ -5,8 +5,52 @@ export default class WaitUserList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      userfriendlist: []
     }
+  }
+
+
+  componentWillMount = () => {
+    this.props.socket.emit("user-friend-list", this.props.userid)
+    this.props.socket.on("receive-user-friend-list", (data) => {
+      console.log(data);
+      this.userFriendList(data)
+    })
+  }
+
+  userFriendList = (_userfriendlist) => {
+    this.setState({
+      userfriendlist: _userfriendlist
+    })
+  }
+
+  getUserFriendList = (_lastname, _firstname) => {
+    return (
+      <div className="wait-friend-infor" >
+        <div className="wait-friend-user-avatar">
+          <img alt="avatar" src={require("../../Image-Icon/default-avatar.png")} />
+        </div>
+        <div className="wait-friend-infor-content">
+          <p>{_lastname} {_firstname}</p>
+        </div>
+      </div>
+    )
+  }
+
+  destroyFriendFromList = (_userid, _friendid) => {
+    let userfriend = {
+      userid: _userid,
+      friendid: _friendid
+    }
+    this.props.socket.emit("destroy-user-friend-list", userfriend)
+
+    let index = this.state.userfriendlist.findIndex(item => {
+      return (_friendid === item.friendid)
+    })
+    this.state.userfriendlist.splice(index, 1)
+    this.setState({
+      userfriendlist: this.state.userfriendlist
+    })
   }
 
 
@@ -20,244 +64,22 @@ export default class WaitUserList extends React.Component {
                 <thead>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
+                  {this.state.userfriendlist.map((item, index) => (
+                    <tr key={index}>
+                      <td>
+                        {this.getUserFriendList(item.friendlastname, item.friendfirstname)}
+                      </td>
+                      <td>
+                        {item.friendgender}
+                      </td>
+                      <td>
+                        <div className="wait-friend-select">
+                          <button onClick={() => this.destroyFriendFromList(this.props.userid, item.friendid)}><img alt="destroy" src={require("../../Image-Icon/Stop.png")} /></button>
                         </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="wait-friend-infor" >
-                        <div className="wait-friend-user-avatar">
-                          <img src={require("../../Image-Icon/default-avatar.png")} />
-                        </div>
-                        <div className="wait-friend-infor-content">
-                          <p>Phạm Duy</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="wait-friend-select">
-                        <button><img src={require("../../Image-Icon/Stop.png")} /></button>
-                      </div>
-                    </td>
-                  </tr>
+                      </td>
+                    </tr>
+                  )
+                  )}
                 </tbody>
               </table>
             </div>

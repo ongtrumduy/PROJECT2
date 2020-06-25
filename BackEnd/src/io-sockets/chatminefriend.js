@@ -1,5 +1,5 @@
-import { GetSocketId, EmitSocket, RemoveSocket } from "./beginsockets";
-import { user, friend, message, room, notify } from "../APIs/allAPIs";
+import { GetSocketId, EmitSocket, RemoveSocket, RemoveDisconnectSocket } from "../io-sockets/beginsockets";
+import { user, friend, message, room, notify } from "../models/allmodels";
 
 
 let ChatMineFriend = io => {
@@ -7,12 +7,14 @@ let ChatMineFriend = io => {
   //======================================Begin=======================================================
   //====================================================================================================
   let usersocket = {};
+  let useronlinelist = [];
   let nowuserid = 0;
   let logoutuserid = 0;
   io.on("connection", (socket) => {
     socket.on("sent-user-id", (data) => {
       nowuserid = data;
       usersocket = GetSocketId(usersocket, nowuserid, socket.id);
+      useronlinelist = Object.keys(usersocket);
     })
 
     socket.on("disconnect-logout", (data) => {
@@ -21,7 +23,7 @@ let ChatMineFriend = io => {
     })
 
     socket.on("disconnect", (data) => {
-      usersocket = RemoveSocket(usersocket, logoutuserid, socket.id);
+      RemoveDisconnectSocket(usersocket, data, useronlinelist, socket.id);
     })
     //====================================================================================================
     //====================================================================================================
@@ -30,10 +32,10 @@ let ChatMineFriend = io => {
     //====================================================================================================
     //====================================================================================================
     socket.on("mine-and-friend-chat", (data) => {
-      console.log(data);
-      let roommine = room.returnRoom(data.userid, data.friendid).roomname;
-      socket.join(roommine);
-      console.log(roommine);
+      // console.log(data);
+      // let roommine = room.returnRoom(data.userid, data.friendid).roomname;
+      // socket.join(roommine);
+      // console.log(roommine);
       let chatcontent = message.returnMessageContent(data.userid, data.friendid).content;
       // console.log(chatcontent);
 

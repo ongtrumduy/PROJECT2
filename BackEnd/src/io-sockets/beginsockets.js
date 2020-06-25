@@ -1,4 +1,4 @@
-import { user, friend, message, room, notify } from "../APIs/allAPIs";
+import { user, friend, message, room, notify } from "../models/allmodels";
 
 export let GetSocketId = (usersocket, userid, socketid) => {
   // console.log("Id của cái userdashboard");
@@ -29,7 +29,7 @@ export let EmitSocket = (usersocket, userid, io, event, data) => {
 
 export let AppearUseridSocket = (usersocket, userid) => {
   let chatfriendlist = friend.getChatFriendList(userid);
-  console.log(chatfriendlist);
+  // console.log(chatfriendlist);
   let appearlist = [];
 
   chatfriendlist.forEach(item => {
@@ -52,9 +52,26 @@ export let RemoveSocket = (usersocket, userid, socketid) => {
     usersocket[userid] = usersocket[userid].filter(socketId => {
       return socketId !== socketid;
     })
+    if (!usersocket[userid].length) {
+      delete usersocket[userid];
+    }
   }
-  if (!usersocket[userid]) {
-    delete usersocket[userid];
+  return usersocket;
+}
+
+
+export let RemoveDisconnectSocket = (usersocket, data, useronlinelist, socketid) => {
+  if (data === "transport close") {
+    useronlinelist.forEach(itemid => {
+      if (usersocket[itemid]) {
+        usersocket[itemid] = usersocket[itemid].filter(socketId => {
+          return socketId !== socketid;
+        })
+        if (!usersocket[itemid].length) {
+          delete usersocket[itemid];
+        }
+      }
+    })
   }
   return usersocket;
 }
