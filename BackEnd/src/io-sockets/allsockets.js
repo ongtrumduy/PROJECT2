@@ -7,7 +7,12 @@ import friendonlineSocket from "./friendonline";
 import waituserSocket from "./waituserlist";
 import friendlistSocket from "./userfriendlist";
 import adminstatisticSocket from "./adminstatistic";
-// import totaluserSocket from "./totaluser";
+import totaluserSocket from "./totaluser";
+import buttonnextSocket from "./buttonnext";
+import buttonpreSocket from "./buttonpre";
+import indexfriendSocket from "./updateindexfriend";
+import changeinforSocket from "./changeinfor";
+import adminseeonlineSocket from "./adminseefriendonline";
 
 
 
@@ -54,10 +59,29 @@ let AllSockets = (io) => {
   adminstatisticSocket(io);
   //--------------------------------------------------------------------------
 
-  // --------------------------AdminStatistic--------------------------------------
-  // adminstatisticSocket(io);
+  // --------------------------TotalUserList--------------------------------------
+  totaluserSocket(io);
   //--------------------------------------------------------------------------
 
+  // --------------------------NextButon--------------------------------------
+  buttonnextSocket(io);
+  //--------------------------------------------------------------------------
+
+  // --------------------------PreButon--------------------------------------
+  buttonpreSocket(io);
+  //--------------------------------------------------------------------------
+
+  // --------------------------UpdateIndexFriend--------------------------------------
+  indexfriendSocket(io);
+  //--------------------------------------------------------------------------
+
+  // --------------------------ChangeInfor--------------------------------------
+  changeinforSocket(io);
+  //--------------------------------------------------------------------------
+
+  // --------------------------AdminSeeOnline--------------------------------------
+  adminseeonlineSocket(io);
+  //--------------------------------------------------------------------------
 
   //=========================================================================
 

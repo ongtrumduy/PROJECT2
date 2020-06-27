@@ -71,3 +71,10 @@
     width: 70px;
     height: 70px;
 }
+
+.unknow-friend .unknow-friend-control .unknow-friend-button .unknow-friend-button-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

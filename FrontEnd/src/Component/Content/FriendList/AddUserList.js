@@ -91,6 +91,9 @@ export default class addUserList extends React.Component {
       friendid: _friendid
     }
     this.props.socket.emit("add-user-agree-list", userfriend)
+    this.props.socket.emit("get-index-friend-list", _userid)
+    this.props.socket.emit("get-index-friend-list", _friendid)
+
 
     let index = this.state.adduserlist.findIndex(item => {
       return (_friendid === item.friendid)
@@ -107,6 +110,9 @@ export default class addUserList extends React.Component {
       friendid: _friendid
     }
     this.props.socket.emit("add-user-deny-list", userfriend)
+    this.props.socket.emit("get-index-friend-list", _userid)
+    this.props.socket.emit("get-index-friend-list", _friendid)
+
 
     let index = this.state.adduserlist.findIndex(item => {
       return (_userid === item.friendid)

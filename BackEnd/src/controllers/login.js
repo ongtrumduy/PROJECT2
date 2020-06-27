@@ -18,8 +18,13 @@ let GetLogin = (req, res, next) => {
       res.send(NowInfor);
     }
   } else {
+    let index = user.positionBanLogin(req.body);
+    if (index >= 0) {
+      res.send("1");
+    }
     res.send("0");
   }
 }
 
 module.exports = GetLogin;
+

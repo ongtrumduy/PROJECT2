@@ -1,7 +1,8 @@
 .change-password {
-  margin: 5px 10px 0 10px;
+  background-color: rgb(234, 234, 238);
   font-size: 28px;
-  border: 1px solid white;
+  border-style: groove;
+  margin: 5px 10px 0 10px;
   height: 580px;
   display: flex;
   flex-direction: column;
@@ -10,12 +11,12 @@
 }
 
 .change-password .change-password-body {
-  border-style: groove;
+  /* border-style: groove; */
   width: 400px;
   margin: 30px;
   height: 500px;
   text-align: left;
-  background-color: rgb(217, 247, 84);
+  /* background-color: rgb(58, 59, 53); */
 }
 
 .change-password .change-password-body p {

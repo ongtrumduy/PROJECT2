@@ -1,8 +1,12 @@
 import React from "react"
+import ioclient from "socket.io-client"
+
+
 import AdminDashBoard from "./DashBoard/AdminDashBoard"
 import UserDashBoard from "./DashBoard/UserDashBoard"
 import LogPage from "./Log/LogPage"
 import ChangeInfor from "../Content/ChangeInfor/ChangeInfor"
+
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -19,17 +23,20 @@ export default class Main extends React.Component {
             case "Admin": return (
                 <AdminDashBoard
                     update_login={this.updateLog}
+                    socket={this.socket}
                 />)
             case "User": return (
                 <UserDashBoard
                     update_login={this.updateLog}
                     userid={this.state.userid}
                     status={this.statusChangeInfor}
+                    socket={this.socket}
                 />)
             default: return (
                 <LogPage
                     update_userDB={this.updateUser}
                     update_adminDB={this.updateAdmin}
+                    socket={this.socket}
                 // set_userID={this.setUserId}
                 />)
         }
@@ -41,6 +48,10 @@ export default class Main extends React.Component {
     //         firstname: _firstname,
     //     })
     // }
+
+    componentWillMount = () => {
+        this.socket = ioclient("http://localhost:8081")
+    }
 
     statusChangeInfor = (_status) => {
         this.setState({
@@ -71,7 +82,7 @@ export default class Main extends React.Component {
             // <div style={{display: "inline"}, {float: "left"}}>
             <div>
                 {this.updateMain()}
-                <ChangeInfor status={this.state.changeinfor} />
+                <ChangeInfor status={this.state.changeinfor} socket={this.socket} />
             </div>
         )
     }

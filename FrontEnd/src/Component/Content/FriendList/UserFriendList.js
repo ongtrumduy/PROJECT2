@@ -13,7 +13,7 @@ export default class WaitUserList extends React.Component {
   componentWillMount = () => {
     this.props.socket.emit("user-friend-list", this.props.userid)
     this.props.socket.on("receive-user-friend-list", (data) => {
-      console.log(data);
+      // console.log(data);
       this.userFriendList(data)
     })
   }
@@ -43,6 +43,9 @@ export default class WaitUserList extends React.Component {
       friendid: _friendid
     }
     this.props.socket.emit("destroy-user-friend-list", userfriend)
+    this.props.socket.emit("get-index-friend-list", _userid)
+    this.props.socket.emit("get-index-friend-list", _friendid)
+
 
     let index = this.state.userfriendlist.findIndex(item => {
       return (_friendid === item.friendid)

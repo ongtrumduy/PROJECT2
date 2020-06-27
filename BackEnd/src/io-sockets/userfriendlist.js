@@ -32,7 +32,7 @@ let UserFriendList = io => {
     //====================================================================================================
     //====================================================================================================
     socket.on("user-friend-list", (data) => {
-      let userfriendlist = friend.getChatFriendList(data);
+      let userfriendlist = user.getChatFriendList(data);
       EmitSocket(usersocket, data, io, "receive-user-friend-list", userfriendlist);
     })
     //====================================================================================================

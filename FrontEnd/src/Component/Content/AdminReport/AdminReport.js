@@ -14,38 +14,38 @@ export default class Friend extends React.Component {
     }
   }
 
-  receiveUserNotify = (callback, _userid) => {
-    var options = {
-      method: "POST",
-      url: "http://localhost:8081/notify",
-      headers: {
-        "cache-control": "no-cache",
-        Connection: "keep-alive",
-        "Content-Length": "0",
-        "Accept-Encoding": "gzip, deflate",
-        Host: "localhost:8081",
-        "Cache-Control": "no-cache",
-        Accept: "*/*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userid: _userid,
-      }),
-    }
+  // receiveUserNotify = (callback, _userid) => {
+  //   var options = {
+  //     method: "POST",
+  //     url: "http://localhost:8081/notify",
+  //     headers: {
+  //       "cache-control": "no-cache",
+  //       Connection: "keep-alive",
+  //       "Content-Length": "0",
+  //       "Accept-Encoding": "gzip, deflate",
+  //       Host: "localhost:8081",
+  //       "Cache-Control": "no-cache",
+  //       Accept: "*/*",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       userid: _userid,
+  //     }),
+  //   }
 
-    request(options, (error, response, body) => {
-      if (error) throw new Error(error)
-      // console.log(body)
-      let receiveinfor = JSON.parse(body)
-      callback(receiveinfor)
-    })
-  }
+  //   request(options, (error, response, body) => {
+  //     if (error) throw new Error(error)
+  //     // console.log(body)
+  //     let receiveinfor = JSON.parse(body)
+  //     callback(receiveinfor)
+  //   })
+  // }
 
 
 
-  componentWillMount = () => {
-    this.receiveUserNotify(this.receiveNotifyList, this.props.userid)
-  }
+  // componentWillMount = () => {
+  //   this.receiveUserNotify(this.receiveNotifyList, this.props.userid)
+  // }
 
   receiveNotifyList = (_notifylist) => {
     this.setState({

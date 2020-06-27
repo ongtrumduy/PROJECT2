@@ -12,7 +12,10 @@ import chatfriendRoutes from "./chatfriend";
 import messageRoutes from "./message";
 import updateimageRoutes from "./updateimage";
 import waitfriendRoutes from "./waitfriendlist";
-import friendlistRoutes from "./friendlist";
+import addhomefriendRoutes from "./addhomefriend";
+import indexfriendRoutes from "./indexfriendlist";
+import changeinforRoutes from "./changeinfor";
+import changepassRoutes from "./changepass";
 
 
 let AllRoutes = (app, corsOptions) => {
@@ -50,6 +53,10 @@ let AllRoutes = (app, corsOptions) => {
   addfriendRoutes(app, corsOptions);
   //-----------------------------------------------------------------------
 
+  // --------------------------AddHomeFriend---------------------------------------
+  addhomefriendRoutes(app, corsOptions);
+  //-----------------------------------------------------------------------
+
   // --------------------------Notify---------------------------------------
   notifyRoutes(app, corsOptions);
   //-----------------------------------------------------------------------
@@ -74,11 +81,17 @@ let AllRoutes = (app, corsOptions) => {
   // waitfriendRoutes(app, corsOptions);
   //-----------------------------------------------------------------------
 
-
-  // --------------------------FriendList---------------------------------------
-  // friendlistRoutes(app, corsOptions);
+  // --------------------------IndexFriendList---------------------------------------
+  indexfriendRoutes(app, corsOptions);
   //-----------------------------------------------------------------------
 
+  // --------------------------ChangeInfor---------------------------------------
+  changeinforRoutes(app, corsOptions);
+  //-----------------------------------------------------------------------
+
+  // --------------------------ChangePass---------------------------------------
+  changepassRoutes(app, corsOptions);
+  //-----------------------------------------------------------------------
 
   //=========================================================================
 }

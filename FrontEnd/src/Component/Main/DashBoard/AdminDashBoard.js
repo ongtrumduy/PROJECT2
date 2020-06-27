@@ -1,6 +1,5 @@
 import React from "react"
 import request from "request"
-import ioclient from "socket.io-client"
 
 import AdminHome from "../../Content/AdminHome/AdminHome"
 import UserTotal from "../../Content/UserTotal/UserTotal"
@@ -8,6 +7,7 @@ import AdminStatistic from "../../Content/AdminStatistic/AdminStatistic"
 import AdminReport from "../../Content/AdminReport/AdminReport"
 import UnknowUserProfile from "../../Content/UnknowUserProfile/UnknowUserProfile"
 import SearchAdmin from "../../Content/SearchAdmin/SearchAdmin"
+import AdminSeeUserOnline from "../../Content/AdminSeeUserOnline/AdminSeeUserOnline"
 
 import "./AdminDashBoard.css"
 
@@ -41,7 +41,7 @@ export default class AdminDashBoard extends React.Component {
 
         request(options, (error, response, body) => {
             if (error) throw new Error(error)
-            console.log(body)
+            // console.log(body)
             let receiveinfor = JSON.parse(body)
             callback(receiveinfor.id, receiveinfor.firstname)
         })
@@ -49,8 +49,7 @@ export default class AdminDashBoard extends React.Component {
 
     componentWillMount = () => {
         this.receiveFisrtName(this.callbackname)
-        this.socket = ioclient("http://localhost:8081")
-        this.socket.on("add-friend-notify", (data) => {
+        this.props.socket.on("add-friend-notify", (data) => {
             let friendrequest = data.lastname + " " + data.firstname
             alert(`${friendrequest} đã gửi báo cáo cho bạn !!!!`)
         })
@@ -63,22 +62,22 @@ export default class AdminDashBoard extends React.Component {
             userid: _userid,
             firstname: _firstname
         })
-        this.socket.emit("sent-user-id", _userid)
-        this.socket.emit("send-friend-online", _userid)
+        this.props.socket.emit("sent-user-id", _userid)
+        this.props.socket.emit("send-friend-online", _userid)
     }
 
 
     updateContentState = state => {
         this.setState({ content_state: state })
-    };
+    }
 
     renderContent = () => {
         switch (this.state.content_state) {
-            case 1: return (<UserTotal userid={this.state.userid} socket={this.socket} />)
-            case 2: return (<AdminStatistic userid={this.state.userid} socket={this.socket} />)
-            case 3: return (<AdminReport userid={this.state.userid} socket={this.socket} />)
-            case 4: return (<UnknowUserProfile userid={this.state.userid} friendid={this.state.friendid} socket={this.socket} />)
-            default: return (<AdminHome userid={this.state.userid} socket={this.socket} />)
+            case 1: return (<UserTotal userid={this.state.userid} socket={this.props.socket} />)
+            case 2: return (<AdminStatistic userid={this.state.userid} socket={this.props.socket} />)
+            case 3: return (<AdminReport userid={this.state.userid} socket={this.props.socket} />)
+            case 4: return (<UnknowUserProfile userid={this.state.userid} friendid={this.state.friendid} socket={this.props.socket} />)
+            default: return (<AdminHome userid={this.state.userid} socket={this.props.socket} />)
         }
     }
 
@@ -96,7 +95,7 @@ export default class AdminDashBoard extends React.Component {
             notify: this.state.firstname + " đã đăng xuất",
             userid: this.state.userid
         }
-        this.socket.emit("disconnect-logout", data)
+        this.props.socket.emit("disconnect-logout", data)
         this.props.update_login()
     }
 
@@ -173,9 +172,9 @@ export default class AdminDashBoard extends React.Component {
                                 </div>
                             </div>
 
-                            {/* <div className="admin-body-online-render">
-                                <FriendOnline adminid={this.state.adminid} socket={this.socket} />
-                            </div> */}
+                            <div className="admin-body-online-render">
+                                <AdminSeeUserOnline userid={this.state.userid} socket={this.props.socket} />
+                            </div>
 
                         </div>
                     </div>
@@ -198,7 +197,5 @@ export default class AdminDashBoard extends React.Component {
             </div>
         )
     }
-
-
 }
 

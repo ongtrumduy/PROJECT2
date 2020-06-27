@@ -11,7 +11,7 @@ let GetRegister = (req, res, next) => {
     checkRegister = false;
   }
 
-  if (Object.keys(req.body.username).length == 0 || Object.keys(req.body.firstname).length == 0 || Object.keys(req.body.lastname).length == 0 || Object.keys(req.body.phonenumber).length == 0 | Object.keys(req.body.password).length == 0 || Object.keys(req.body.birth).length == 0 || Object.keys(req.body.gender).length == 0) {
+  if (Object.keys(req.body.username).length == 0 || Object.keys(req.body.firstname).length == 0 || Object.keys(req.body.lastname).length == 0 || Object.keys(req.body.phonenumber).length == 0 || Object.keys(req.body.password).length == 0 || Object.keys(req.body.birth).length == 0 || Object.keys(req.body.gender).length == 0) {
     res.send("0");
     checkRegister = true;
   }

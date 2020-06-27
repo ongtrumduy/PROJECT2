@@ -146,8 +146,6 @@ export default class Profile extends React.Component {
   }
 
 
-
-
   userProfileIcon = () => {
     return (
       <div className="user-profile-icon">
@@ -230,7 +228,6 @@ export default class Profile extends React.Component {
           <div>{this.userFullName()}</div>
           <div>{this.userProfileIcon()}</div>
         </div>
-
         <div className="user-profile-avartar-content">
           <div>{this.userProfileDashBoard()}</div>
         </div>

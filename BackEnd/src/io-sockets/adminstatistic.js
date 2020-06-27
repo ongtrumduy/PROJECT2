@@ -36,11 +36,27 @@ let AdminStatistic = io => {
         let totaldata = {
           totalregisted: user.totalUser(data),
           totalnowuser: Object.keys(usersocket).length,
-          totalillegaluser: 0
+          totalillegaluser: user.returnCountBanAccount(data)
         }
         // console.log(adduserlist);
         EmitSocket(usersocket, data, io, "receive-admin-statistic", totaldata);
       }
+    })
+    //====================================================================================================
+
+    //====================================================================================================
+    socket.on("update-user-count", (data) => {
+      if (data === "update") {
+        let totalregisted = user.totalUser(0);
+        let totaldata = {
+          totalregisted: totalregisted,
+          totalnowuser: Object.keys(usersocket).length,
+          totalillegaluser: user.returnCountBanAccount(0)
+        }
+        // console.log(adduserlist);
+        EmitSocket(usersocket, 0, io, "receive-update-admin-statistic", totaldata);
+      }
+
     })
     //====================================================================================================
     //====================================================================================================

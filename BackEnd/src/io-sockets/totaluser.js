@@ -31,16 +31,26 @@ let AdminStatistic = io => {
 
     //====================================================================================================
     //====================================================================================================
-    // socket.on("get-total-user-list", (data) => {
-    //   if (data === 0) {
-    //     let totaluserdata = user.
-    //     // console.log(adduserlist);
-    //     EmitSocket(usersocket, data, io, "receive-admin-statistic", totaldata);
-    //   }
-    // })
-    //====================================================================================================
+    socket.on("get-total-user-list", (data) => {
+      // console.log(data);
+      if (data === 0) {
+        let totaluserdata = user.totalUserList(data);
+        EmitSocket(usersocket, data, io, "receive-total-user-list", totaluserdata);
+      }
+    })
     //====================================================================================================
 
+    //====================================================================================================
+    socket.on("destroy-user-from-list", (data) => {
+      // console.log(data);
+      if (data.adminid === 0) {
+        user.banByAdmin(data.adminid, data.userid);
+        EmitSocket(usersocket, 0, io, "receive-destroy-total-user-list", "update");
+        EmitSocket(usersocket, data.userid, io, "ban-account-of-you", "banned");
+      }
+    })
+    //====================================================================================================
+    //====================================================================================================
 
   })
 }

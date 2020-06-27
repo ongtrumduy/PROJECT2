@@ -2,7 +2,7 @@ import React from "react"
 import request from "request"
 import moment from "moment"
 
-import UpdateImage from "./UpdateImage"
+// import UpdateImage from "./UpdateImage"
 
 import "./Profile.css"
 
@@ -48,7 +48,10 @@ export default class Profile extends React.Component {
     }
 
     UNSAFE_componentWillMount = () => {
-        this.receiveInforProfile(this.callbackinforprofile, this.props.userid);
+        this.receiveInforProfile(this.callbackinforprofile, this.props.userid)
+        this.props.socket.on("receive-update-infor-success", data => {
+            this.callbackinforprofile(data.firstname, data.lastname, data.birth, data.gender, data.enjoy)
+        })
     }
 
     callbackinforprofile = (_firstname, _lastname, _birth, _gender, _enjoy) => {

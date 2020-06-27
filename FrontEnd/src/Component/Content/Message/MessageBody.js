@@ -9,7 +9,7 @@ export default class Message extends React.Component {
     super(props);
     this.state = {
       friendid: "",
-      datacurrentlist: []
+      datacurrentlist: [],
     }
   }
 
@@ -48,11 +48,23 @@ export default class Message extends React.Component {
 
     this.props.socket.on("receive-message-text", data => {
 
-      let datareceive = data
+      let datareceive = data.content
+      let user1id = data.user1id
+      let user2id = data.user2id
+      // console.log(datareceive)
+      // console.log(user1id)
+      // console.log(user2id)
+      // console.log(this.props.friendid)
+      if ((user1id === this.props.friendid) && (user2id === this.props.userid)) {
+        this.setState({
+          datacurrentlist: datareceive,
+        })
+      } else if ((user2id === this.props.friendid) && (user1id === this.props.userid)) {
+        this.setState({
+          datacurrentlist: datareceive,
+        })
+      }
 
-      this.setState({
-        datacurrentlist: datareceive
-      })
     })
   }
 
@@ -63,11 +75,23 @@ export default class Message extends React.Component {
 
       this.props.socket.on("receive-message-text", data => {
 
-        let datareceive = data
+        let datareceive = data.content
+        let user1id = data.user1id
+        let user2id = data.user2id
+        // console.log(datareceive)
+        // console.log(user1id)
+        // console.log(user2id)
+        // console.log(this.props.friendid)
+        if ((user1id === nextProps.friendid) && (user2id === this.props.userid)) {
+          this.setState({
+            datacurrentlist: datareceive,
+          })
+        } else if ((user2id === nextProps.friendid) && (user1id === this.props.userid)) {
+          this.setState({
+            datacurrentlist: datareceive,
+          })
+        }
 
-        this.setState({
-          datacurrentlist: datareceive
-        })
       })
     }
   }
@@ -86,15 +110,16 @@ export default class Message extends React.Component {
     }
   }
 
+
   chatMessageBody = () => {
     return (
       <div>
-        <div className="chat-message-body-username">
+        <div className="chat-message-body-username" >
           <p>{this.props.friendlastname} {this.props.friendfirstname}</p>
         </div>
         <div className="chat-message-body-bodychat" id="first-message">
           {this.state.datacurrentlist.map((item, index) => (
-            <Item userchatid={item.userid} userid={this.props.userid} text={item.text} date={item.date} />
+            <Item key={index} userchatid={item.userid} userid={this.props.userid} text={item.text} date={item.date} />
           )
           )}
         </div>
@@ -115,4 +140,3 @@ export default class Message extends React.Component {
     )
   }
 }
-

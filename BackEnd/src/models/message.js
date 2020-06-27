@@ -1,5 +1,6 @@
 import fs from "fs";
 import room from "./room";
+import user from "./user";
 
 class Message {
   constructor() {
@@ -44,12 +45,36 @@ class Message {
     return this.UserMessage[index];
   }
 
-  // returnLongestMessage(userid){
-  //   let roomfriendlist = room.returnRoomFriendList(userid);
-  //   roomfriendlist.forEach(item => {
-  //     let max = 
-  //   })
-  // }
+  returnLengthMesageFriend(user1id, user2id) {
+    let index = room.returnRoom(user1id, user2id).roomid;
+    let messagelength = this.UserMessage[index].content.length;
+    return messagelength;
+  }
+
+  returnLongestMessageFriend(userid) {
+    let roomfriendlist = room.returnRoomFriendList(userid);
+    let max = 0;
+    roomfriendlist.forEach(item => {
+      let temp = this.returnLengthMesageFriend(userid, item.friendid);
+      if (temp > max) {
+        max = temp;
+      }
+    })
+    return max;
+  }
+
+  returnBestContactFriend(userid) {
+    let roomfriendlist = room.returnRoomFriendList(userid);
+    let max = this.returnLongestMessageFriend(userid);
+    let index = 0;
+    roomfriendlist.forEach(item => {
+      let temp = this.returnLengthMesageFriend(userid, item.friendid);
+      if (temp === max) {
+        index = item.friendid;
+      }
+    })
+    return index;
+  }
 
 }
 

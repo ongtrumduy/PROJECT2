@@ -1,4 +1,5 @@
 import React from "react"
+import AddFriend from "./AddHomeFriend"
 import request from "request"
 import moment from "moment"
 import "./Home.css"
@@ -37,24 +38,24 @@ export default class Home extends React.Component {
 
         request(options, (error, response, body) => {
             if (error) throw new Error(error)
-            console.log(body)
+            // console.log(body)
             if (body === "0") {
                 callbackerror()
             } else {
                 let receiveinfor = JSON.parse(body)
-                callback(receiveinfor.firstname, receiveinfor.lastname, receiveinfor.birth, receiveinfor.gender, receiveinfor.enjoy)
+                callback(receiveinfor.checkrequest, receiveinfor.user.id, receiveinfor.user.firstname, receiveinfor.user.lastname, receiveinfor.user.birth, receiveinfor.user.gender, receiveinfor.user.enjoy)
             }
         })
     }
 
     UNSAFE_componentWillMount = () => {
         // alert(this.props.userid)
-        this.receiveInforUnknow(this.callbackerror, this.callbackinfor, this.props.userid);
+        this.receiveInforUnknow(this.callbackerror, this.callbackinforprofile, this.props.userid);
     }
 
     componentWillReceiveProps = (nextProps) => {
         // alert(nextProps.userid)
-        this.receiveInforUnknow(this.callbackerror, this.callbackinfor, nextProps.userid)
+        this.receiveInforUnknow(this.callbackerror, this.callbackinforprofile, nextProps.userid)
     }
 
     callbackerror = () => {
@@ -63,15 +64,32 @@ export default class Home extends React.Component {
         })
     }
 
-    callbackinfor = (_firstname, _lastname, _birth, _gender, _enjoy) => {
+
+    callbackinforprofile = (_checkrequest, _id, _firstname, _lastname, _birth, _gender, _enjoy) => {
         this.setState({
             statusunknowuser: 1,
+            checkrequest: _checkrequest,
+            friendid: _id,
             firstname: _firstname,
             lastname: _lastname,
             birth: moment(_birth).format("DD-MM-YYYY"),
             gender: _gender,
             enjoy: _enjoy
         })
+    }
+
+    userProfileIcon = () => {
+        return (
+            <div className="user-profile-icon">
+                <AddFriend
+                    firstname={this.state.firstname}
+                    userid={this.props.userid}
+                    friendid={this.state.friendid}
+                    checkrequest={this.state.checkrequest}
+                    socket={this.props.socket}
+                />
+            </div >
+        )
     }
 
     unknowFriendProfile = () => {
@@ -98,12 +116,43 @@ export default class Home extends React.Component {
         )
     }
 
+    PreUnknowUser = () => {
+        let data = {
+            userid: this.props.userid,
+            friendid: this.state.friendid
+        }
+        this.props.socket.emit("button-pre-unknow-user", data)
+        this.props.socket.on("receive-button-pre-unknow-user", data => {
+            console.log(data)
+            this.callbackinforprofile(data.checkrequest, data.user.id, data.user.firstname, data.user.lastname, data.user.birth, data.user.gender, data.user.enjoy)
+        })
+
+    }
+
+    NextUnknowUser = () => {
+        let data = {
+            userid: this.props.userid,
+            friendid: this.state.friendid
+        }
+        this.props.socket.emit("button-next-unknow-user", data)
+        this.props.socket.on("receive-button-next-unknow-user", data => {
+            console.log(data)
+            this.callbackinforprofile(data.checkrequest, data.user.id, data.user.firstname, data.user.lastname, data.user.birth, data.user.gender, data.user.enjoy)
+        })
+
+    }
+
+
     unknowFriendControl = () => {
         return (
-            <div>
-                <button><img alt="prex" src={require("../../Image-Icon/Arrow Left.png")} /></button>
-                <button><img alt="add" src={require("../../Image-Icon/Glyph Add.png")} /></button>
-                <button><img alt="next" src={require("../../Image-Icon/Arrow Right.png")} /></button>
+            <div className="unknow-friend-button-icon ">
+                <div>
+                    <button onClick={() => this.PreUnknowUser()}><img alt="pre" src={require("../../Image-Icon/Arrow Left.png")} /></button>
+                </div>
+                <div>{this.userProfileIcon()}</div>
+                <div>
+                    <button onClick={() => this.NextUnknowUser()}> <img alt="next" src={require("../../Image-Icon/Arrow Right.png")} /></button>
+                </div>
             </div>
         )
     }
@@ -145,3 +194,4 @@ export default class Home extends React.Component {
         )
     }
 }
+

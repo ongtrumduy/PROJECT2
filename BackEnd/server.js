@@ -3,6 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import http from "http";
 import socketio from "socket.io";
+import events from "events";
 
 
 
@@ -31,6 +32,8 @@ let corsOptions = {
 
 
 app.use(bodyParser.json());
+
+events.EventEmitter.defaultMaxListeners = 6969696969696969696969696969696969696969696969696969;
 
 
 //========================Routes=========================================

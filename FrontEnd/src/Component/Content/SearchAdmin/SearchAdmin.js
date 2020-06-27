@@ -66,6 +66,9 @@ export default class Profile extends React.Component {
   pressEnterSeacrh = (event) => {
     if (event.key === "Enter") {
       this.receiveSearchUnknowProfile(this.successInforSearch, this.noInforSearch, this.state.unknowuser)
+      this.setState({
+        unknowuser: ""
+      })
     }
   }
 
@@ -80,7 +83,12 @@ export default class Profile extends React.Component {
           <input type="text" placeholder="Tìm kiếm bạn bè..." onChange={this.handleUnknowUser} value={this.state.unknowuser} onKeyPress={this.pressEnterSeacrh} />
         </div>
         <div className="search-user-button">
-          <button onClick={() => this.receiveSearchUnknowProfile(this.successInforSearch, this.noInforSearch, this.state.unknowuser)}>
+          <button
+            onClick={() => {
+              this.receiveSearchUnknowProfile(this.successInforSearch, this.noInforSearch, this.state.unknowuser)
+              this.setState({ unknowuser: "" })
+            }}
+          >
             <img alt="search" title="Tìm kiếm" src={require("../../Image-Icon/Search.png")} />
           </button>
         </div>

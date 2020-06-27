@@ -20,6 +20,19 @@ export default class Friend extends React.Component {
         totalillegaluser: data.totalillegaluser
       })
     })
+    this.props.socket.on("receive-update-user-online", data => {
+      if (data === "update") {
+        this.props.socket.emit("get-admin-statistic", this.props.userid)
+        this.props.socket.on("receive-admin-statistic", data => {
+          this.setState({
+            totalnowuser: data.totalnowuser,
+            totalregisted: data.totalregisted,
+            totalillegaluser: data.totalillegaluser
+          })
+        })
+      }
+    })
+
   }
 
 
@@ -38,9 +51,9 @@ export default class Friend extends React.Component {
 
   render() {
     return (
-      <div className="statistic">
+      <div className="statistic" >
         <div className="statistic-title">
-          <h3>THỐNG KÊ</h3>
+          <h3>THỐNG KÊ TRUY CẬP</h3>
         </div>
         <div className="statistic-body">
           {this.renderStatisticList()}

@@ -8,13 +8,13 @@
 }
 
 .user-total .user-total-list-table {
-  height: 470px;
+  height: 435px;
   overflow: auto;
   border-style: groove;
 }
 
 .user-total .user-total-list-table table td {
-  text-align: left;
+  text-align: center;
 }
 
 .user-total .user-total-list-table table {
@@ -86,13 +86,43 @@
   margin: 0 10px 0 0;
 }
 
-.user-total .user-total-list-table td:hover {
+.user-total .user-total-list-table tr:hover {
   cursor: pointer;
   background-color: gray;
 }
 
-.user-total .user-total-list-table .user-total-infor .user-total-user-avatar img {
+.user-total .user-total-list-table td:nth-child(2) {
+  color: blue;
+}
+
+.user-total .user-total-list-table .user-total-infor .user-total-avatar img {
   width: 70px;
   height: 70px;
   margin: 0 10px 0 0;
+}
+
+.user-total .user-total-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-style: groove;
+  flex-grow: 0;
+}
+
+.user-total .user-total-header div {
+  font-size: 22px;
+  text-align: center;
+}
+
+.user-total .user-total-header div:first-child {
+  flex-grow: 9;
+}
+
+.user-total .user-total-header div:nth-child(2) {
+  flex-grow: 4;
+}
+
+.user-total .user-total-header div:last-child {
+  flex-grow: 2;
 }

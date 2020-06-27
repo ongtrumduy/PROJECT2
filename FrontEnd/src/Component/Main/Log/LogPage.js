@@ -18,6 +18,7 @@ export default class LogPage extends React.Component {
             case "register": return (
                 <Register
                     update_login={this.updateLogin}
+                    socket={this.props.socket}
                 // update_userDB={this.updateUserDashBoard}
                 />)
             case "forgot": return (
@@ -31,7 +32,7 @@ export default class LogPage extends React.Component {
                     update_userDB={this.updateUserDashBoard}
                     update_register={this.updateRegister}
                     update_forgotpass={this.updateForgotPass}
-                    // set_userID={this.setUserId}
+                // set_userID={this.setUserId}
                 />)
         }
     }

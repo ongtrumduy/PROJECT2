@@ -57,17 +57,23 @@ class Room {
     }
   }
 
-  // returnRoomFriendList = (userid) => {
-  //   let roomfriendlist = [];
-  //   this.UserRoom.forEach(item => {
-  //     if (item.user1id === userid) {
-  //       roomfriendlist.push(item.user1id);
-  //     } else if (item.user2id === userid) {
-  //       roomfriendlist.push(item.user2id);
-  //     }
-  //   })
-  //   return roomfriendlist;
-  // }
+  returnRoomFriendList(userid) {
+    let roomfriendlist = [];
+    this.UserRoom.forEach(item => {
+      if (item.user1id === userid) {
+        let friendid = {
+          friendid: item.user2id
+        }
+        roomfriendlist.push(friendid);
+      } else if (item.user2id === userid) {
+        let friendid = {
+          friendid: item.user1id
+        }
+        roomfriendlist.push(friendid);
+      }
+    })
+    return roomfriendlist;
+  }
 
 
 }

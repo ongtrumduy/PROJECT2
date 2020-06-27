@@ -16,6 +16,7 @@ let AddUserList = io => {
       nowuserid = data;
       usersocket = GetSocketId(usersocket, nowuserid, socket.id);
       useronlinelist = Object.keys(usersocket);
+      // console.log(usersocket);
     })
 
     socket.on("disconnect-logout", (data) => {
@@ -34,7 +35,7 @@ let AddUserList = io => {
     //====================================================================================================
     socket.on("add-user-list", (data) => {
       // console.log(data)
-      let adduserlist = friend.getAddUserList(data);
+      let adduserlist = user.getAddUserList(data);
       // console.log(adduserlist);
       EmitSocket(usersocket, data, io, "receive-add-user-list", adduserlist);
     })
@@ -55,10 +56,14 @@ let AddUserList = io => {
         date: time
       }
 
-      // console.log(time);
+      // console.log(datamessage);
 
       message.addMessageToRoom(data.data.userid, data.friendid, datamessage);
-      let chatcontent = message.returnMessageContent(data.data.userid, data.friendid).content;
+      let chatcontent = {
+        content: message.returnMessageContent(data.data.userid, data.friendid).content,
+        user1id: data.friendid,
+        user2id: data.data.userid
+      }
 
       EmitSocket(usersocket, data.data.userid, io, "receive-message-text", chatcontent);
       EmitSocket(usersocket, data.friendid, io, "receive-message-text", chatcontent);

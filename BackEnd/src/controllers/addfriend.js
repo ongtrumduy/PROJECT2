@@ -4,6 +4,8 @@ import { user, friend, message, room, notify } from "../models/allmodels";
 
 let ReceiveFistname = (req, res, next) => {
   // console.log(req.body);
+  res.send("1");
+
   let index = friend.checkAddRequest(req.body.userid, req.body.friendid);
 
   if (req.body.status === 1 && index < 0) {
@@ -19,13 +21,11 @@ let ReceiveFistname = (req, res, next) => {
 
     // console.log("Đã thêm vào");
     // console.log(UserFriend);
-    res.send("1");
   } else if (req.body.status === 0 && index >= 0) {
     friend.cancelAddRequest(req.body.userid, req.body.friendid);
     notify.deleteNotify(req.body.friendid, req.body.userid, "addfriend");
     // console.log("Đã hủy");
     // console.log(UserFriend);
-    res.send("0");
   }
 }
 

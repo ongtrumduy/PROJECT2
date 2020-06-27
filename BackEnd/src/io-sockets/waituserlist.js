@@ -32,7 +32,7 @@ let WaitUserList = io => {
     //====================================================================================================
     //====================================================================================================
     socket.on("wait-friend-list", (data) => {
-      let userfriendlist = friend.getWaitUserList(data);
+      let userfriendlist = user.getWaitUserList(data);
       EmitSocket(usersocket, data, io, "receive-wait-friend-list", userfriendlist);
     })
     //====================================================================================================

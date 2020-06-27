@@ -13,8 +13,20 @@ export default class UserTotal extends React.Component {
   componentWillMount = () => {
     this.props.socket.emit("get-total-user-list", this.props.userid)
     this.props.socket.on("receive-total-user-list", (data) => {
-      console.log(data);
+      // console.log("Gi");
+      // console.log(data);
       this.userFriendList(data)
+    })
+
+    this.props.socket.on("receive-destroy-total-user-list", data => {
+      if (data === "update") {
+        this.props.socket.emit("get-total-user-list", this.props.userid)
+        this.props.socket.on("receive-total-user-list", (data) => {
+          // console.log("go");
+          // console.log(data);
+          this.userFriendList(data)
+        })
+      }
     })
   }
 
@@ -26,31 +38,38 @@ export default class UserTotal extends React.Component {
 
   getUserList = (_username) => {
     return (
-      <div className="total-user-infor" >
-        <div className="total-user-user-avatar">
+      <div className="user-total-infor" >
+        <div className="user-total-avatar">
           <img alt="avatar" src={require("../../Image-Icon/default-avatar.png")} />
         </div>
-        <div className="total-user-infor-content">
+        <div className="user-total-infor-content">
           <p>{_username}</p>
         </div>
       </div>
     )
   }
 
-  destroyUserFromList = (_userid, _friendid) => {
-    let userfriend = {
-      userid: _userid,
-      friendid: _friendid
-    }
-    this.props.socket.emit("destroy-user-from-list", userfriend)
+  destroyUserFromList = (_adminid, _userid) => {
+    let confirm = window.confirm("Xác nhận khóa tài khoản của người dùng này???")
+    if (confirm) {
+      let adminuser = {
+        adminid: _adminid,
+        userid: _userid
+      }
+      this.props.socket.emit("destroy-user-from-list", adminuser)
 
-    let index = this.state.totaluserlist.findIndex(item => {
-      return (_friendid === item.friendid)
-    })
-    this.state.totaluserlist.splice(index, 1)
-    this.setState({
-      totaluserlist: this.state.totaluserlist
-    })
+      let index = this.state.totaluserlist.findIndex(item => {
+        return (_userid === item.userid)
+      })
+      this.state.totaluserlist.splice(index, 1)
+      this.setState({
+        totaluserlist: this.state.totaluserlist
+      })
+      alert("Đã khóa tài khoản người dùng này!!!")
+    } else {
+      alert("Đã hủy")
+    }
+
   }
 
   renderUserTotalList = () => {
@@ -61,20 +80,17 @@ export default class UserTotal extends React.Component {
             <thead>
             </thead>
             <tbody>
-              {this.state.usertotallist.map((item, index) => (
+              {this.state.totaluserlist.map((item, index) => (
                 <tr key={index}>
                   <td>
                     {this.getUserList(item.username)}
                   </td>
                   <td>
-                    {item.friendgender}
-                  </td>
-                  <td>
-                    {this.getUserList(item.friendusername)}
+                    {this.getUserList(item.friendname)}
                   </td>
                   <td>
                     <div className="user-total-friend-select">
-                      <button onClick={() => this.destroyUserFromList(this.props.userid, item.friendid)}><img alt="destroy" src={require("../../Image-Icon/Stop.png")} /></button>
+                      <button onClick={() => this.destroyUserFromList(this.props.userid, item.userid)}><img alt="destroy" src={require("../../Image-Icon/Stop 2.png")} /></button>
                     </div>
                   </td>
                 </tr>
@@ -87,6 +103,16 @@ export default class UserTotal extends React.Component {
     )
   }
 
+  headTotalUserList = () => {
+    return (
+      <div className="user-total-header">
+        <div>Tài khoản</div>
+        <div>Trò chuyện nhiều nhất</div>
+        <div>Khóa</div>
+      </div>
+    )
+  }
+
 
 
 
@@ -94,7 +120,10 @@ export default class UserTotal extends React.Component {
     return (
       <div className="user-total">
         <div className="user-total-title">
-          <h3>TÀI KHOẢN</h3>
+          <h3>TỐNG SỐ TÀI KHOẢN</h3>
+        </div>
+        <div>
+          {this.headTotalUserList()}
         </div>
         <div className="user-total-body">
           {this.renderUserTotalList()}

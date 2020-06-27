@@ -9,8 +9,25 @@ let ReceiveInfor = (req, res, next) => {
   if (index < 0) {
     res.send("-1");
   } else {
-    res.send(user.returnUserProfile(index));
+    let indexcheck = friend.checkAddRequest(req.body.userid, index);
+    if (indexcheck >= 0) {
+      let unknowuser = {
+        user: user.returnUserProfile(index),
+        checkrequest: 1
+      }
+      res.send(unknowuser);
+      // console.log(unknowuser);
+    } else {
+      let unknowuser = {
+        user: user.returnUserProfile(index),
+        checkrequest: 0
+      }
+      res.send(unknowuser);
+      // console.log(unknowuser);
+    }
   }
 }
 
 module.exports = ReceiveInfor;
+
+

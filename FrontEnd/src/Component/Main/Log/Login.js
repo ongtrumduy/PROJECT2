@@ -10,7 +10,7 @@ export default class Login extends React.Component {
         })
     }
 
-    sentLoginData = (callback, callbackError, _username, _password) => {
+    sentLoginData = (callback, callbackError, checkbanaccout, _username, _password) => {
         var options = {
             method: "POST",
             url: "http://localhost:8081/login",
@@ -28,8 +28,9 @@ export default class Login extends React.Component {
 
         request(options, (error, response, body) => {
             if (error) throw new Error(error)
-            console.log(body)
+            // console.log(body)
             if (body === "0") callbackError()
+            if (body === "1") checkbanaccout()
             else {
                 let receiveinfor = JSON.parse(body)
                 callback(receiveinfor.position, receiveinfor.userid)
@@ -39,6 +40,10 @@ export default class Login extends React.Component {
 
     checkWrongPassword = () => {
         alert("Tài khoản hoặc mật khẩu của bạn không đúng!!!")
+    }
+
+    checkBanAccout = () => {
+        alert("Tài khoản của bạn đã bị khóa do vi phạm điều khoản!!!")
     }
 
     positionLogin = (position, _userid) => {
@@ -65,13 +70,15 @@ export default class Login extends React.Component {
 
     pressEnterUsername = (event) => {
         if (event.key === "Enter") {
-            this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)
+            this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.checkBanAccout, this.state.username, this.state.password)
+
         }
     }
 
     pressEnterPassword = (event) => {
         if (event.key === "Enter") {
-            this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)
+            this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.checkBanAccout, this.state.username, this.state.password)
+
         }
     }
 
@@ -84,7 +91,7 @@ export default class Login extends React.Component {
                     <p>Mật khẩu (*)</p>
                     <input type="password" onChange={this.handlePasswordChange} value={this.state.password} onKeyPress={this.pressEnterPassword} />
                     <div className="login-button">
-                        <input type="button" value="Đăng nhập" onClick={() => this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.state.username, this.state.password)} />
+                        <input type="button" value="Đăng nhập" onClick={() => this.sentLoginData(this.positionLogin, this.checkWrongPassword, this.checkBanAccout, this.state.username, this.state.password)} />
                     </div>
                     <div className="forest-button">
                         <div className="forgotpass-button">

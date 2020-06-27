@@ -28,7 +28,8 @@ export let EmitSocket = (usersocket, userid, io, event, data) => {
 
 
 export let AppearUseridSocket = (usersocket, userid) => {
-  let chatfriendlist = friend.getChatFriendList(userid);
+  // console.log(userid)
+  let chatfriendlist = user.getChatFriendList(userid);
   // console.log(chatfriendlist);
   let appearlist = [];
 
@@ -45,6 +46,27 @@ export let AppearUseridSocket = (usersocket, userid) => {
 
   return appearlist;
 }
+
+export let AppearAdminSeeUseridSocket = (useronlinelist, userid) => {
+  let appearlist = [];
+  let index = 0;
+  if (userid === 0) {
+    useronlinelist.forEach(item => {
+      index = parseInt(item);
+
+      let userinfor = {
+        friendid: user.returnUserProfile(index).id,
+        friendlastname: user.returnUserProfile(index).lastname,
+        friendfirstname: user.returnUserProfile(index).firstname,
+      }
+      appearlist.push(userinfor);
+    })
+
+  }
+  return appearlist;
+
+}
+
 
 
 export let RemoveSocket = (usersocket, userid, socketid) => {

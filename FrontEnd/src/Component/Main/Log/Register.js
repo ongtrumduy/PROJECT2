@@ -46,6 +46,11 @@ export default class Login extends React.Component {
         })
     }
 
+
+    onRegisterNewUser = () => {
+        this.sentRegisterData(this.checkEmpty, this.checkSame, this.successRegister, this.state.username, this.state.firstname, this.state.lastname, this.state.phonenumber, this.state.password, this.state.birth, this.state.gender)
+    }
+
     handleUsernameChange = (event) => {
         this.setState({
             username: event.target.value
@@ -103,6 +108,7 @@ export default class Login extends React.Component {
         return (
             <div>
                 {this.props.update_login()}
+                {this.props.socket.emit("update-user-count", "update")}
             </div>
         )
     }
@@ -137,7 +143,7 @@ export default class Login extends React.Component {
                         </select>
                     </div>
                     <div className="register-button">
-                        <input type="button" value="Đăng kí" onClick={() => this.sentRegisterData(this.checkEmpty, this.checkSame, this.successRegister, this.state.username, this.state.firstname, this.state.lastname, this.state.phonenumber, this.state.password, this.state.birth, this.state.gender)} />
+                        <input type="button" value="Đăng kí" onClick={() => this.onRegisterNewUser()} />
                     </div>
                     <div className="login-return-button">
                         <input type="button" value="Trở lại Trang đăng nhập" onClick={() => this.props.update_login()} />

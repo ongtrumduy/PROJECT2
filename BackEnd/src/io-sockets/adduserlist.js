@@ -33,7 +33,7 @@ let AddUserList = io => {
     //====================================================================================================
     socket.on("add-user-list", (data) => {
       // console.log(data)
-      let adduserlist = friend.getAddUserList(data);
+      let adduserlist = user.getAddUserList(data);
       // console.log(adduserlist);
       EmitSocket(usersocket, data, io, "receive-add-user-list", adduserlist);
     })

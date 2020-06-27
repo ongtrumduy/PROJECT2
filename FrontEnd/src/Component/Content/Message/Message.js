@@ -10,7 +10,8 @@ export default class Message extends React.Component {
             friendfirstname: "",
             friendlastname: "",
             friendid: "",
-            checkfriend: ""
+            checkfriend: "",
+            // updatescroll: "false",
         }
     }
 
@@ -26,6 +27,7 @@ export default class Message extends React.Component {
                         friendlastname={this.getFriendLastName}
                         friendid={this.getFriendId}
                         checkfriend={this.getCheckFriend}
+                    // updatescroll={this.getUpdateScroll}
                     />
                 </div>
                 <div className="chat-body">
@@ -44,6 +46,8 @@ export default class Message extends React.Component {
                     friendfirstname={this.state.friendfirstname}
                     friendlastname={this.state.friendlastname}
                     friendid={this.state.friendid}
+                // updatescroll={this.state.updatescroll}
+                // getupdatescroll={this.getUpdateScroll}
                 />
             )
         } else {
@@ -78,6 +82,12 @@ export default class Message extends React.Component {
             checkfriend: _checkfriend
         })
     }
+
+    // getUpdateScroll = (_updatescroll) => {
+    //     this.setState({
+    //         updatescroll: _updatescroll
+    //     })
+    // }
 
 
     render() {

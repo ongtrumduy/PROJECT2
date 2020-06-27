@@ -30,11 +30,6 @@
     height: 485px;
 }
 
-
-
-
-
-
 .notify .notify-list-table {
     height: 470px;
     overflow: auto;
@@ -172,3 +167,7 @@
     justify-content: flex-start;
     align-items: stretch;
 }
+
+/* .user-friend-list-menu div button{
+    background-color: red;
+} */

@@ -5,7 +5,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      chatfriendlist: []
+      chatfriendlist: [],
     }
   }
 
@@ -98,6 +98,7 @@ export default class App extends React.Component {
     this.props.friendlastname(_lastname)
     this.props.friendid(_friendid)
     this.props.checkfriend("1")
+    // this.props.updatescroll("true")
   }
 
   render() {
