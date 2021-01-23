@@ -1,5 +1,6 @@
 import React from "react"
 import request from "request"
+import love from "../../Image-Icon/Love.png"
 
 import AdminHome from "../../Content/AdminHome/AdminHome"
 import UserTotal from "../../Content/UserTotal/UserTotal"
@@ -101,93 +102,128 @@ export default class AdminDashBoard extends React.Component {
 
     adminDashBoard = () => {
         return (
-            <div>
-                <div className="admin-container">
-
-                    <div className="admin-content">
-
-                        <div className="admin-menu">
-
-                            <div className="admin-menu-logo">
-                                <div className="admin-menu-logo-heart-1">
-                                    <img alt="love" src={require("../../Image-Icon/Love.png")} />
-                                </div>
-                                <div className="admin-menu-logo-heart-2">
-                                    <img alt="love" src={require("../../Image-Icon/Love.png")} />
-                                </div>
-                            </div>
-
-                            <div className="admin-menu-search">
-                                <SearchAdmin searchadmin={this.searchSuccessAdmin} userid={this.state.userid} />
-                            </div>
-
-                            <div className="admin-menu-home">
-                                <button onClick={() => { this.updateContentState(0) }}>TRANG CHỦ</button>
-                            </div>
-
-                            <div className="admin-menu-friend">
-                                <button onClick={() => { this.updateContentState(1) }}>
-                                    <img alt="admins" title="Tài khoản" src={require("../../Image-Icon/User.png")} />
-                                    {/* <span>0</span> */}
-                                </button>
-                            </div>
-
-                            <div className="admin-menu-message">
-                                <button onClick={() => { this.updateContentState(2) }}>
-                                    <img alt="message" title="Thống kê" src={require("../../Image-Icon/Chart Bar.png")} />
-                                    {/* <span>0</span> */}
-                                </button>
-                            </div>
-
-                            <div className="admin-menu-notify">
-                                <button onClick={() => { this.updateContentState(3) }}>
-                                    <img alt="notify" title="Báo cáo" src={require("../../Image-Icon/Globe Inactive.png")} />
-                                    {/* <span>0</span> */}
-                                </button>
-                            </div>
-
-                            <div className="admin-menu-logout" >
-                                <button onClick={() => this.logoutAdmin()} >
-                                    <img alt="love" title="Đăng xuất" src={require("../../Image-Icon/Button White Load.png")} />
-                                </button>
-                            </div>
-
-                        </div>
-
+          <div>
+            <div className="admin-container">
+              <div className="admin-content">
+                <div className="admin-menu">
+                  <div className="admin-menu-logo">
+                    <div className="admin-menu-logo-heart-1">
+                      <img alt="love" src={love} />
                     </div>
-
-                    <div className="admin-body">
-
-                        <div className="admin-body-render">
-                            {this.renderContent()}
-                        </div>
-
-                        <div className="admin-body-online">
-
-                            <div className="admin-body-online-title">
-                                <div className="admin-body-online-title-icon">
-                                </div>
-                                <div className="admin-body-online-title-online">
-                                    <p>Online</p>
-                                </div>
-                            </div>
-
-                            <div className="admin-body-online-render">
-                                <AdminSeeUserOnline userid={this.state.userid} socket={this.props.socket} />
-                            </div>
-
-                        </div>
+                    <div className="admin-menu-logo-heart-2">
+                      <img alt="love" src={love} />
                     </div>
+                  </div>
 
-                    <div className="admin-footer">
-                        <p>App giao lưu kết bạn và trò chuyện ver 2.0</p>
-                        <p>Design by Project 2 - <a href="https://www.facebook.com/thoiloanhhung">Phạm Duy</a> - Đại học Bách khoa Hà Nội</p>
-                        <p>Hanoi University of Science and Technology - No. 1, Dai Co Viet Str., Hanoi, Vietnam</p>
-                    </div>
+                  <div className="admin-menu-search">
+                    <SearchAdmin
+                      searchadmin={this.searchSuccessAdmin}
+                      userid={this.state.userid}
+                    />
+                  </div>
 
+                  <div className="admin-menu-home">
+                    <button
+                      onClick={() => {
+                        this.updateContentState(0);
+                      }}
+                    >
+                      TRANG CHỦ
+                    </button>
+                  </div>
+
+                  <div className="admin-menu-friend">
+                    <button
+                      onClick={() => {
+                        this.updateContentState(1);
+                      }}
+                    >
+                      <img
+                        alt="admins"
+                        title="Tài khoản"
+                        src={require("../../Image-Icon/User.png")}
+                      />
+                      {/* <span>0</span> */}
+                    </button>
+                  </div>
+
+                  <div className="admin-menu-message">
+                    <button
+                      onClick={() => {
+                        this.updateContentState(2);
+                      }}
+                    >
+                      <img
+                        alt="message"
+                        title="Thống kê"
+                        src={require("../../Image-Icon/Chart Bar.png")}
+                      />
+                      {/* <span>0</span> */}
+                    </button>
+                  </div>
+
+                  <div className="admin-menu-notify">
+                    <button
+                      onClick={() => {
+                        this.updateContentState(3);
+                      }}
+                    >
+                      <img
+                        alt="notify"
+                        title="Báo cáo"
+                        src={require("../../Image-Icon/Globe Inactive.png")}
+                      />
+                      {/* <span>0</span> */}
+                    </button>
+                  </div>
+
+                  <div className="admin-menu-logout">
+                    <button onClick={() => this.logoutAdmin()}>
+                      <img
+                        alt="love"
+                        title="Đăng xuất"
+                        src={require("../../Image-Icon/Button White Load.png")}
+                      />
+                    </button>
+                  </div>
                 </div>
-            </div >
-        )
+              </div>
+
+              <div className="admin-body">
+                <div className="admin-body-render">{this.renderContent()}</div>
+
+                <div className="admin-body-online">
+                  <div className="admin-body-online-title">
+                    <div className="admin-body-online-title-icon"></div>
+                    <div className="admin-body-online-title-online">
+                      <p>Online</p>
+                    </div>
+                  </div>
+
+                  <div className="admin-body-online-render">
+                    <AdminSeeUserOnline
+                      userid={this.state.userid}
+                      socket={this.props.socket}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="admin-footer">
+                <p>App giao lưu kết bạn và trò chuyện ver 3.0</p>
+                <p>
+                  Design by Project 3 -{" "}
+                  <a href="https://www.facebook.com/thoiloanhhung">Phạm Duy</a>{" "}
+                  - Đại học Bách khoa Hà Nội
+                </p>
+                <p>
+                  Hanoi University of Science and Technology - No. 1, Dai Co
+                  Viet Str., Hanoi, Vietnam
+                </p>
+              </div>
+            </div>
+          </div>
+        );
     }
 
     render() {

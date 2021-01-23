@@ -1,5 +1,7 @@
 import React from "react"
 import request from "request"
+import add from "../../Image-Icon/Glyph Add.png"
+import remove from "../../Image-Icon/Stop.png"
 
 export default class AddFriend extends React.Component {
   constructor(props) {
@@ -84,13 +86,13 @@ export default class AddFriend extends React.Component {
     if (this.state.checkrequest === 0) {
       return (
         <div>
-          <button onClick={() => this.sendFriendRequest()} ><img alt="add friend" src={require("../../Image-Icon/Glyph Add.png")} /></button>
+          <button onClick={() => this.sendFriendRequest()} ><img alt="add friend" src={add} /></button>
         </div>
       )
     } else {
       return (
         <div>
-          <button onClick={() => this.sendDeleteRequest()} ><img alt="stop friend" src={require("../../Image-Icon/Stop.png")} /></button>
+          <button onClick={() => this.sendDeleteRequest()} ><img alt="stop friend" src={remove} /></button>
         </div>
       )
     }
